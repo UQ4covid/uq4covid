@@ -1,0 +1,111 @@
+---
+title: Sensitivity analysis on the SIR model
+author: Stefan Siegert
+---
+
+# The SIR model of infectious disease spread
+
+```{r}
+sir = function(t, y, parms) {
+  with(as.list(c(y, parms)), {
+    list(c(-lambda*s*i,
+            lambda*s*i - gamma*i,
+            gamma*i))
+  })
+}
+```
+
+# Running the model
+
+```{r}
+i0 = 1e-6 # initial proportion of population infected
+gamma = 1/7 # assume mean recovery time of 7 days
+lambda = 2*gamma # assume lambda > gamma
+out = deSolve::ode(y = c(s=1-i0, i=i0, r=0),
+                   times = seq(0,200,1),
+                   func=sir,
+                   parms=c(lambda=lambda, gamma=gamma))
+out = out %>% `class<-`('matrix') %>% as_tibble
+head(out)
+```
+
+# Output
+
+```{r}
+out %>% gather('compartment', 'fraction', -time) %>%
+ggplot(aes(x=time, group=compartment)) + geom_line(aes(y=fraction, colour=compartment))
+```
+
+# Import the mogp python module
+
+```{r}
+library(reticulate)
+use_python('/usr/bin/python3.8')
+mogp_emulator = import('mogp_emulator')
+```
+
+# Latin hypercube design
+
+```{r}
+py_set_seed(42)
+n_design = 30
+lhc = mogp_emulator$LatinHypercubeDesign(2)
+x = lhc$sample(n_design)
+```
+
+- scale design points to desired range
+- we vary `gamma` in $[1/10, 1/3]$ and `lambda` in $[1/10, 1/3]$
+
+
+```{r}
+x[,1] = x[,1] * (1/3 - 1/10) + 1/10
+x[,2] = x[,2] * (1/3 - 1/10) + 1/10
+```
+
+
+
+# Choosing the 1d output: Number of people affected after 200 days
+
+We use the fraction of previously infected people (i.e. currently infected plus
+recovered) after 200 days as the output of interest. 
+
+For now we will use a fixed initial state of $i(0) = 10^{-6}$.
+
+```{r}
+f = function(x) {
+  i0 = 1e-6
+  out = deSolve::ode(y = c(s=1-i0, i=i0, r=0),
+                     times = seq(0,200,1),
+                     func=sir,
+                     parms=c(lambda=x[1], gamma=x[2]))
+  return(unname(1 - out[nrow(out), 's']))
+}
+```
+
+
+# Run SIR model at these design points and calculate the simulator output
+
+```{r}
+fx = apply(x, 1, function(xi) f(xi))
+design = cbind(x, fx)
+colnames(design) = c('lambda', 'gamma', 'output')
+knitr::kable(design)
+```
+
+# Building the Gaussian process emulator
+
+We emulate the simulator using a Gaussian process with a linear mean function
+and a squared exponential (Gaussian) covariance function.
+
+We fit the emulator using the first 20 design points, and validate using the
+remaining 10. 
+
+```{r}
+i_train = 1:20
+i_validate = 21:30
+xx = design[i_train, c('lambda', 'gamma')]
+yy = design[i_train, 'output']
+gp = mogp_emulator$GaussianProcess(xx, yy)
+```
+
+
