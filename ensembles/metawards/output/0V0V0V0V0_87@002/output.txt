@@ -1,0 +1,81 @@
+Using random number seed: 87365397
+First five random numbers equal 39, 44, 49, 47, 44
+Number of threads used equals 1
+Initialise infections...
+Loading additional seeds from C:\CovidSims\MetaWardsData\extra_seeds\ExtraSeedsLondon.dat...
+(1, 255, 5, None)
+S: 56082077  E: 0  I: 0  R: 0  IW: 0  POPULATION: 56082077
+S: 56082077  E: 0  I: 0  R: 0  IW: 0  POPULATION: 56082077
+
+ 0 0
+seeding play_infections[0][255] += 5
+S: 56082072  E: 5  I: 0  R: 0  IW: 0  POPULATION: 56082077
+
+ 1 0
+S: 56082072  E: 5  I: 0  R: 0  IW: 0  POPULATION: 56082077
+
+ 2 5
+S: 56082072  E: 4  I: 1  R: 0  IW: 0  POPULATION: 56082077
+
+ 3 5
+S: 56082072  E: 4  I: 1  R: 0  IW: 0  POPULATION: 56082077
+
+ 4 5
+S: 56082072  E: 3  I: 2  R: 0  IW: 0  POPULATION: 56082077
+
+ 5 5
+S: 56082072  E: 1  I: 3  R: 1  IW: 0  POPULATION: 56082077
+
+ 6 5
+S: 56082072  E: 1  I: 2  R: 2  IW: 0  POPULATION: 56082077
+
+ 7 4
+S: 56082072  E: 1  I: 1  R: 3  IW: 0  POPULATION: 56082077
+
+ 8 3
+S: 56082072  E: 1  I: 0  R: 4  IW: 0  POPULATION: 56082077
+
+ 9 2
+S: 56082072  E: 1  I: 0  R: 4  IW: 0  POPULATION: 56082077
+
+ 10 1
+S: 56082072  E: 1  I: 0  R: 4  IW: 0  POPULATION: 56082077
+
+ 11 1
+S: 56082072  E: 1  I: 0  R: 4  IW: 0  POPULATION: 56082077
+
+ 12 1
+S: 56082072  E: 1  I: 0  R: 4  IW: 0  POPULATION: 56082077
+
+ 13 1
+S: 56082072  E: 1  I: 0  R: 4  IW: 0  POPULATION: 56082077
+
+ 14 1
+S: 56082072  E: 1  I: 0  R: 4  IW: 0  POPULATION: 56082077
+
+ 15 1
+S: 56082072  E: 1  I: 0  R: 4  IW: 0  POPULATION: 56082077
+
+ 16 1
+S: 56082072  E: 1  I: 0  R: 4  IW: 0  POPULATION: 56082077
+
+ 17 1
+S: 56082072  E: 1  I: 0  R: 4  IW: 0  POPULATION: 56082077
+
+ 18 1
+S: 56082072  E: 1  I: 0  R: 4  IW: 0  POPULATION: 56082077
+
+ 19 1
+S: 56082072  E: 0  I: 1  R: 4  IW: 0  POPULATION: 56082077
+
+ 20 1
+S: 56082072  E: 0  I: 1  R: 4  IW: 0  POPULATION: 56082077
+
+ 21 1
+S: 56082072  E: 0  I: 1  R: 4  IW: 0  POPULATION: 56082077
+
+ 22 1
+S: 56082072  E: 0  I: 0  R: 5  IW: 0  POPULATION: 56082077
+
+ 23 1
+Infection died ... Ending on day 24
