@@ -1,0 +1,67 @@
+Using random number seed: 28599029
+First five random numbers equal 50, 46, 41, 48, 52
+Number of threads used equals 1
+Initialise infections...
+Loading additional seeds from C:\CovidSims\MetaWardsData\extra_seeds\ExtraSeedsLondon.dat...
+(1, 255, 5, None)
+S: 56082077  E: 0  I: 0  R: 0  IW: 0  POPULATION: 56082077
+S: 56082077  E: 0  I: 0  R: 0  IW: 0  POPULATION: 56082077
+
+ 0 0
+seeding play_infections[0][255] += 5
+S: 56082072  E: 5  I: 0  R: 0  IW: 0  POPULATION: 56082077
+
+ 1 0
+S: 56082072  E: 3  I: 2  R: 0  IW: 0  POPULATION: 56082077
+
+ 2 5
+S: 56082072  E: 1  I: 4  R: 0  IW: 0  POPULATION: 56082077
+
+ 3 5
+S: 56082070  E: 0  I: 3  R: 4  IW: 2  POPULATION: 56082077
+
+ 4 5
+S: 56082070  E: 2  I: 1  R: 4  IW: 0  POPULATION: 56082077
+
+ 5 3
+S: 56082067  E: 2  I: 0  R: 8  IW: 3  POPULATION: 56082077
+
+ 6 3
+S: 56082067  E: 5  I: 0  R: 5  IW: 0  POPULATION: 56082077
+
+ 7 2
+S: 56082067  E: 5  I: 0  R: 5  IW: 0  POPULATION: 56082077
+
+ 8 5
+S: 56082067  E: 3  I: 2  R: 5  IW: 0  POPULATION: 56082077
+
+ 9 5
+S: 56082067  E: 2  I: 3  R: 5  IW: 0  POPULATION: 56082077
+
+ 10 5
+S: 56082067  E: 2  I: 2  R: 6  IW: 0  POPULATION: 56082077
+
+ 11 5
+S: 56082066  E: 2  I: 0  R: 9  IW: 1  POPULATION: 56082077
+Negative var? 0.0, 0.0 0.0
+
+ 12 4
+S: 56082066  E: 3  I: 0  R: 8  IW: 0  POPULATION: 56082077
+
+ 13 2
+S: 56082066  E: 1  I: 2  R: 8  IW: 0  POPULATION: 56082077
+
+ 14 3
+S: 56082066  E: 1  I: 2  R: 8  IW: 0  POPULATION: 56082077
+
+ 15 3
+S: 56082066  E: 0  I: 3  R: 8  IW: 0  POPULATION: 56082077
+
+ 16 3
+S: 56082066  E: 0  I: 2  R: 9  IW: 0  POPULATION: 56082077
+
+ 17 3
+S: 56082062  E: 0  I: 0  R: 15  IW: 4  POPULATION: 56082077
+
+ 18 2
+Infection died ... Ending on day 19

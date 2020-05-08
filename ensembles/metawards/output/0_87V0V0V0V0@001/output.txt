@@ -1,0 +1,107 @@
+Using random number seed: 72804233
+First five random numbers equal 47, 58, 44, 53, 51
+Number of threads used equals 1
+Initialise infections...
+Loading additional seeds from C:\CovidSims\MetaWardsData\extra_seeds\ExtraSeedsLondon.dat...
+(1, 255, 5, None)
+S: 56082077  E: 0  I: 0  R: 0  IW: 0  POPULATION: 56082077
+S: 56082077  E: 0  I: 0  R: 0  IW: 0  POPULATION: 56082077
+
+ 0 0
+seeding play_infections[0][255] += 5
+S: 56082069  E: 5  I: 0  R: 3  IW: 2  POPULATION: 56082077
+
+ 1 0
+S: 56082065  E: 8  I: 0  R: 4  IW: 4  POPULATION: 56082077
+
+ 2 5
+S: 56082058  E: 11  I: 1  R: 7  IW: 6  POPULATION: 56082077
+
+ 3 8
+S: 56082056  E: 16  I: 3  R: 2  IW: 2  POPULATION: 56082077
+
+ 4 12
+S: 56082054  E: 14  I: 6  R: 3  IW: 2  POPULATION: 56082077
+
+ 5 19
+S: 56082053  E: 15  I: 5  R: 4  IW: 1  POPULATION: 56082077
+Negative var? 0.0, 0.0 0.0
+
+ 6 20
+S: 56082051  E: 12  I: 6  R: 8  IW: 2  POPULATION: 56082077
+
+ 7 20
+S: 56082048  E: 13  I: 5  R: 11  IW: 3  POPULATION: 56082077
+
+ 8 18
+S: 56082047  E: 16  I: 3  R: 11  IW: 1  POPULATION: 56082077
+Negative var? 0.0, 0.0 0.0
+
+ 9 18
+S: 56082045  E: 15  I: 2  R: 15  IW: 1  POPULATION: 56082077
+Negative var? 0.0, 0.0 0.0
+
+ 10 19
+S: 56082044  E: 16  I: 3  R: 14  IW: 1  POPULATION: 56082077
+Negative var? 0.0, 0.0 0.0
+
+ 11 17
+S: 56082043  E: 15  I: 3  R: 16  IW: 1  POPULATION: 56082077
+Negative var? 0.0, 0.0 0.0
+
+ 12 19
+S: 56082042  E: 15  I: 4  R: 16  IW: 1  POPULATION: 56082077
+Negative var? 0.0, 0.0 0.0
+
+ 13 18
+S: 56082041  E: 14  I: 4  R: 18  IW: 1  POPULATION: 56082077
+Negative var? 0.0, 0.0 0.0
+
+ 14 19
+S: 56082040  E: 13  I: 6  R: 18  IW: 1  POPULATION: 56082077
+Negative var? 0.0, 0.0 0.0
+
+ 15 18
+S: 56082040  E: 10  I: 7  R: 20  IW: 0  POPULATION: 56082077
+
+ 16 19
+S: 56082040  E: 8  I: 9  R: 20  IW: 0  POPULATION: 56082077
+
+ 17 17
+S: 56082040  E: 8  I: 3  R: 26  IW: 0  POPULATION: 56082077
+
+ 18 17
+S: 56082040  E: 8  I: 1  R: 28  IW: 0  POPULATION: 56082077
+
+ 19 11
+S: 56082040  E: 5  I: 3  R: 29  IW: 0  POPULATION: 56082077
+
+ 20 9
+S: 56082040  E: 4  I: 4  R: 29  IW: 0  POPULATION: 56082077
+
+ 21 8
+S: 56082040  E: 3  I: 4  R: 30  IW: 0  POPULATION: 56082077
+
+ 22 8
+S: 56082040  E: 2  I: 2  R: 33  IW: 0  POPULATION: 56082077
+
+ 23 7
+S: 56082040  E: 2  I: 1  R: 34  IW: 0  POPULATION: 56082077
+
+ 24 4
+S: 56082040  E: 2  I: 0  R: 35  IW: 0  POPULATION: 56082077
+
+ 25 3
+S: 56082040  E: 2  I: 0  R: 35  IW: 0  POPULATION: 56082077
+
+ 26 2
+S: 56082040  E: 0  I: 2  R: 35  IW: 0  POPULATION: 56082077
+
+ 27 2
+S: 56082040  E: 0  I: 2  R: 35  IW: 0  POPULATION: 56082077
+
+ 28 2
+S: 56082040  E: 0  I: 0  R: 37  IW: 0  POPULATION: 56082077
+
+ 29 2
+Infection died ... Ending on day 30
