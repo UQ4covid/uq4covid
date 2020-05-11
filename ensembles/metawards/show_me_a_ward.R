@@ -39,7 +39,7 @@ plot_group <- function(parent_council, data, lookup)
   par(mfrow = c(vertical, horizontal))
   
   # NOTE: the as.integer is needed to stop a bug in R where it literally sends "x[[FID]]" as a string
-  apply(ex_ids, 1, function(x) plot_ward(as.integer(x[["FID"]]), data = data))
+  apply(ex_ids, 1, function(x) plot_ward(as.integer(x[["FID"]]), data = data, lookup = lookup))
   par(old_gfx_settings)
 }
 
