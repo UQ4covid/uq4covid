@@ -32,3 +32,13 @@ The folder name corresponds to the beta array contents separated by "V" characte
 Plots were automatically generated from metawards-plot
 
 There is a demo R file that loads data for further analysis. It can also call metawards but is setup for the tutorial, not the run above.
+
+Custom output extractors
+------------------------
+
+The python files `get_i_per_ward` and `only_i_per_ward` record the infected people per council ward both including and excluding standard outputs respectively.
+
+Job files
+---------
+
+These can be simplified - it is highly likely that they will need to made a lot more intelligently than manually fudging some JSON.

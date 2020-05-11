@@ -1,0 +1,3665 @@
+Using random number seed: 2026853
+First five random numbers equal 44, 39, 43, 45, 44
+Number of threads used equals 1
+Initialise infections...
+only_i_per_ward
+Importing a custom extractor from only_i_per_ward
+Loaded only_i_per_ward from only_i_per_ward.py
+<function extract_only_i_per_ward at 0x0000023A749BE678>
+Building a custom extractor for <function extract_only_i_per_ward at 0x0000023A749BE678>
+Loading additional seeds from C:\CovidSims\MetaWardsData\extra_seeds\ExtraSeedsLondon.dat...
+(1, 255, 5, None)
+S: 56082077  E: 0  I: 0  R: 0  IW: 0  POPULATION: 56082077
+Sending I per ward to the output stream
+S: 56082077  E: 0  I: 0  R: 0  IW: 0  POPULATION: 56082077
+
+ 0 0
+
+Sending I per ward to the output stream
+seeding play_infections[0][255] += 5
+S: 56082072  E: 5  I: 0  R: 0  IW: 0  POPULATION: 56082077
+
+ 1 0
+
+Sending I per ward to the output stream
+S: 56082072  E: 3  I: 2  R: 0  IW: 0  POPULATION: 56082077
+
+ 2 5
+
+Sending I per ward to the output stream
+S: 56082070  E: 2  I: 3  R: 2  IW: 2  POPULATION: 56082077
+
+ 3 5
+
+Sending I per ward to the output stream
+S: 56082070  E: 3  I: 2  R: 2  IW: 0  POPULATION: 56082077
+
+ 4 5
+
+Sending I per ward to the output stream
+S: 56082069  E: 2  I: 3  R: 3  IW: 1  POPULATION: 56082077
+
+ 5 5
+
+Sending I per ward to the output stream
+S: 56082068  E: 2  I: 2  R: 5  IW: 1  POPULATION: 56082077
+
+ 6 5
+
+Sending I per ward to the output stream
+S: 56082065  E: 3  I: 1  R: 8  IW: 3  POPULATION: 56082077
+
+ 7 4
+
+Sending I per ward to the output stream
+S: 56082063  E: 5  I: 1  R: 8  IW: 2  POPULATION: 56082077
+
+ 8 4
+
+Sending I per ward to the output stream
+S: 56082063  E: 7  I: 1  R: 6  IW: 0  POPULATION: 56082077
+
+ 9 6
+
+Sending I per ward to the output stream
+S: 56082063  E: 7  I: 0  R: 7  IW: 0  POPULATION: 56082077
+
+ 10 8
+
+Sending I per ward to the output stream
+S: 56082063  E: 6  I: 1  R: 7  IW: 0  POPULATION: 56082077
+
+ 11 7
+
+Sending I per ward to the output stream
+S: 56082063  E: 6  I: 1  R: 7  IW: 0  POPULATION: 56082077
+
+ 12 7
+
+Sending I per ward to the output stream
+S: 56082063  E: 4  I: 2  R: 8  IW: 0  POPULATION: 56082077
+
+ 13 7
+
+Sending I per ward to the output stream
+S: 56082061  E: 3  I: 3  R: 10  IW: 2  POPULATION: 56082077
+
+ 14 6
+
+Sending I per ward to the output stream
+S: 56082058  E: 5  I: 1  R: 13  IW: 3  POPULATION: 56082077
+
+ 15 6
+
+Sending I per ward to the output stream
+S: 56082057  E: 8  I: 0  R: 12  IW: 1  POPULATION: 56082077
+
+ 16 6
+
+Sending I per ward to the output stream
+S: 56082057  E: 8  I: 1  R: 11  IW: 0  POPULATION: 56082077
+
+ 17 8
+
+Sending I per ward to the output stream
+S: 56082057  E: 8  I: 1  R: 11  IW: 0  POPULATION: 56082077
+
+ 18 9
+
+Sending I per ward to the output stream
+S: 56082057  E: 6  I: 2  R: 12  IW: 0  POPULATION: 56082077
+
+ 19 9
+
+Sending I per ward to the output stream
+S: 56082057  E: 5  I: 3  R: 12  IW: 0  POPULATION: 56082077
+
+ 20 8
+
+Sending I per ward to the output stream
+S: 56082056  E: 5  I: 1  R: 15  IW: 1  POPULATION: 56082077
+
+ 21 8
+
+Sending I per ward to the output stream
+S: 56082056  E: 5  I: 1  R: 15  IW: 0  POPULATION: 56082077
+
+ 22 6
+
+Sending I per ward to the output stream
+S: 56082056  E: 5  I: 1  R: 15  IW: 0  POPULATION: 56082077
+
+ 23 6
+
+Sending I per ward to the output stream
+S: 56082055  E: 3  I: 3  R: 16  IW: 1  POPULATION: 56082077
+
+ 24 6
+
+Sending I per ward to the output stream
+S: 56082054  E: 3  I: 3  R: 17  IW: 1  POPULATION: 56082077
+
+ 25 6
+
+Sending I per ward to the output stream
+S: 56082052  E: 2  I: 3  R: 20  IW: 1  POPULATION: 56082077
+
+ 26 6
+
+Sending I per ward to the output stream
+S: 56082051  E: 4  I: 2  R: 20  IW: 1  POPULATION: 56082077
+
+ 27 5
+
+Sending I per ward to the output stream
+S: 56082046  E: 5  I: 1  R: 25  IW: 5  POPULATION: 56082077
+
+ 28 6
+
+Sending I per ward to the output stream
+S: 56082046  E: 8  I: 2  R: 21  IW: 0  POPULATION: 56082077
+
+ 29 6
+
+Sending I per ward to the output stream
+S: 56082046  E: 8  I: 2  R: 21  IW: 0  POPULATION: 56082077
+
+ 30 10
+
+Sending I per ward to the output stream
+S: 56082045  E: 7  I: 1  R: 24  IW: 1  POPULATION: 56082077
+
+ 31 10
+
+Sending I per ward to the output stream
+S: 56082045  E: 7  I: 2  R: 23  IW: 0  POPULATION: 56082077
+
+ 32 8
+
+Sending I per ward to the output stream
+S: 56082043  E: 6  I: 3  R: 25  IW: 2  POPULATION: 56082077
+
+ 33 9
+
+Sending I per ward to the output stream
+S: 56082038  E: 8  I: 2  R: 29  IW: 4  POPULATION: 56082077
+
+ 34 9
+
+Sending I per ward to the output stream
+S: 56082038  E: 12  I: 1  R: 26  IW: 0  POPULATION: 56082077
+
+ 35 10
+
+Sending I per ward to the output stream
+S: 56082038  E: 12  I: 1  R: 26  IW: 0  POPULATION: 56082077
+
+ 36 13
+
+Sending I per ward to the output stream
+S: 56082038  E: 12  I: 0  R: 27  IW: 0  POPULATION: 56082077
+
+ 37 13
+
+Sending I per ward to the output stream
+S: 56082038  E: 10  I: 2  R: 27  IW: 0  POPULATION: 56082077
+
+ 38 12
+
+Sending I per ward to the output stream
+S: 56082037  E: 9  I: 3  R: 28  IW: 1  POPULATION: 56082077
+
+ 39 12
+
+Sending I per ward to the output stream
+S: 56082036  E: 10  I: 1  R: 30  IW: 1  POPULATION: 56082077
+
+ 40 12
+
+Sending I per ward to the output stream
+S: 56082036  E: 9  I: 3  R: 29  IW: 0  POPULATION: 56082077
+
+ 41 11
+
+Sending I per ward to the output stream
+S: 56082034  E: 7  I: 4  R: 32  IW: 2  POPULATION: 56082077
+
+ 42 12
+
+Sending I per ward to the output stream
+S: 56082030  E: 7  I: 4  R: 36  IW: 4  POPULATION: 56082077
+
+ 43 11
+
+Sending I per ward to the output stream
+S: 56082028  E: 10  I: 3  R: 36  IW: 2  POPULATION: 56082077
+
+ 44 11
+
+Sending I per ward to the output stream
+S: 56082024  E: 12  I: 1  R: 40  IW: 3  POPULATION: 56082077
+
+ 45 13
+
+Sending I per ward to the output stream
+S: 56082023  E: 16  I: 0  R: 38  IW: 1  POPULATION: 56082077
+
+ 46 13
+
+Sending I per ward to the output stream
+S: 56082023  E: 13  I: 4  R: 37  IW: 0  POPULATION: 56082077
+
+ 47 16
+
+Sending I per ward to the output stream
+S: 56082023  E: 12  I: 5  R: 37  IW: 0  POPULATION: 56082077
+
+ 48 17
+
+Sending I per ward to the output stream
+S: 56082017  E: 10  I: 5  R: 45  IW: 6  POPULATION: 56082077
+
+ 49 17
+
+Sending I per ward to the output stream
+S: 56082010  E: 15  I: 3  R: 49  IW: 5  POPULATION: 56082077
+
+ 50 15
+
+Sending I per ward to the output stream
+S: 56082007  E: 19  I: 4  R: 47  IW: 3  POPULATION: 56082077
+
+ 51 18
+
+Sending I per ward to the output stream
+S: 56082007  E: 20  I: 6  R: 44  IW: 0  POPULATION: 56082077
+
+ 52 23
+
+Sending I per ward to the output stream
+S: 56082004  E: 15  I: 8  R: 50  IW: 3  POPULATION: 56082077
+
+ 53 26
+
+Sending I per ward to the output stream
+S: 56081998  E: 17  I: 6  R: 56  IW: 6  POPULATION: 56082077
+
+ 54 23
+
+Sending I per ward to the output stream
+S: 56081993  E: 19  I: 6  R: 59  IW: 5  POPULATION: 56082077
+
+ 55 23
+
+Sending I per ward to the output stream
+S: 56081988  E: 22  I: 6  R: 61  IW: 5  POPULATION: 56082077
+
+ 56 25
+
+Sending I per ward to the output stream
+S: 56081986  E: 23  I: 7  R: 61  IW: 2  POPULATION: 56082077
+
+ 57 28
+
+Sending I per ward to the output stream
+S: 56081983  E: 13  I: 16  R: 65  IW: 3  POPULATION: 56082077
+
+ 58 30
+
+Sending I per ward to the output stream
+S: 56081973  E: 15  I: 14  R: 75  IW: 10  POPULATION: 56082077
+
+ 59 29
+
+Sending I per ward to the output stream
+S: 56081960  E: 20  I: 8  R: 89  IW: 9  POPULATION: 56082077
+
+ 60 29
+
+Sending I per ward to the output stream
+S: 56081954  E: 30  I: 8  R: 85  IW: 6  POPULATION: 56082077
+
+ 61 28
+
+Sending I per ward to the output stream
+S: 56081946  E: 30  I: 10  R: 91  IW: 8  POPULATION: 56082077
+
+ 62 38
+
+Sending I per ward to the output stream
+S: 56081942  E: 36  I: 11  R: 88  IW: 4  POPULATION: 56082077
+
+ 63 40
+
+Sending I per ward to the output stream
+S: 56081926  E: 37  I: 7  R: 107  IW: 13  POPULATION: 56082077
+
+ 64 47
+
+Sending I per ward to the output stream
+S: 56081917  E: 46  I: 13  R: 101  IW: 9  POPULATION: 56082077
+
+ 65 44
+
+Sending I per ward to the output stream
+S: 56081908  E: 43  I: 22  R: 104  IW: 9  POPULATION: 56082077
+
+ 66 59
+
+Sending I per ward to the output stream
+S: 56081894  E: 43  I: 22  R: 118  IW: 13  POPULATION: 56082077
+
+ 67 65
+
+Sending I per ward to the output stream
+S: 56081878  E: 51  I: 17  R: 131  IW: 15  POPULATION: 56082077
+
+ 68 65
+
+Sending I per ward to the output stream
+S: 56081863  E: 54  I: 20  R: 140  IW: 11  POPULATION: 56082077
+
+ 69 68
+
+Sending I per ward to the output stream
+S: 56081854  E: 59  I: 25  R: 139  IW: 8  POPULATION: 56082077
+
+ 70 74
+
+Sending I per ward to the output stream
+S: 56081836  E: 61  I: 21  R: 159  IW: 17  POPULATION: 56082077
+
+ 71 84
+
+Sending I per ward to the output stream
+S: 56081810  E: 69  I: 19  R: 179  IW: 22  POPULATION: 56082077
+
+ 72 82
+
+Sending I per ward to the output stream
+S: 56081803  E: 82  I: 24  R: 168  IW: 7  POPULATION: 56082077
+
+ 73 88
+
+Sending I per ward to the output stream
+S: 56081792  E: 74  I: 30  R: 181  IW: 11  POPULATION: 56082077
+
+ 74 106
+
+Sending I per ward to the output stream
+S: 56081770  E: 69  I: 38  R: 200  IW: 18  POPULATION: 56082077
+
+ 75 104
+
+Sending I per ward to the output stream
+S: 56081735  E: 76  I: 33  R: 233  IW: 28  POPULATION: 56082077
+
+ 76 107
+
+Sending I per ward to the output stream
+S: 56081707  E: 90  I: 39  R: 241  IW: 21  POPULATION: 56082077
+
+ 77 109
+
+Sending I per ward to the output stream
+S: 56081683  E: 104  I: 39  R: 251  IW: 23  POPULATION: 56082077
+
+ 78 129
+
+Sending I per ward to the output stream
+S: 56081657  E: 103  I: 43  R: 274  IW: 19  POPULATION: 56082077
+
+ 79 143
+
+Sending I per ward to the output stream
+S: 56081628  E: 105  I: 52  R: 292  IW: 25  POPULATION: 56082077
+
+ 80 146
+
+Sending I per ward to the output stream
+S: 56081594  E: 116  I: 52  R: 315  IW: 32  POPULATION: 56082077
+
+ 81 157
+
+Sending I per ward to the output stream
+S: 56081559  E: 137  I: 38  R: 343  IW: 32  POPULATION: 56082077
+
+ 82 168
+
+Sending I per ward to the output stream
+S: 56081511  E: 150  I: 38  R: 378  IW: 40  POPULATION: 56082077
+
+ 83 175
+
+Sending I per ward to the output stream
+S: 56081480  E: 172  I: 50  R: 375  IW: 27  POPULATION: 56082077
+
+ 84 188
+
+Sending I per ward to the output stream
+S: 56081445  E: 166  I: 68  R: 398  IW: 31  POPULATION: 56082077
+
+ 85 222
+
+Sending I per ward to the output stream
+S: 56081406  E: 173  I: 69  R: 429  IW: 34  POPULATION: 56082077
+
+ 86 234
+
+Sending I per ward to the output stream
+S: 56081355  E: 184  I: 67  R: 471  IW: 47  POPULATION: 56082077
+
+ 87 242
+
+Sending I per ward to the output stream
+S: 56081305  E: 195  I: 77  R: 500  IW: 45  POPULATION: 56082077
+
+ 88 251
+
+Sending I per ward to the output stream
+S: 56081259  E: 207  I: 86  R: 525  IW: 37  POPULATION: 56082077
+
+ 89 272
+
+Sending I per ward to the output stream
+S: 56081206  E: 218  I: 85  R: 568  IW: 45  POPULATION: 56082077
+
+ 90 293
+
+Sending I per ward to the output stream
+S: 56081119  E: 225  I: 94  R: 639  IW: 76  POPULATION: 56082077
+
+ 91 303
+
+Sending I per ward to the output stream
+S: 56081052  E: 268  I: 97  R: 660  IW: 60  POPULATION: 56082077
+
+ 92 319
+
+Sending I per ward to the output stream
+S: 56080974  E: 295  I: 90  R: 718  IW: 66  POPULATION: 56082077
+
+ 93 365
+
+Sending I per ward to the output stream
+S: 56080910  E: 323  I: 104  R: 740  IW: 56  POPULATION: 56082077
+
+ 94 385
+
+Sending I per ward to the output stream
+S: 56080843  E: 337  I: 110  R: 787  IW: 60  POPULATION: 56082077
+
+ 95 427
+
+Sending I per ward to the output stream
+S: 56080769  E: 344  I: 126  R: 838  IW: 66  POPULATION: 56082077
+
+ 96 447
+
+Sending I per ward to the output stream
+S: 56080681  E: 354  I: 137  R: 905  IW: 77  POPULATION: 56082077
+
+ 97 470
+
+Sending I per ward to the output stream
+S: 56080591  E: 372  I: 151  R: 963  IW: 75  POPULATION: 56082077
+
+ 98 491
+
+Sending I per ward to the output stream
+S: 56080497  E: 386  I: 164  R: 1030  IW: 81  POPULATION: 56082077
+
+ 99 523
+
+Sending I per ward to the output stream
+S: 56080376  E: 403  I: 168  R: 1130  IW: 104  POPULATION: 56082077
+
+ 100 550
+
+Sending I per ward to the output stream
+S: 56080254  E: 458  I: 161  R: 1204  IW: 98  POPULATION: 56082077
+
+ 101 571
+
+Sending I per ward to the output stream
+S: 56080116  E: 492  I: 173  R: 1296  IW: 115  POPULATION: 56082077
+
+ 102 619
+
+Sending I per ward to the output stream
+S: 56079983  E: 532  I: 201  R: 1361  IW: 117  POPULATION: 56082077
+
+ 103 665
+
+Sending I per ward to the output stream
+S: 56079822  E: 541  I: 245  R: 1469  IW: 144  POPULATION: 56082077
+
+ 104 733
+
+Sending I per ward to the output stream
+S: 56079657  E: 596  I: 259  R: 1565  IW: 140  POPULATION: 56082077
+
+ 105 786
+
+Sending I per ward to the output stream
+S: 56079455  E: 656  I: 254  R: 1712  IW: 174  POPULATION: 56082077
+
+ 106 855
+
+Sending I per ward to the output stream
+S: 56079256  E: 732  I: 268  R: 1821  IW: 163  POPULATION: 56082077
+
+ 107 910
+
+Sending I per ward to the output stream
+S: 56079050  E: 790  I: 295  R: 1942  IW: 173  POPULATION: 56082077
+
+ 108 1000
+
+Sending I per ward to the output stream
+S: 56078845  E: 865  I: 305  R: 2062  IW: 175  POPULATION: 56082077
+
+ 109 1085
+
+Sending I per ward to the output stream
+S: 56078606  E: 907  I: 332  R: 2232  IW: 203  POPULATION: 56082077
+
+ 110 1170
+
+Sending I per ward to the output stream
+S: 56078357  E: 959  I: 388  R: 2373  IW: 218  POPULATION: 56082077
+
+ 111 1239
+
+Sending I per ward to the output stream
+S: 56078083  E: 1020  I: 426  R: 2548  IW: 244  POPULATION: 56082077
+
+ 112 1347
+
+Sending I per ward to the output stream
+S: 56077782  E: 1087  I: 443  R: 2765  IW: 261  POPULATION: 56082077
+
+ 113 1446
+
+Sending I per ward to the output stream
+S: 56077485  E: 1162  I: 492  R: 2938  IW: 254  POPULATION: 56082077
+
+ 114 1530
+
+Sending I per ward to the output stream
+S: 56077174  E: 1245  I: 505  R: 3153  IW: 255  POPULATION: 56082077
+
+ 115 1654
+
+Sending I per ward to the output stream
+S: 56076804  E: 1291  I: 529  R: 3453  IW: 306  POPULATION: 56082077
+
+ 116 1750
+
+Sending I per ward to the output stream
+S: 56076420  E: 1396  I: 588  R: 3673  IW: 316  POPULATION: 56082077
+
+ 117 1820
+
+Sending I per ward to the output stream
+S: 56075990  E: 1495  I: 628  R: 3964  IW: 362  POPULATION: 56082077
+
+ 118 1984
+
+Sending I per ward to the output stream
+S: 56075546  E: 1671  I: 633  R: 4227  IW: 356  POPULATION: 56082077
+
+ 119 2123
+
+Sending I per ward to the output stream
+S: 56075093  E: 1759  I: 704  R: 4521  IW: 382  POPULATION: 56082077
+
+ 120 2304
+
+Sending I per ward to the output stream
+S: 56074615  E: 1872  I: 783  R: 4807  IW: 398  POPULATION: 56082077
+
+ 121 2463
+
+Sending I per ward to the output stream
+S: 56074087  E: 2007  I: 793  R: 5190  IW: 437  POPULATION: 56082077
+
+ 122 2655
+
+Sending I per ward to the output stream
+S: 56073532  E: 2135  I: 855  R: 5555  IW: 455  POPULATION: 56082077
+
+ 123 2800
+
+Sending I per ward to the output stream
+S: 56072916  E: 2280  I: 924  R: 5957  IW: 499  POPULATION: 56082077
+
+ 124 2990
+
+Sending I per ward to the output stream
+S: 56072272  E: 2454  I: 965  R: 6386  IW: 530  POPULATION: 56082077
+
+ 125 3204
+
+Sending I per ward to the output stream
+S: 56071605  E: 2631  I: 1015  R: 6826  IW: 540  POPULATION: 56082077
+
+ 126 3419
+
+Sending I per ward to the output stream
+S: 56070938  E: 2823  I: 1067  R: 7249  IW: 552  POPULATION: 56082077
+
+ 127 3646
+
+Sending I per ward to the output stream
+S: 56070224  E: 2933  I: 1154  R: 7766  IW: 567  POPULATION: 56082077
+
+ 128 3890
+
+Sending I per ward to the output stream
+S: 56069436  E: 3067  I: 1283  R: 8291  IW: 640  POPULATION: 56082077
+
+ 129 4087
+
+Sending I per ward to the output stream
+S: 56068503  E: 3262  I: 1315  R: 8997  IW: 730  POPULATION: 56082077
+
+ 130 4350
+
+Sending I per ward to the output stream
+S: 56067641  E: 3535  I: 1423  R: 9478  IW: 690  POPULATION: 56082077
+
+ 131 4577
+
+Sending I per ward to the output stream
+S: 56066651  E: 3673  I: 1568  R: 10185  IW: 795  POPULATION: 56082077
+
+ 132 4958
+
+Sending I per ward to the output stream
+S: 56065589  E: 3994  I: 1586  R: 10908  IW: 823  POPULATION: 56082077
+
+ 133 5241
+
+Sending I per ward to the output stream
+S: 56064542  E: 4295  I: 1627  R: 11613  IW: 824  POPULATION: 56082077
+
+ 134 5580
+
+Sending I per ward to the output stream
+S: 56063399  E: 4509  I: 1825  R: 12344  IW: 871  POPULATION: 56082077
+
+ 135 5922
+
+Sending I per ward to the output stream
+S: 56062144  E: 4770  I: 1937  R: 13226  IW: 974  POPULATION: 56082077
+
+ 136 6334
+
+Sending I per ward to the output stream
+S: 56060861  E: 5113  I: 2029  R: 14074  IW: 968  POPULATION: 56082077
+
+ 137 6707
+
+Sending I per ward to the output stream
+S: 56059476  E: 5424  I: 2138  R: 15039  IW: 1037  POPULATION: 56082077
+
+ 138 7142
+
+Sending I per ward to the output stream
+S: 56058022  E: 5822  I: 2226  R: 16007  IW: 1083  POPULATION: 56082077
+
+ 139 7562
+
+Sending I per ward to the output stream
+S: 56056587  E: 6179  I: 2371  R: 16940  IW: 1090  POPULATION: 56082077
+
+ 140 8048
+
+Sending I per ward to the output stream
+S: 56054963  E: 6440  I: 2540  R: 18134  IW: 1220  POPULATION: 56082077
+
+ 141 8550
+
+Sending I per ward to the output stream
+S: 56053326  E: 6822  I: 2756  R: 19173  IW: 1227  POPULATION: 56082077
+
+ 142 8980
+
+Sending I per ward to the output stream
+S: 56051514  E: 7116  I: 2913  R: 20534  IW: 1322  POPULATION: 56082077
+
+ 143 9578
+
+Sending I per ward to the output stream
+S: 56049617  E: 7578  I: 3040  R: 21842  IW: 1394  POPULATION: 56082077
+
+ 144 10029
+
+Sending I per ward to the output stream
+S: 56047611  E: 8014  I: 3211  R: 23241  IW: 1446  POPULATION: 56082077
+
+ 145 10618
+
+Sending I per ward to the output stream
+S: 56045539  E: 8481  I: 3398  R: 24659  IW: 1485  POPULATION: 56082077
+
+ 146 11225
+
+Sending I per ward to the output stream
+S: 56043366  E: 8868  I: 3626  R: 26217  IW: 1583  POPULATION: 56082077
+
+ 147 11879
+
+Sending I per ward to the output stream
+S: 56041066  E: 9352  I: 3820  R: 27839  IW: 1641  POPULATION: 56082077
+
+ 148 12494
+
+Sending I per ward to the output stream
+S: 56038590  E: 9827  I: 4018  R: 29642  IW: 1759  POPULATION: 56082077
+
+ 149 13172
+
+Sending I per ward to the output stream
+S: 56036022  E: 10443  I: 4170  R: 31442  IW: 1790  POPULATION: 56082077
+
+ 150 13845
+
+Sending I per ward to the output stream
+S: 56033324  E: 11041  I: 4340  R: 33372  IW: 1836  POPULATION: 56082077
+
+ 151 14613
+
+Sending I per ward to the output stream
+S: 56030501  E: 11583  I: 4647  R: 35346  IW: 1930  POPULATION: 56082077
+
+ 152 15381
+
+Sending I per ward to the output stream
+S: 56027624  E: 12180  I: 4979  R: 37294  IW: 1990  POPULATION: 56082077
+
+ 153 16230
+
+Sending I per ward to the output stream
+S: 56024411  E: 12636  I: 5304  R: 39726  IW: 2107  POPULATION: 56082077
+
+ 154 17159
+
+Sending I per ward to the output stream
+S: 56021074  E: 13398  I: 5517  R: 42088  IW: 2229  POPULATION: 56082077
+
+ 155 17940
+
+Sending I per ward to the output stream
+S: 56017526  E: 14146  I: 5775  R: 44630  IW: 2284  POPULATION: 56082077
+
+ 156 18915
+
+Sending I per ward to the output stream
+S: 56013826  E: 14969  I: 6026  R: 47256  IW: 2360  POPULATION: 56082077
+
+ 157 19921
+
+Sending I per ward to the output stream
+S: 56010052  E: 15799  I: 6358  R: 49868  IW: 2430  POPULATION: 56082077
+
+ 158 20995
+
+Sending I per ward to the output stream
+S: 56006150  E: 16580  I: 6668  R: 52679  IW: 2499  POPULATION: 56082077
+
+ 159 22157
+
+Sending I per ward to the output stream
+S: 56001902  E: 17266  I: 7060  R: 55849  IW: 2644  POPULATION: 56082077
+
+ 160 23248
+
+Sending I per ward to the output stream
+S: 55997552  E: 18122  I: 7498  R: 58905  IW: 2688  POPULATION: 56082077
+
+ 161 24326
+
+Sending I per ward to the output stream
+S: 55992902  E: 18987  I: 7837  R: 62351  IW: 2839  POPULATION: 56082077
+
+ 162 25620
+
+Sending I per ward to the output stream
+S: 55988107  E: 19952  I: 8143  R: 65875  IW: 2868  POPULATION: 56082077
+
+ 163 26824
+
+Sending I per ward to the output stream
+S: 55983027  E: 20905  I: 8519  R: 69626  IW: 2995  POPULATION: 56082077
+
+ 164 28095
+
+Sending I per ward to the output stream
+S: 55977652  E: 21871  I: 8992  R: 73562  IW: 3128  POPULATION: 56082077
+
+ 165 29424
+
+Sending I per ward to the output stream
+S: 55972048  E: 23056  I: 9429  R: 77544  IW: 3223  POPULATION: 56082077
+
+ 166 30863
+
+Sending I per ward to the output stream
+S: 55966266  E: 24359  I: 9685  R: 81767  IW: 3303  POPULATION: 56082077
+
+ 167 32485
+
+Sending I per ward to the output stream
+S: 55960317  E: 25390  I: 10272  R: 86098  IW: 3390  POPULATION: 56082077
+
+ 168 34044
+
+Sending I per ward to the output stream
+S: 55954128  E: 26481  I: 10873  R: 90595  IW: 3427  POPULATION: 56082077
+
+ 169 35662
+
+Sending I per ward to the output stream
+S: 55947389  E: 27471  I: 11442  R: 95775  IW: 3645  POPULATION: 56082077
+
+ 170 37354
+
+Sending I per ward to the output stream
+S: 55940561  E: 29053  I: 11820  R: 100643  IW: 3759  POPULATION: 56082077
+
+ 171 38913
+
+Sending I per ward to the output stream
+S: 55933379  E: 30356  I: 12186  R: 106156  IW: 3839  POPULATION: 56082077
+
+ 172 40873
+
+Sending I per ward to the output stream
+S: 55925991  E: 31645  I: 12981  R: 111460  IW: 3797  POPULATION: 56082077
+
+ 173 42542
+
+Sending I per ward to the output stream
+S: 55918186  E: 32907  I: 13621  R: 117363  IW: 3947  POPULATION: 56082077
+
+ 174 44626
+
+Sending I per ward to the output stream
+S: 55910007  E: 34349  I: 14190  R: 123531  IW: 4144  POPULATION: 56082077
+
+ 175 46528
+
+Sending I per ward to the output stream
+S: 55901559  E: 35988  I: 14721  R: 129809  IW: 4196  POPULATION: 56082077
+
+ 176 48539
+
+Sending I per ward to the output stream
+S: 55892843  E: 37455  I: 15504  R: 136275  IW: 4278  POPULATION: 56082077
+
+ 177 50709
+
+Sending I per ward to the output stream
+S: 55883700  E: 38963  I: 16178  R: 143236  IW: 4389  POPULATION: 56082077
+
+ 178 52959
+
+Sending I per ward to the output stream
+S: 55873961  E: 40655  I: 16727  R: 150734  IW: 4514  POPULATION: 56082077
+
+ 179 55141
+
+Sending I per ward to the output stream
+S: 55863802  E: 42565  I: 17421  R: 158289  IW: 4661  POPULATION: 56082077
+
+ 180 57382
+
+Sending I per ward to the output stream
+S: 55853329  E: 44529  I: 18222  R: 165997  IW: 4730  POPULATION: 56082077
+
+ 181 59986
+
+Sending I per ward to the output stream
+S: 55842438  E: 46296  I: 19203  R: 174140  IW: 4844  POPULATION: 56082077
+
+ 182 62751
+
+Sending I per ward to the output stream
+S: 55831068  E: 48271  I: 20024  R: 182714  IW: 4947  POPULATION: 56082077
+
+ 183 65499
+
+Sending I per ward to the output stream
+S: 55819172  E: 50307  I: 20818  R: 191780  IW: 5058  POPULATION: 56082077
+
+ 184 68295
+
+Sending I per ward to the output stream
+S: 55806880  E: 52532  I: 21666  R: 200999  IW: 5147  POPULATION: 56082077
+
+ 185 71125
+
+Sending I per ward to the output stream
+S: 55793986  E: 54735  I: 22546  R: 210810  IW: 5239  POPULATION: 56082077
+
+ 186 74198
+
+Sending I per ward to the output stream
+S: 55780524  E: 57154  I: 23438  R: 220961  IW: 5406  POPULATION: 56082077
+
+ 187 77281
+
+Sending I per ward to the output stream
+S: 55766671  E: 59703  I: 24369  R: 231334  IW: 5491  POPULATION: 56082077
+
+ 188 80592
+
+Sending I per ward to the output stream
+S: 55752229  E: 62071  I: 25517  R: 242260  IW: 5608  POPULATION: 56082077
+
+ 189 84072
+
+Sending I per ward to the output stream
+S: 55737221  E: 64419  I: 26838  R: 253599  IW: 5632  POPULATION: 56082077
+
+ 190 87588
+
+Sending I per ward to the output stream
+S: 55721385  E: 67070  I: 27924  R: 265698  IW: 5778  POPULATION: 56082077
+
+ 191 91257
+
+Sending I per ward to the output stream
+S: 55705022  E: 69868  I: 29083  R: 278104  IW: 5868  POPULATION: 56082077
+
+ 192 94994
+
+Sending I per ward to the output stream
+S: 55688123  E: 72949  I: 29972  R: 291033  IW: 5971  POPULATION: 56082077
+
+ 193 98951
+
+Sending I per ward to the output stream
+S: 55670462  E: 75837  I: 31228  R: 304550  IW: 6063  POPULATION: 56082077
+
+ 194 102921
+
+Sending I per ward to the output stream
+S: 55652190  E: 78939  I: 32550  R: 318398  IW: 6109  POPULATION: 56082077
+
+ 195 107065
+
+Sending I per ward to the output stream
+S: 55633043  E: 81988  I: 33895  R: 333151  IW: 6324  POPULATION: 56082077
+
+ 196 111489
+
+Sending I per ward to the output stream
+S: 55613626  E: 85184  I: 35510  R: 347757  IW: 6316  POPULATION: 56082077
+
+ 197 115883
+
+Sending I per ward to the output stream
+S: 55593023  E: 88288  I: 36759  R: 364007  IW: 6384  POPULATION: 56082077
+
+ 198 120694
+
+Sending I per ward to the output stream
+S: 55571555  E: 91892  I: 38059  R: 380571  IW: 6554  POPULATION: 56082077
+
+ 199 125047
+
+Sending I per ward to the output stream
+S: 55549657  E: 95699  I: 39559  R: 397162  IW: 6592  POPULATION: 56082077
+
+ 200 129951
+
+Sending I per ward to the output stream
+S: 55526584  E: 99111  I: 41239  R: 415143  IW: 6698  POPULATION: 56082077
+
+ 201 135258
+
+Sending I per ward to the output stream
+S: 55502833  E: 102995  I: 43100  R: 433149  IW: 6766  POPULATION: 56082077
+
+ 202 140350
+
+Sending I per ward to the output stream
+S: 55478127  E: 106975  I: 44578  R: 452397  IW: 6849  POPULATION: 56082077
+
+ 203 146095
+
+Sending I per ward to the output stream
+S: 55452157  E: 111074  I: 46130  R: 472716  IW: 6887  POPULATION: 56082077
+
+ 204 151553
+
+Sending I per ward to the output stream
+S: 55425355  E: 115711  I: 47881  R: 493130  IW: 6911  POPULATION: 56082077
+
+ 205 157204
+
+Sending I per ward to the output stream
+S: 55397806  E: 120201  I: 49805  R: 514265  IW: 7060  POPULATION: 56082077
+
+ 206 163592
+
+Sending I per ward to the output stream
+S: 55368869  E: 124825  I: 51530  R: 536853  IW: 7195  POPULATION: 56082077
+
+ 207 170006
+
+Sending I per ward to the output stream
+S: 55339270  E: 129830  I: 53532  R: 559445  IW: 7169  POPULATION: 56082077
+
+ 208 176355
+
+Sending I per ward to the output stream
+S: 55308529  E: 134643  I: 55693  R: 583212  IW: 7267  POPULATION: 56082077
+
+ 209 183362
+
+Sending I per ward to the output stream
+S: 55276286  E: 139295  I: 57908  R: 608588  IW: 7230  POPULATION: 56082077
+
+ 210 190336
+
+Sending I per ward to the output stream
+S: 55243189  E: 144794  I: 60106  R: 633988  IW: 7368  POPULATION: 56082077
+
+ 211 197203
+
+Sending I per ward to the output stream
+S: 55208534  E: 149868  I: 62463  R: 661212  IW: 7459  POPULATION: 56082077
+
+ 212 204900
+
+Sending I per ward to the output stream
+S: 55172893  E: 155885  I: 64742  R: 688557  IW: 7492  POPULATION: 56082077
+
+ 213 212331
+
+Sending I per ward to the output stream
+S: 55136016  E: 161478  I: 66951  R: 717632  IW: 7555  POPULATION: 56082077
+
+ 214 220627
+
+Sending I per ward to the output stream
+S: 55097882  E: 167172  I: 69771  R: 747252  IW: 7554  POPULATION: 56082077
+
+ 215 228429
+
+Sending I per ward to the output stream
+S: 55057872  E: 173630  I: 71778  R: 778797  IW: 7694  POPULATION: 56082077
+
+ 216 236943
+
+Sending I per ward to the output stream
+S: 55017089  E: 180389  I: 74360  R: 810239  IW: 7668  POPULATION: 56082077
+
+ 217 245408
+
+Sending I per ward to the output stream
+S: 54975095  E: 186690  I: 77326  R: 842966  IW: 7742  POPULATION: 56082077
+
+ 218 254749
+
+Sending I per ward to the output stream
+S: 54931343  E: 192921  I: 80145  R: 877668  IW: 7829  POPULATION: 56082077
+
+ 219 264016
+
+Sending I per ward to the output stream
+S: 54885796  E: 199386  I: 83192  R: 913703  IW: 7897  POPULATION: 56082077
+
+ 220 273066
+
+Sending I per ward to the output stream
+S: 54838841  E: 206430  I: 86364  R: 950442  IW: 7933  POPULATION: 56082077
+
+ 221 282578
+
+Sending I per ward to the output stream
+S: 54789880  E: 213510  I: 89398  R: 989289  IW: 7949  POPULATION: 56082077
+
+ 222 292794
+
+Sending I per ward to the output stream
+S: 54739570  E: 221374  I: 92482  R: 1028651  IW: 7989  POPULATION: 56082077
+
+ 223 302908
+
+Sending I per ward to the output stream
+S: 54687566  E: 228899  I: 95675  R: 1069937  IW: 8018  POPULATION: 56082077
+
+ 224 313856
+
+Sending I per ward to the output stream
+S: 54633658  E: 236809  I: 98994  R: 1112616  IW: 8052  POPULATION: 56082077
+
+ 225 324574
+
+Sending I per ward to the output stream
+S: 54577853  E: 245385  I: 102259  R: 1156580  IW: 8061  POPULATION: 56082077
+
+ 226 335803
+
+Sending I per ward to the output stream
+S: 54520254  E: 253649  I: 106031  R: 1202143  IW: 8126  POPULATION: 56082077
+
+ 227 347644
+
+Sending I per ward to the output stream
+S: 54461207  E: 262441  I: 109680  R: 1248749  IW: 8141  POPULATION: 56082077
+
+ 228 359680
+
+Sending I per ward to the output stream
+S: 54400403  E: 271005  I: 113474  R: 1297195  IW: 8133  POPULATION: 56082077
+
+ 229 372121
+
+Sending I per ward to the output stream
+S: 54336466  E: 279417  I: 117291  R: 1348903  IW: 8196  POPULATION: 56082077
+
+ 230 384479
+
+Sending I per ward to the output stream
+S: 54270964  E: 289363  I: 121438  R: 1400312  IW: 8248  POPULATION: 56082077
+
+ 231 396708
+
+Sending I per ward to the output stream
+S: 54203292  E: 299088  I: 125303  R: 1454394  IW: 8238  POPULATION: 56082077
+
+ 232 410801
+
+Sending I per ward to the output stream
+S: 54133442  E: 309221  I: 129376  R: 1510038  IW: 8274  POPULATION: 56082077
+
+ 233 424391
+
+Sending I per ward to the output stream
+S: 54062234  E: 319756  I: 133519  R: 1566568  IW: 8268  POPULATION: 56082077
+
+ 234 438597
+
+Sending I per ward to the output stream
+S: 53988474  E: 329062  I: 138296  R: 1626245  IW: 8258  POPULATION: 56082077
+
+ 235 453275
+
+Sending I per ward to the output stream
+S: 53912030  E: 339978  I: 142279  R: 1687790  IW: 8307  POPULATION: 56082077
+
+ 236 467358
+
+Sending I per ward to the output stream
+S: 53832674  E: 351081  I: 146620  R: 1751702  IW: 8360  POPULATION: 56082077
+
+ 237 482257
+
+Sending I per ward to the output stream
+S: 53751330  E: 362843  I: 151811  R: 1816093  IW: 8367  POPULATION: 56082077
+
+ 238 497701
+
+Sending I per ward to the output stream
+S: 53668155  E: 374324  I: 156810  R: 1882788  IW: 8367  POPULATION: 56082077
+
+ 239 514654
+
+Sending I per ward to the output stream
+S: 53581603  E: 385731  I: 161732  R: 1953011  IW: 8402  POPULATION: 56082077
+
+ 240 531134
+
+Sending I per ward to the output stream
+S: 53492774  E: 397894  I: 166609  R: 2024800  IW: 8393  POPULATION: 56082077
+
+ 241 547463
+
+Sending I per ward to the output stream
+S: 53401178  E: 410718  I: 171621  R: 2098560  IW: 8426  POPULATION: 56082077
+
+ 242 564503
+
+Sending I per ward to the output stream
+S: 53307253  E: 422551  I: 177779  R: 2174494  IW: 8442  POPULATION: 56082077
+
+ 243 582339
+
+Sending I per ward to the output stream
+S: 53211265  E: 434830  I: 184079  R: 2251903  IW: 8441  POPULATION: 56082077
+
+ 244 600330
+
+Sending I per ward to the output stream
+S: 53110717  E: 446937  I: 189506  R: 2334917  IW: 8448  POPULATION: 56082077
+
+ 245 618909
+
+Sending I per ward to the output stream
+S: 53007340  E: 461378  I: 194534  R: 2418825  IW: 8455  POPULATION: 56082077
+
+ 246 636443
+
+Sending I per ward to the output stream
+S: 52901135  E: 475674  I: 200238  R: 2505030  IW: 8489  POPULATION: 56082077
+
+ 247 655912
+
+Sending I per ward to the output stream
+S: 52793053  E: 490456  I: 206274  R: 2592294  IW: 8459  POPULATION: 56082077
+
+ 248 675912
+
+Sending I per ward to the output stream
+S: 52681230  E: 503909  I: 212365  R: 2684573  IW: 8495  POPULATION: 56082077
+
+ 249 696730
+
+Sending I per ward to the output stream
+S: 52567176  E: 518852  I: 218659  R: 2777390  IW: 8489  POPULATION: 56082077
+
+ 250 716274
+
+Sending I per ward to the output stream
+S: 52449495  E: 532979  I: 225242  R: 2874361  IW: 8498  POPULATION: 56082077
+
+ 251 737511
+
+Sending I per ward to the output stream
+S: 52328611  E: 548151  I: 231429  R: 2973886  IW: 8507  POPULATION: 56082077
+
+ 252 758221
+
+Sending I per ward to the output stream
+S: 52205185  E: 563795  I: 237497  R: 3075600  IW: 8527  POPULATION: 56082077
+
+ 253 779580
+
+Sending I per ward to the output stream
+S: 52078169  E: 578908  I: 244243  R: 3180757  IW: 8512  POPULATION: 56082077
+
+ 254 801292
+
+Sending I per ward to the output stream
+S: 51947678  E: 594581  I: 251058  R: 3288760  IW: 8519  POPULATION: 56082077
+
+ 255 823151
+
+Sending I per ward to the output stream
+S: 51814018  E: 610679  I: 258108  R: 3399272  IW: 8526  POPULATION: 56082077
+
+ 256 845639
+
+Sending I per ward to the output stream
+S: 51676191  E: 626995  I: 264879  R: 3514012  IW: 8543  POPULATION: 56082077
+
+ 257 868787
+
+Sending I per ward to the output stream
+S: 51535493  E: 644392  I: 271956  R: 3630236  IW: 8538  POPULATION: 56082077
+
+ 258 891874
+
+Sending I per ward to the output stream
+S: 51392138  E: 660806  I: 279600  R: 3749533  IW: 8539  POPULATION: 56082077
+
+ 259 916348
+
+Sending I per ward to the output stream
+S: 51245476  E: 677301  I: 286908  R: 3872392  IW: 8541  POPULATION: 56082077
+
+ 260 940406
+
+Sending I per ward to the output stream
+S: 51094763  E: 693770  I: 294385  R: 3999159  IW: 8554  POPULATION: 56082077
+
+ 261 964209
+
+Sending I per ward to the output stream
+S: 50940715  E: 711598  I: 301324  R: 4128440  IW: 8561  POPULATION: 56082077
+
+ 262 988155
+
+Sending I per ward to the output stream
+S: 50783529  E: 728429  I: 309093  R: 4261026  IW: 8552  POPULATION: 56082077
+
+ 263 1012922
+
+Sending I per ward to the output stream
+S: 50623659  E: 745698  I: 316914  R: 4395806  IW: 8563  POPULATION: 56082077
+
+ 264 1037522
+
+Sending I per ward to the output stream
+S: 50460323  E: 761715  I: 324364  R: 4535675  IW: 8557  POPULATION: 56082077
+
+ 265 1062612
+
+Sending I per ward to the output stream
+S: 50292266  E: 778751  I: 332041  R: 4679019  IW: 8558  POPULATION: 56082077
+
+ 266 1086079
+
+Sending I per ward to the output stream
+S: 50121725  E: 797707  I: 338391  R: 4824254  IW: 8560  POPULATION: 56082077
+
+ 267 1110792
+
+Sending I per ward to the output stream
+S: 49947644  E: 814581  I: 346468  R: 4973384  IW: 8563  POPULATION: 56082077
+
+ 268 1136098
+
+Sending I per ward to the output stream
+S: 49770748  E: 832374  I: 354484  R: 5124471  IW: 8563  POPULATION: 56082077
+
+ 269 1161049
+
+Sending I per ward to the output stream
+S: 49590708  E: 848664  I: 362712  R: 5279993  IW: 8570  POPULATION: 56082077
+
+ 270 1186858
+
+Sending I per ward to the output stream
+S: 49406115  E: 865688  I: 370140  R: 5440134  IW: 8566  POPULATION: 56082077
+
+ 271 1211376
+
+Sending I per ward to the output stream
+S: 49217806  E: 883700  I: 377362  R: 5603209  IW: 8576  POPULATION: 56082077
+
+ 272 1235828
+
+Sending I per ward to the output stream
+S: 49027330  E: 901757  I: 385635  R: 5767355  IW: 8567  POPULATION: 56082077
+
+ 273 1261062
+
+Sending I per ward to the output stream
+S: 48833381  E: 918129  I: 393985  R: 5936582  IW: 8567  POPULATION: 56082077
+
+ 274 1287392
+
+Sending I per ward to the output stream
+S: 48635683  E: 935613  I: 401598  R: 6109183  IW: 8577  POPULATION: 56082077
+
+ 275 1312114
+
+Sending I per ward to the output stream
+S: 48435733  E: 953608  I: 408239  R: 6284497  IW: 8577  POPULATION: 56082077
+
+ 276 1337211
+
+Sending I per ward to the output stream
+S: 48231656  E: 970744  I: 415400  R: 6464277  IW: 8576  POPULATION: 56082077
+
+ 277 1361847
+
+Sending I per ward to the output stream
+S: 48026809  E: 987680  I: 423658  R: 6643930  IW: 8572  POPULATION: 56082077
+
+ 278 1386144
+
+Sending I per ward to the output stream
+S: 47818022  E: 1002500  I: 431906  R: 6829649  IW: 8574  POPULATION: 56082077
+
+ 279 1411338
+
+Sending I per ward to the output stream
+S: 47606648  E: 1018368  I: 438670  R: 7018391  IW: 8573  POPULATION: 56082077
+
+ 280 1434406
+
+Sending I per ward to the output stream
+S: 47391549  E: 1034045  I: 445479  R: 7211004  IW: 8577  POPULATION: 56082077
+
+ 281 1457038
+
+Sending I per ward to the output stream
+S: 47174298  E: 1049747  I: 452337  R: 7405695  IW: 8576  POPULATION: 56082077
+
+ 282 1479524
+
+Sending I per ward to the output stream
+S: 46955569  E: 1064853  I: 460044  R: 7601611  IW: 8578  POPULATION: 56082077
+
+ 283 1502084
+
+Sending I per ward to the output stream
+S: 46733719  E: 1078582  I: 466399  R: 7803377  IW: 8571  POPULATION: 56082077
+
+ 284 1524897
+
+Sending I per ward to the output stream
+S: 46508996  E: 1093695  I: 471678  R: 8007708  IW: 8579  POPULATION: 56082077
+
+ 285 1544981
+
+Sending I per ward to the output stream
+S: 46282879  E: 1107810  I: 478580  R: 8212808  IW: 8577  POPULATION: 56082077
+
+ 286 1565373
+
+Sending I per ward to the output stream
+S: 46054929  E: 1120909  I: 485603  R: 8420636  IW: 8580  POPULATION: 56082077
+
+ 287 1586390
+
+Sending I per ward to the output stream
+S: 45825126  E: 1133148  I: 491540  R: 8632263  IW: 8579  POPULATION: 56082077
+
+ 288 1606512
+
+Sending I per ward to the output stream
+S: 45592580  E: 1144889  I: 497353  R: 8847255  IW: 8578  POPULATION: 56082077
+
+ 289 1624688
+
+Sending I per ward to the output stream
+S: 45358736  E: 1157599  I: 502498  R: 9063244  IW: 8579  POPULATION: 56082077
+
+ 290 1642242
+
+Sending I per ward to the output stream
+S: 45124248  E: 1169299  I: 506968  R: 9281562  IW: 8577  POPULATION: 56082077
+
+ 291 1660097
+
+Sending I per ward to the output stream
+S: 44887614  E: 1179122  I: 512354  R: 9502987  IW: 8577  POPULATION: 56082077
+
+ 292 1676267
+
+Sending I per ward to the output stream
+S: 44650234  E: 1188717  I: 517745  R: 9725381  IW: 8578  POPULATION: 56082077
+
+ 293 1691476
+
+Sending I per ward to the output stream
+S: 44412013  E: 1197705  I: 522325  R: 9950034  IW: 8581  POPULATION: 56082077
+
+ 294 1706462
+
+Sending I per ward to the output stream
+S: 44172003  E: 1205470  I: 526330  R: 10178274  IW: 8574  POPULATION: 56082077
+
+ 295 1720030
+
+Sending I per ward to the output stream
+S: 43931685  E: 1213497  I: 531142  R: 10405753  IW: 8580  POPULATION: 56082077
+
+ 296 1731800
+
+Sending I per ward to the output stream
+S: 43690118  E: 1221172  I: 533601  R: 10637186  IW: 8579  POPULATION: 56082077
+
+ 297 1744639
+
+Sending I per ward to the output stream
+S: 43448206  E: 1227256  I: 537701  R: 10868914  IW: 8579  POPULATION: 56082077
+
+ 298 1754773
+
+Sending I per ward to the output stream
+S: 43206249  E: 1233658  I: 540929  R: 11101241  IW: 8574  POPULATION: 56082077
+
+ 299 1764957
+
+Sending I per ward to the output stream
+S: 42963533  E: 1238096  I: 543391  R: 11337057  IW: 8581  POPULATION: 56082077
+
+ 300 1774587
+
+Sending I per ward to the output stream
+S: 42721383  E: 1242196  I: 546816  R: 11571682  IW: 8579  POPULATION: 56082077
+
+ 301 1781487
+
+Sending I per ward to the output stream
+S: 42478711  E: 1245226  I: 549066  R: 11809074  IW: 8577  POPULATION: 56082077
+
+ 302 1789012
+
+Sending I per ward to the output stream
+S: 42237128  E: 1248604  I: 549889  R: 12046456  IW: 8577  POPULATION: 56082077
+
+ 303 1794292
+
+Sending I per ward to the output stream
+S: 41995324  E: 1249975  I: 551637  R: 12285141  IW: 8582  POPULATION: 56082077
+
+ 304 1798493
+
+Sending I per ward to the output stream
+S: 41754088  E: 1251394  I: 552329  R: 12524266  IW: 8581  POPULATION: 56082077
+
+ 305 1801612
+
+Sending I per ward to the output stream
+S: 41513551  E: 1252434  I: 552985  R: 12763107  IW: 8579  POPULATION: 56082077
+
+ 306 1803723
+
+Sending I per ward to the output stream
+S: 41274776  E: 1251797  I: 553261  R: 13002243  IW: 8581  POPULATION: 56082077
+
+ 307 1805419
+
+Sending I per ward to the output stream
+S: 41037206  E: 1250100  I: 553811  R: 13240960  IW: 8578  POPULATION: 56082077
+
+ 308 1805058
+
+Sending I per ward to the output stream
+S: 40799614  E: 1247688  I: 552808  R: 13481967  IW: 8574  POPULATION: 56082077
+
+ 309 1803911
+
+Sending I per ward to the output stream
+S: 40563978  E: 1244712  I: 552227  R: 13721160  IW: 8581  POPULATION: 56082077
+
+ 310 1800496
+
+Sending I per ward to the output stream
+S: 40330374  E: 1241114  I: 551500  R: 13959089  IW: 8577  POPULATION: 56082077
+
+ 311 1796939
+
+Sending I per ward to the output stream
+S: 40098777  E: 1236193  I: 549077  R: 14198030  IW: 8570  POPULATION: 56082077
+
+ 312 1792614
+
+Sending I per ward to the output stream
+S: 39868390  E: 1229411  I: 548686  R: 14435590  IW: 8579  POPULATION: 56082077
+
+ 313 1785270
+
+Sending I per ward to the output stream
+S: 39639738  E: 1223632  I: 546407  R: 14672300  IW: 8576  POPULATION: 56082077
+
+ 314 1778097
+
+Sending I per ward to the output stream
+S: 39412506  E: 1217037  I: 543318  R: 14909216  IW: 8578  POPULATION: 56082077
+
+ 315 1770039
+
+Sending I per ward to the output stream
+S: 39188804  E: 1210620  I: 540041  R: 15142612  IW: 8575  POPULATION: 56082077
+
+ 316 1760355
+
+Sending I per ward to the output stream
+S: 38968197  E: 1201247  I: 537104  R: 15375529  IW: 8577  POPULATION: 56082077
+
+ 317 1750661
+
+Sending I per ward to the output stream
+S: 38749259  E: 1190320  I: 534817  R: 15607681  IW: 8578  POPULATION: 56082077
+
+ 318 1738351
+
+Sending I per ward to the output stream
+S: 38531345  E: 1180159  I: 530930  R: 15839643  IW: 8580  POPULATION: 56082077
+
+ 319 1725137
+
+Sending I per ward to the output stream
+S: 38317244  E: 1171358  I: 525325  R: 16068150  IW: 8571  POPULATION: 56082077
+
+ 320 1711089
+
+Sending I per ward to the output stream
+S: 38105703  E: 1160636  I: 520691  R: 16295047  IW: 8578  POPULATION: 56082077
+
+ 321 1696683
+
+Sending I per ward to the output stream
+S: 37897476  E: 1149372  I: 515747  R: 16519482  IW: 8570  POPULATION: 56082077
+
+ 322 1681327
+
+Sending I per ward to the output stream
+S: 37691984  E: 1136165  I: 511864  R: 16742064  IW: 8575  POPULATION: 56082077
+
+ 323 1665119
+
+Sending I per ward to the output stream
+S: 37489924  E: 1122753  I: 507207  R: 16962193  IW: 8573  POPULATION: 56082077
+
+ 324 1648029
+
+Sending I per ward to the output stream
+S: 37289467  E: 1108429  I: 501561  R: 17182620  IW: 8573  POPULATION: 56082077
+
+ 325 1629960
+
+Sending I per ward to the output stream
+S: 37093332  E: 1095584  I: 495926  R: 17397235  IW: 8573  POPULATION: 56082077
+
+ 326 1609990
+
+Sending I per ward to the output stream
+S: 36899524  E: 1081244  I: 488485  R: 17612824  IW: 8571  POPULATION: 56082077
+
+ 327 1591510
+
+Sending I per ward to the output stream
+S: 36709450  E: 1065801  I: 483912  R: 17822914  IW: 8574  POPULATION: 56082077
+
+ 328 1569729
+
+Sending I per ward to the output stream
+S: 36522941  E: 1051117  I: 477428  R: 18030591  IW: 8569  POPULATION: 56082077
+
+ 329 1549713
+
+Sending I per ward to the output stream
+S: 36339161  E: 1035052  I: 470209  R: 18237655  IW: 8570  POPULATION: 56082077
+
+ 330 1528545
+
+Sending I per ward to the output stream
+S: 36159516  E: 1020903  I: 462433  R: 18439225  IW: 8568  POPULATION: 56082077
+
+ 331 1505261
+
+Sending I per ward to the output stream
+S: 35983402  E: 1004137  I: 455532  R: 18639006  IW: 8564  POPULATION: 56082077
+
+ 332 1483336
+
+Sending I per ward to the output stream
+S: 35811494  E: 986298  I: 450469  R: 18833816  IW: 8554  POPULATION: 56082077
+
+ 333 1459669
+
+Sending I per ward to the output stream
+S: 35641754  E: 968211  I: 443210  R: 19028902  IW: 8558  POPULATION: 56082077
+
+ 334 1436767
+
+Sending I per ward to the output stream
+S: 35474891  E: 951093  I: 435200  R: 19220893  IW: 8570  POPULATION: 56082077
+
+ 335 1411421
+
+Sending I per ward to the output stream
+S: 35311228  E: 934992  I: 426896  R: 19408961  IW: 8562  POPULATION: 56082077
+
+ 336 1386293
+
+Sending I per ward to the output stream
+S: 35151558  E: 918885  I: 418753  R: 19592881  IW: 8558  POPULATION: 56082077
+
+ 337 1361888
+
+Sending I per ward to the output stream
+S: 34996499  E: 901563  I: 411998  R: 19772017  IW: 8548  POPULATION: 56082077
+
+ 338 1337638
+
+Sending I per ward to the output stream
+S: 34844555  E: 882983  I: 405223  R: 19949316  IW: 8559  POPULATION: 56082077
+
+ 339 1313561
+
+Sending I per ward to the output stream
+S: 34695591  E: 865532  I: 396509  R: 20124445  IW: 8557  POPULATION: 56082077
+
+ 340 1288206
+
+Sending I per ward to the output stream
+S: 34550190  E: 847489  I: 388793  R: 20295605  IW: 8557  POPULATION: 56082077
+
+ 341 1262041
+
+Sending I per ward to the output stream
+S: 34409168  E: 830111  I: 380863  R: 20461935  IW: 8551  POPULATION: 56082077
+
+ 342 1236282
+
+Sending I per ward to the output stream
+S: 34271044  E: 811517  I: 372888  R: 20626628  IW: 8550  POPULATION: 56082077
+
+ 343 1210974
+
+Sending I per ward to the output stream
+S: 34136387  E: 793207  I: 365074  R: 20787409  IW: 8545  POPULATION: 56082077
+
+ 344 1184405
+
+Sending I per ward to the output stream
+S: 34004823  E: 775189  I: 357056  R: 20945009  IW: 8534  POPULATION: 56082077
+
+ 345 1158281
+
+Sending I per ward to the output stream
+S: 33876564  E: 757714  I: 349042  R: 21098757  IW: 8539  POPULATION: 56082077
+
+ 346 1132245
+
+Sending I per ward to the output stream
+S: 33751936  E: 739929  I: 341462  R: 21248750  IW: 8536  POPULATION: 56082077
+
+ 347 1106756
+
+Sending I per ward to the output stream
+S: 33630517  E: 722361  I: 333158  R: 21396041  IW: 8536  POPULATION: 56082077
+
+ 348 1081391
+
+Sending I per ward to the output stream
+S: 33512520  E: 704544  I: 325517  R: 21539496  IW: 8525  POPULATION: 56082077
+
+ 349 1055519
+
+Sending I per ward to the output stream
+S: 33397363  E: 686408  I: 318227  R: 21680079  IW: 8523  POPULATION: 56082077
+
+ 350 1030061
+
+Sending I per ward to the output stream
+S: 33285892  E: 669057  I: 310640  R: 21816488  IW: 8512  POPULATION: 56082077
+
+ 351 1004635
+
+Sending I per ward to the output stream
+S: 33176797  E: 651653  I: 302520  R: 21951107  IW: 8508  POPULATION: 56082077
+
+ 352 979697
+
+Sending I per ward to the output stream
+S: 33070398  E: 635600  I: 293865  R: 22082214  IW: 8494  POPULATION: 56082077
+
+ 353 954173
+
+Sending I per ward to the output stream
+S: 32968020  E: 619994  I: 286331  R: 22207732  IW: 8503  POPULATION: 56082077
+
+ 354 929465
+
+Sending I per ward to the output stream
+S: 32868665  E: 603474  I: 279003  R: 22330935  IW: 8481  POPULATION: 56082077
+
+ 355 906325
+
+Sending I per ward to the output stream
+S: 32771697  E: 586262  I: 272216  R: 22451902  IW: 8487  POPULATION: 56082077
+
+ 356 882477
+
+Sending I per ward to the output stream
+S: 32677845  E: 570560  I: 265463  R: 22568209  IW: 8460  POPULATION: 56082077
+
+ 357 858478
+
+Sending I per ward to the output stream
+S: 32585948  E: 554734  I: 257689  R: 22683706  IW: 8437  POPULATION: 56082077
+
+ 358 836023
+
+Sending I per ward to the output stream
+S: 32497474  E: 540082  I: 250195  R: 22794326  IW: 8445  POPULATION: 56082077
+
+ 359 812423
+
+Sending I per ward to the output stream
+S: 32411894  E: 524478  I: 243824  R: 22901881  IW: 8437  POPULATION: 56082077
+
+ 360 790277
+
+Sending I per ward to the output stream
+S: 32328279  E: 509006  I: 237001  R: 23007791  IW: 8420  POPULATION: 56082077
+
+ 361 768302
+
+Sending I per ward to the output stream
+S: 32247376  E: 494857  I: 229831  R: 23110013  IW: 8429  POPULATION: 56082077
+
+ 362 746007
+
+Sending I per ward to the output stream
+S: 32169350  E: 480163  I: 223953  R: 23208611  IW: 8419  POPULATION: 56082077
+
+ 363 724688
+
+Sending I per ward to the output stream
+S: 32093119  E: 465718  I: 217481  R: 23305759  IW: 8380  POPULATION: 56082077
+
+ 364 704116
+
+Sending I per ward to the output stream
+S: 32019391  E: 452282  I: 211238  R: 23399166  IW: 8370  POPULATION: 56082077
+
+ 365 683199
+
+Sending I per ward to the output stream
+S: 31947509  E: 438871  I: 204782  R: 23490915  IW: 8347  POPULATION: 56082077
+
+ 366 663520
+
+Sending I per ward to the output stream
+S: 31878539  E: 426776  I: 198193  R: 23578569  IW: 8355  POPULATION: 56082077
+
+ 367 643653
+
+Sending I per ward to the output stream
+S: 31812054  E: 413318  I: 192559  R: 23664146  IW: 8325  POPULATION: 56082077
+
+ 368 624969
+
+Sending I per ward to the output stream
+S: 31747368  E: 400242  I: 187301  R: 23747166  IW: 8297  POPULATION: 56082077
+
+ 369 605877
+
+Sending I per ward to the output stream
+S: 31684601  E: 388057  I: 181307  R: 23828112  IW: 8279  POPULATION: 56082077
+
+ 370 587543
+
+Sending I per ward to the output stream
+S: 31623979  E: 376279  I: 175441  R: 23906378  IW: 8249  POPULATION: 56082077
+
+ 371 569364
+
+Sending I per ward to the output stream
+S: 31565266  E: 364498  I: 169943  R: 23982370  IW: 8225  POPULATION: 56082077
+
+ 372 551720
+
+Sending I per ward to the output stream
+S: 31508778  E: 353022  I: 165043  R: 24055234  IW: 8186  POPULATION: 56082077
+
+ 373 534441
+
+Sending I per ward to the output stream
+S: 31454016  E: 341846  I: 159550  R: 24126665  IW: 8183  POPULATION: 56082077
+
+ 374 518065
+
+Sending I per ward to the output stream
+S: 31400883  E: 330918  I: 154622  R: 24195654  IW: 8140  POPULATION: 56082077
+
+ 375 501396
+
+Sending I per ward to the output stream
+S: 31349492  E: 320630  I: 149773  R: 24262182  IW: 8114  POPULATION: 56082077
+
+ 376 485540
+
+Sending I per ward to the output stream
+S: 31299857  E: 310849  I: 144254  R: 24327117  IW: 8070  POPULATION: 56082077
+
+ 377 470403
+
+Sending I per ward to the output stream
+S: 31252344  E: 300551  I: 140259  R: 24388923  IW: 8052  POPULATION: 56082077
+
+ 378 455103
+
+Sending I per ward to the output stream
+S: 31206222  E: 290432  I: 136027  R: 24449396  IW: 8021  POPULATION: 56082077
+
+ 379 440810
+
+Sending I per ward to the output stream
+S: 31161386  E: 281126  I: 130924  R: 24508641  IW: 7994  POPULATION: 56082077
+
+ 380 426459
+
+Sending I per ward to the output stream
+S: 31118409  E: 271816  I: 127138  R: 24564714  IW: 7937  POPULATION: 56082077
+
+ 381 412050
+
+Sending I per ward to the output stream
+S: 31076458  E: 262660  I: 123133  R: 24619826  IW: 7891  POPULATION: 56082077
+
+ 382 398954
+
+Sending I per ward to the output stream
+S: 31036164  E: 254094  I: 119115  R: 24672704  IW: 7905  POPULATION: 56082077
+
+ 383 385793
+
+Sending I per ward to the output stream
+S: 30996781  E: 245372  I: 115211  R: 24724713  IW: 7839  POPULATION: 56082077
+
+ 384 373209
+
+Sending I per ward to the output stream
+S: 30959352  E: 237474  I: 111621  R: 24773630  IW: 7806  POPULATION: 56082077
+
+ 385 360583
+
+Sending I per ward to the output stream
+S: 30922798  E: 229247  I: 107766  R: 24822266  IW: 7712  POPULATION: 56082077
+
+ 386 349095
+
+Sending I per ward to the output stream
+S: 30887592  E: 221813  I: 103975  R: 24868697  IW: 7686  POPULATION: 56082077
+
+ 387 337013
+
+Sending I per ward to the output stream
+S: 30853408  E: 214246  I: 100630  R: 24913793  IW: 7661  POPULATION: 56082077
+
+ 388 325788
+
+Sending I per ward to the output stream
+S: 30820404  E: 207349  I: 97204  R: 24957120  IW: 7563  POPULATION: 56082077
+
+ 389 314876
+
+Sending I per ward to the output stream
+S: 30788596  E: 200601  I: 93732  R: 24999148  IW: 7549  POPULATION: 56082077
+
+ 390 304553
+
+Sending I per ward to the output stream
+S: 30758162  E: 193838  I: 90866  R: 25039211  IW: 7488  POPULATION: 56082077
+
+ 391 294333
+
+Sending I per ward to the output stream
+S: 30728628  E: 187143  I: 87900  R: 25078406  IW: 7451  POPULATION: 56082077
+
+ 392 284704
+
+Sending I per ward to the output stream
+S: 30700072  E: 180736  I: 84726  R: 25116543  IW: 7353  POPULATION: 56082077
+
+ 393 275043
+
+Sending I per ward to the output stream
+S: 30672671  E: 174551  I: 81978  R: 25152877  IW: 7281  POPULATION: 56082077
+
+ 394 265462
+
+Sending I per ward to the output stream
+S: 30646149  E: 168450  I: 79154  R: 25188324  IW: 7268  POPULATION: 56082077
+
+ 395 256529
+
+Sending I per ward to the output stream
+S: 30620738  E: 162566  I: 76381  R: 25222392  IW: 7183  POPULATION: 56082077
+
+ 396 247604
+
+Sending I per ward to the output stream
+S: 30595717  E: 156559  I: 74030  R: 25255771  IW: 7201  POPULATION: 56082077
+
+ 397 238947
+
+Sending I per ward to the output stream
+S: 30571848  E: 151318  I: 71607  R: 25287304  IW: 7062  POPULATION: 56082077
+
+ 398 230589
+
+Sending I per ward to the output stream
+S: 30548440  E: 146040  I: 68998  R: 25318599  IW: 6996  POPULATION: 56082077
+
+ 399 222925
+
+Sending I per ward to the output stream
+S: 30526085  E: 141009  I: 66932  R: 25348051  IW: 6917  POPULATION: 56082077
+
+ 400 215038
+
+Sending I per ward to the output stream
+S: 30504586  E: 136274  I: 64404  R: 25376813  IW: 6884  POPULATION: 56082077
+
+ 401 207941
+
+Sending I per ward to the output stream
+S: 30483730  E: 131472  I: 62025  R: 25404850  IW: 6809  POPULATION: 56082077
+
+ 402 200678
+
+Sending I per ward to the output stream
+S: 30463630  E: 127031  I: 59956  R: 25431460  IW: 6737  POPULATION: 56082077
+
+ 403 193497
+
+Sending I per ward to the output stream
+S: 30444112  E: 122798  I: 57521  R: 25457646  IW: 6664  POPULATION: 56082077
+
+ 404 186987
+
+Sending I per ward to the output stream
+S: 30425355  E: 118721  I: 55491  R: 25482510  IW: 6582  POPULATION: 56082077
+
+ 405 180319
+
+Sending I per ward to the output stream
+S: 30407278  E: 114501  I: 53927  R: 25506371  IW: 6447  POPULATION: 56082077
+
+ 406 174212
+
+Sending I per ward to the output stream
+S: 30389674  E: 110347  I: 52205  R: 25529851  IW: 6482  POPULATION: 56082077
+
+ 407 168428
+
+Sending I per ward to the output stream
+S: 30372719  E: 106519  I: 50657  R: 25552182  IW: 6383  POPULATION: 56082077
+
+ 408 162552
+
+Sending I per ward to the output stream
+S: 30356382  E: 102857  I: 48772  R: 25574066  IW: 6245  POPULATION: 56082077
+
+ 409 157176
+
+Sending I per ward to the output stream
+S: 30340296  E: 99339  I: 46971  R: 25595471  IW: 6232  POPULATION: 56082077
+
+ 410 151629
+
+Sending I per ward to the output stream
+S: 30324973  E: 96529  I: 45029  R: 25615546  IW: 6098  POPULATION: 56082077
+
+ 411 146310
+
+Sending I per ward to the output stream
+S: 30310557  E: 93303  I: 43418  R: 25634799  IW: 5950  POPULATION: 56082077
+
+ 412 141558
+
+Sending I per ward to the output stream
+S: 30296340  E: 89771  I: 42260  R: 25653706  IW: 5962  POPULATION: 56082077
+
+ 413 136721
+
+Sending I per ward to the output stream
+S: 30282678  E: 86771  I: 40703  R: 25671925  IW: 5841  POPULATION: 56082077
+
+ 414 132031
+
+Sending I per ward to the output stream
+S: 30269648  E: 83735  I: 39361  R: 25689333  IW: 5773  POPULATION: 56082077
+
+ 415 127474
+
+Sending I per ward to the output stream
+S: 30257228  E: 80693  I: 37990  R: 25706166  IW: 5580  POPULATION: 56082077
+
+ 416 123096
+
+Sending I per ward to the output stream
+S: 30244708  E: 77531  I: 36626  R: 25723212  IW: 5593  POPULATION: 56082077
+
+ 417 118683
+
+Sending I per ward to the output stream
+S: 30232816  E: 75268  I: 35172  R: 25738821  IW: 5445  POPULATION: 56082077
+
+ 418 114157
+
+Sending I per ward to the output stream
+S: 30221493  E: 72728  I: 33993  R: 25753863  IW: 5362  POPULATION: 56082077
+
+ 419 110440
+
+Sending I per ward to the output stream
+S: 30210536  E: 70071  I: 32956  R: 25768514  IW: 5310  POPULATION: 56082077
+
+ 420 106721
+
+Sending I per ward to the output stream
+S: 30199770  E: 67486  I: 31850  R: 25782971  IW: 5246  POPULATION: 56082077
+
+ 421 103027
+
+Sending I per ward to the output stream
+S: 30189614  E: 65215  I: 30822  R: 25796426  IW: 5110  POPULATION: 56082077
+
+ 422 99336
+
+Sending I per ward to the output stream
+S: 30179587  E: 63106  I: 29473  R: 25809911  IW: 5055  POPULATION: 56082077
+
+ 423 96037
+
+Sending I per ward to the output stream
+S: 30169969  E: 61193  I: 28219  R: 25822696  IW: 4952  POPULATION: 56082077
+
+ 424 92579
+
+Sending I per ward to the output stream
+S: 30160846  E: 58869  I: 27630  R: 25834732  IW: 4799  POPULATION: 56082077
+
+ 425 89412
+
+Sending I per ward to the output stream
+S: 30152036  E: 56715  I: 26775  R: 25846551  IW: 4736  POPULATION: 56082077
+
+ 426 86499
+
+Sending I per ward to the output stream
+S: 30143255  E: 54548  I: 25865  R: 25858409  IW: 4765  POPULATION: 56082077
+
+ 427 83490
+
+Sending I per ward to the output stream
+S: 30134798  E: 52757  I: 25028  R: 25869494  IW: 4653  POPULATION: 56082077
+
+ 428 80413
+
+Sending I per ward to the output stream
+S: 30126607  E: 51095  I: 23925  R: 25880450  IW: 4584  POPULATION: 56082077
+
+ 429 77785
+
+Sending I per ward to the output stream
+S: 30118768  E: 49563  I: 23029  R: 25890717  IW: 4423  POPULATION: 56082077
+
+ 430 75020
+
+Sending I per ward to the output stream
+S: 30111291  E: 47657  I: 22567  R: 25900562  IW: 4301  POPULATION: 56082077
+
+ 431 72592
+
+Sending I per ward to the output stream
+S: 30103990  E: 45950  I: 21881  R: 25910256  IW: 4276  POPULATION: 56082077
+
+ 432 70224
+
+Sending I per ward to the output stream
+S: 30096877  E: 44450  I: 20873  R: 25919877  IW: 4229  POPULATION: 56082077
+
+ 433 67831
+
+Sending I per ward to the output stream
+S: 30090002  E: 42995  I: 20089  R: 25928991  IW: 4103  POPULATION: 56082077
+
+ 434 65323
+
+Sending I per ward to the output stream
+S: 30083495  E: 41586  I: 19513  R: 25937483  IW: 4045  POPULATION: 56082077
+
+ 435 63084
+
+Sending I per ward to the output stream
+S: 30076996  E: 40104  I: 18856  R: 25946121  IW: 3979  POPULATION: 56082077
+
+ 436 61099
+
+Sending I per ward to the output stream
+S: 30070887  E: 38947  I: 18165  R: 25954078  IW: 3880  POPULATION: 56082077
+
+ 437 58960
+
+Sending I per ward to the output stream
+S: 30064787  E: 37395  I: 17714  R: 25962181  IW: 3868  POPULATION: 56082077
+
+ 438 57112
+
+Sending I per ward to the output stream
+S: 30058822  E: 36266  I: 17166  R: 25969823  IW: 3763  POPULATION: 56082077
+
+ 439 55109
+
+Sending I per ward to the output stream
+S: 30053068  E: 35302  I: 16455  R: 25977252  IW: 3679  POPULATION: 56082077
+
+ 440 53432
+
+Sending I per ward to the output stream
+S: 30047665  E: 34297  I: 15876  R: 25984239  IW: 3542  POPULATION: 56082077
+
+ 441 51757
+
+Sending I per ward to the output stream
+S: 30042433  E: 33126  I: 15432  R: 25991086  IW: 3444  POPULATION: 56082077
+
+ 442 50173
+
+Sending I per ward to the output stream
+S: 30037286  E: 32020  I: 14961  R: 25997810  IW: 3459  POPULATION: 56082077
+
+ 443 48558
+
+Sending I per ward to the output stream
+S: 30032335  E: 30974  I: 14563  R: 26004205  IW: 3398  POPULATION: 56082077
+
+ 444 46981
+
+Sending I per ward to the output stream
+S: 30027441  E: 29932  I: 14116  R: 26010588  IW: 3330  POPULATION: 56082077
+
+ 445 45537
+
+Sending I per ward to the output stream
+S: 30022781  E: 29215  I: 13521  R: 26016560  IW: 3245  POPULATION: 56082077
+
+ 446 44048
+
+Sending I per ward to the output stream
+S: 30018221  E: 28141  I: 13164  R: 26022551  IW: 3182  POPULATION: 56082077
+
+ 447 42736
+
+Sending I per ward to the output stream
+S: 30014004  E: 27390  I: 12752  R: 26027931  IW: 3025  POPULATION: 56082077
+
+ 448 41305
+
+Sending I per ward to the output stream
+S: 30009723  E: 26232  I: 12383  R: 26033739  IW: 3076  POPULATION: 56082077
+
+ 449 40142
+
+Sending I per ward to the output stream
+S: 30005644  E: 25527  I: 11962  R: 26038944  IW: 2933  POPULATION: 56082077
+
+ 450 38615
+
+Sending I per ward to the output stream
+S: 30001566  E: 24669  I: 11536  R: 26044306  IW: 2948  POPULATION: 56082077
+
+ 451 37489
+
+Sending I per ward to the output stream
+S: 29997746  E: 23969  I: 11200  R: 26049162  IW: 2766  POPULATION: 56082077
+
+ 452 36205
+
+Sending I per ward to the output stream
+S: 29994062  E: 23334  I: 10712  R: 26053969  IW: 2727  POPULATION: 56082077
+
+ 453 35169
+
+Sending I per ward to the output stream
+S: 29990431  E: 22593  I: 10328  R: 26058725  IW: 2671  POPULATION: 56082077
+
+ 454 34046
+
+Sending I per ward to the output stream
+S: 29986968  E: 21890  I: 10111  R: 26063108  IW: 2602  POPULATION: 56082077
+
+ 455 32921
+
+Sending I per ward to the output stream
+S: 29983525  E: 21194  I: 9855  R: 26067503  IW: 2624  POPULATION: 56082077
+
+ 456 32001
+
+Sending I per ward to the output stream
+S: 29980162  E: 20487  I: 9631  R: 26071797  IW: 2569  POPULATION: 56082077
+
+ 457 31049
+
+Sending I per ward to the output stream
+S: 29976909  E: 19863  I: 9380  R: 26075925  IW: 2504  POPULATION: 56082077
+
+ 458 30118
+
+Sending I per ward to the output stream
+S: 29973708  E: 19341  I: 9018  R: 26080010  IW: 2434  POPULATION: 56082077
+
+ 459 29243
+
+Sending I per ward to the output stream
+S: 29970664  E: 18767  I: 8797  R: 26083849  IW: 2371  POPULATION: 56082077
+
+ 460 28359
+
+Sending I per ward to the output stream
+S: 29967592  E: 18190  I: 8515  R: 26087780  IW: 2387  POPULATION: 56082077
+
+ 461 27564
+
+Sending I per ward to the output stream
+S: 29964649  E: 17679  I: 8350  R: 26091399  IW: 2306  POPULATION: 56082077
+
+ 462 26705
+
+Sending I per ward to the output stream
+S: 29961745  E: 17249  I: 8038  R: 26095045  IW: 2285  POPULATION: 56082077
+
+ 463 26029
+
+Sending I per ward to the output stream
+S: 29958943  E: 16784  I: 7783  R: 26098567  IW: 2231  POPULATION: 56082077
+
+ 464 25287
+
+Sending I per ward to the output stream
+S: 29956286  E: 16351  I: 7673  R: 26101767  IW: 2117  POPULATION: 56082077
+
+ 465 24567
+
+Sending I per ward to the output stream
+S: 29953608  E: 15816  I: 7481  R: 26105172  IW: 2133  POPULATION: 56082077
+
+ 466 24024
+
+Sending I per ward to the output stream
+S: 29950945  E: 15486  I: 7146  R: 26108500  IW: 2114  POPULATION: 56082077
+
+ 467 23297
+
+Sending I per ward to the output stream
+S: 29948411  E: 15187  I: 6928  R: 26111551  IW: 2036  POPULATION: 56082077
+
+ 468 22632
+
+Sending I per ward to the output stream
+S: 29946029  E: 14732  I: 6845  R: 26114471  IW: 1936  POPULATION: 56082077
+
+ 469 22115
+
+Sending I per ward to the output stream
+S: 29943696  E: 14362  I: 6605  R: 26117414  IW: 1909  POPULATION: 56082077
+
+ 470 21577
+
+Sending I per ward to the output stream
+S: 29941410  E: 13920  I: 6429  R: 26120318  IW: 1842  POPULATION: 56082077
+
+ 471 20967
+
+Sending I per ward to the output stream
+S: 29939230  E: 13516  I: 6324  R: 26123007  IW: 1807  POPULATION: 56082077
+
+ 472 20349
+
+Sending I per ward to the output stream
+S: 29937022  E: 13055  I: 6169  R: 26125831  IW: 1824  POPULATION: 56082077
+
+ 473 19840
+
+Sending I per ward to the output stream
+S: 29934855  E: 12739  I: 5963  R: 26128520  IW: 1801  POPULATION: 56082077
+
+ 474 19224
+
+Sending I per ward to the output stream
+S: 29932792  E: 12476  I: 5752  R: 26131057  IW: 1756  POPULATION: 56082077
+
+ 475 18702
+
+Sending I per ward to the output stream
+S: 29930775  E: 12091  I: 5664  R: 26133547  IW: 1663  POPULATION: 56082077
+
+ 476 18228
+
+Sending I per ward to the output stream
+S: 29928855  E: 11855  I: 5468  R: 26135899  IW: 1617  POPULATION: 56082077
+
+ 477 17755
+
+Sending I per ward to the output stream
+S: 29926950  E: 11545  I: 5216  R: 26138366  IW: 1602  POPULATION: 56082077
+
+ 478 17323
+
+Sending I per ward to the output stream
+S: 29925082  E: 11261  I: 5128  R: 26140606  IW: 1562  POPULATION: 56082077
+
+ 479 16761
+
+Sending I per ward to the output stream
+S: 29923276  E: 10982  I: 5004  R: 26142815  IW: 1550  POPULATION: 56082077
+
+ 480 16389
+
+Sending I per ward to the output stream
+S: 29921553  E: 10710  I: 4860  R: 26144954  IW: 1479  POPULATION: 56082077
+
+ 481 15986
+
+Sending I per ward to the output stream
+S: 29919856  E: 10433  I: 4776  R: 26147012  IW: 1472  POPULATION: 56082077
+
+ 482 15570
+
+Sending I per ward to the output stream
+S: 29918107  E: 10134  I: 4656  R: 26149180  IW: 1486  POPULATION: 56082077
+
+ 483 15209
+
+Sending I per ward to the output stream
+S: 29916423  E: 10026  I: 4483  R: 26151145  IW: 1449  POPULATION: 56082077
+
+ 484 14790
+
+Sending I per ward to the output stream
+S: 29914803  E: 9794  I: 4344  R: 26153136  IW: 1415  POPULATION: 56082077
+
+ 485 14509
+
+Sending I per ward to the output stream
+S: 29913269  E: 9542  I: 4369  R: 26154897  IW: 1321  POPULATION: 56082077
+
+ 486 14138
+
+Sending I per ward to the output stream
+S: 29911743  E: 9243  I: 4263  R: 26156828  IW: 1325  POPULATION: 56082077
+
+ 487 13911
+
+Sending I per ward to the output stream
+S: 29910213  E: 8958  I: 4159  R: 26158747  IW: 1320  POPULATION: 56082077
+
+ 488 13506
+
+Sending I per ward to the output stream
+S: 29908685  E: 8769  I: 4087  R: 26160536  IW: 1301  POPULATION: 56082077
+
+ 489 13117
+
+Sending I per ward to the output stream
+S: 29907182  E: 8604  I: 3942  R: 26162349  IW: 1290  POPULATION: 56082077
+
+ 490 12856
+
+Sending I per ward to the output stream
+S: 29905802  E: 8398  I: 3927  R: 26163950  IW: 1187  POPULATION: 56082077
+
+ 491 12546
+
+Sending I per ward to the output stream
+S: 29904385  E: 8120  I: 3926  R: 26165646  IW: 1231  POPULATION: 56082077
+
+ 492 12325
+
+Sending I per ward to the output stream
+S: 29903004  E: 7987  I: 3701  R: 26167385  IW: 1210  POPULATION: 56082077
+
+ 493 12046
+
+Sending I per ward to the output stream
+S: 29901680  E: 7846  I: 3577  R: 26168974  IW: 1162  POPULATION: 56082077
+
+ 494 11688
+
+Sending I per ward to the output stream
+S: 29900358  E: 7654  I: 3495  R: 26170570  IW: 1161  POPULATION: 56082077
+
+ 495 11423
+
+Sending I per ward to the output stream
+S: 29899109  E: 7484  I: 3473  R: 26172011  IW: 1093  POPULATION: 56082077
+
+ 496 11149
+
+Sending I per ward to the output stream
+S: 29897849  E: 7237  I: 3471  R: 26173520  IW: 1107  POPULATION: 56082077
+
+ 497 10957
+
+Sending I per ward to the output stream
+S: 29896617  E: 7113  I: 3305  R: 26175042  IW: 1087  POPULATION: 56082077
+
+ 498 10708
+
+Sending I per ward to the output stream
+S: 29895415  E: 6979  I: 3219  R: 26176464  IW: 1060  POPULATION: 56082077
+
+ 499 10418
+
+Sending I per ward to the output stream
+S: 29894260  E: 6829  I: 3167  R: 26177821  IW: 1018  POPULATION: 56082077
+
+ 500 10198
+
+Sending I per ward to the output stream
+S: 29893137  E: 6659  I: 3127  R: 26179154  IW: 989  POPULATION: 56082077
+
+ 501 9996
+
+Sending I per ward to the output stream
+S: 29891957  E: 6494  I: 3031  R: 26180595  IW: 1043  POPULATION: 56082077
+
+ 502 9786
+
+Sending I per ward to the output stream
+S: 29890825  E: 6391  I: 2993  R: 26181868  IW: 994  POPULATION: 56082077
+
+ 503 9525
+
+Sending I per ward to the output stream
+S: 29889691  E: 6290  I: 2886  R: 26183210  IW: 979  POPULATION: 56082077
+
+ 504 9384
+
+Sending I per ward to the output stream
+S: 29888628  E: 6176  I: 2846  R: 26184427  IW: 943  POPULATION: 56082077
+
+ 505 9176
+
+Sending I per ward to the output stream
+S: 29887590  E: 6040  I: 2811  R: 26185636  IW: 925  POPULATION: 56082077
+
+ 506 9022
+
+Sending I per ward to the output stream
+S: 29886539  E: 5959  I: 2690  R: 26186889  IW: 923  POPULATION: 56082077
+
+ 507 8851
+
+Sending I per ward to the output stream
+S: 29885492  E: 5924  I: 2601  R: 26188060  IW: 943  POPULATION: 56082077
+
+ 508 8649
+
+Sending I per ward to the output stream
+S: 29884548  E: 5869  I: 2539  R: 26189121  IW: 833  POPULATION: 56082077
+
+ 509 8525
+
+Sending I per ward to the output stream
+S: 29883563  E: 5709  I: 2540  R: 26190265  IW: 879  POPULATION: 56082077
+
+ 510 8408
+
+Sending I per ward to the output stream
+S: 29882582  E: 5578  I: 2527  R: 26191390  IW: 861  POPULATION: 56082077
+
+ 511 8249
+
+Sending I per ward to the output stream
+S: 29881674  E: 5517  I: 2506  R: 26192380  IW: 819  POPULATION: 56082077
+
+ 512 8105
+
+Sending I per ward to the output stream
+S: 29880725  E: 5391  I: 2442  R: 26193519  IW: 860  POPULATION: 56082077
+
+ 513 8023
+
+Sending I per ward to the output stream
+S: 29879745  E: 5301  I: 2410  R: 26194621  IW: 882  POPULATION: 56082077
+
+ 514 7833
+
+Sending I per ward to the output stream
+S: 29878856  E: 5257  I: 2396  R: 26195568  IW: 808  POPULATION: 56082077
+
+ 515 7711
+
+Sending I per ward to the output stream
+S: 29877891  E: 5140  I: 2351  R: 26196695  IW: 861  POPULATION: 56082077
+
+ 516 7653
+
+Sending I per ward to the output stream
+S: 29876965  E: 5170  I: 2259  R: 26197683  IW: 826  POPULATION: 56082077
+
+ 517 7491
+
+Sending I per ward to the output stream
+S: 29876082  E: 5105  I: 2227  R: 26198663  IW: 778  POPULATION: 56082077
+
+ 518 7429
+
+Sending I per ward to the output stream
+S: 29875233  E: 5038  I: 2227  R: 26199579  IW: 747  POPULATION: 56082077
+
+ 519 7332
+
+Sending I per ward to the output stream
+S: 29874393  E: 4888  I: 2239  R: 26200557  IW: 759  POPULATION: 56082077
+
+ 520 7265
+
+Sending I per ward to the output stream
+S: 29873544  E: 4835  I: 2170  R: 26201528  IW: 785  POPULATION: 56082077
+
+ 521 7127
+
+Sending I per ward to the output stream
+S: 29872744  E: 4769  I: 2100  R: 26202464  IW: 725  POPULATION: 56082077
+
+ 522 7005
+
+Sending I per ward to the output stream
+S: 29871897  E: 4581  I: 2176  R: 26203423  IW: 749  POPULATION: 56082077
+
+ 523 6869
+
+Sending I per ward to the output stream
+S: 29871156  E: 4553  I: 2142  R: 26204226  IW: 673  POPULATION: 56082077
+
+ 524 6757
+
+Sending I per ward to the output stream
+S: 29870375  E: 4410  I: 2070  R: 26205222  IW: 705  POPULATION: 56082077
+
+ 525 6695
+
+Sending I per ward to the output stream
+S: 29869602  E: 4290  I: 2031  R: 26206154  IW: 694  POPULATION: 56082077
+
+ 526 6480
+
+Sending I per ward to the output stream
+S: 29868813  E: 4225  I: 1981  R: 26207058  IW: 710  POPULATION: 56082077
+
+ 527 6321
+
+Sending I per ward to the output stream
+S: 29868066  E: 4177  I: 1946  R: 26207888  IW: 675  POPULATION: 56082077
+
+ 528 6206
+
+Sending I per ward to the output stream
+S: 29867276  E: 4095  I: 1939  R: 26208767  IW: 712  POPULATION: 56082077
+
+ 529 6123
+
+Sending I per ward to the output stream
+S: 29866497  E: 4098  I: 1889  R: 26209593  IW: 700  POPULATION: 56082077
+
+ 530 6034
+
+Sending I per ward to the output stream
+S: 29865777  E: 4112  I: 1848  R: 26210340  IW: 650  POPULATION: 56082077
+
+ 531 5987
+
+Sending I per ward to the output stream
+S: 29865112  E: 4023  I: 1812  R: 26211130  IW: 599  POPULATION: 56082077
+
+ 532 5960
+
+Sending I per ward to the output stream
+S: 29864436  E: 3879  I: 1842  R: 26211920  IW: 620  POPULATION: 56082077
+
+ 533 5835
+
+Sending I per ward to the output stream
+S: 29863728  E: 3795  I: 1783  R: 26212771  IW: 639  POPULATION: 56082077
+
+ 534 5721
+
+Sending I per ward to the output stream
+S: 29863011  E: 3758  I: 1741  R: 26213567  IW: 648  POPULATION: 56082077
+
+ 535 5578
+
+Sending I per ward to the output stream
+S: 29862312  E: 3768  I: 1667  R: 26214330  IW: 632  POPULATION: 56082077
+
+ 536 5499
+
+Sending I per ward to the output stream
+S: 29861620  E: 3759  I: 1651  R: 26215047  IW: 634  POPULATION: 56082077
+
+ 537 5435
+
+Sending I per ward to the output stream
+S: 29860961  E: 3745  I: 1608  R: 26215763  IW: 592  POPULATION: 56082077
+
+ 538 5410
+
+Sending I per ward to the output stream
+S: 29860348  E: 3637  I: 1696  R: 26216396  IW: 558  POPULATION: 56082077
+
+ 539 5353
+
+Sending I per ward to the output stream
+S: 29859696  E: 3543  I: 1702  R: 26217136  IW: 598  POPULATION: 56082077
+
+ 540 5333
+
+Sending I per ward to the output stream
+S: 29858999  E: 3495  I: 1622  R: 26217961  IW: 634  POPULATION: 56082077
+
+ 541 5245
+
+Sending I per ward to the output stream
+S: 29858380  E: 3498  I: 1603  R: 26218596  IW: 561  POPULATION: 56082077
+
+ 542 5117
+
+Sending I per ward to the output stream
+S: 29857762  E: 3473  I: 1531  R: 26219311  IW: 563  POPULATION: 56082077
+
+ 543 5101
+
+Sending I per ward to the output stream
+S: 29857177  E: 3414  I: 1533  R: 26219953  IW: 533  POPULATION: 56082077
+
+ 544 5004
+
+Sending I per ward to the output stream
+S: 29856600  E: 3355  I: 1505  R: 26220617  IW: 527  POPULATION: 56082077
+
+ 545 4947
+
+Sending I per ward to the output stream
+S: 29856021  E: 3304  I: 1494  R: 26221258  IW: 532  POPULATION: 56082077
+
+ 546 4860
+
+Sending I per ward to the output stream
+S: 29855432  E: 3289  I: 1436  R: 26221920  IW: 526  POPULATION: 56082077
+
+ 547 4798
+
+Sending I per ward to the output stream
+S: 29854877  E: 3236  I: 1448  R: 26222516  IW: 508  POPULATION: 56082077
+
+ 548 4725
+
+Sending I per ward to the output stream
+S: 29854336  E: 3179  I: 1434  R: 26223128  IW: 500  POPULATION: 56082077
+
+ 549 4684
+
+Sending I per ward to the output stream
+S: 29853784  E: 3102  I: 1440  R: 26223751  IW: 499  POPULATION: 56082077
+
+ 550 4613
+
+Sending I per ward to the output stream
+S: 29853223  E: 3042  I: 1431  R: 26224381  IW: 516  POPULATION: 56082077
+
+ 551 4542
+
+Sending I per ward to the output stream
+S: 29852626  E: 2992  I: 1401  R: 26225058  IW: 541  POPULATION: 56082077
+
+ 552 4473
+
+Sending I per ward to the output stream
+S: 29852049  E: 3051  I: 1342  R: 26225635  IW: 516  POPULATION: 56082077
+
+ 553 4393
+
+Sending I per ward to the output stream
+S: 29851499  E: 3028  I: 1319  R: 26226231  IW: 501  POPULATION: 56082077
+
+ 554 4393
+
+Sending I per ward to the output stream
+S: 29850973  E: 2996  I: 1356  R: 26226752  IW: 485  POPULATION: 56082077
+
+ 555 4347
+
+Sending I per ward to the output stream
+S: 29850426  E: 2944  I: 1353  R: 26227354  IW: 495  POPULATION: 56082077
+
+ 556 4352
+
+Sending I per ward to the output stream
+S: 29849900  E: 2892  I: 1365  R: 26227920  IW: 480  POPULATION: 56082077
+
+ 557 4297
+
+Sending I per ward to the output stream
+S: 29849301  E: 2891  I: 1289  R: 26228596  IW: 536  POPULATION: 56082077
+
+ 558 4257
+
+Sending I per ward to the output stream
+S: 29848752  E: 2914  I: 1289  R: 26229122  IW: 508  POPULATION: 56082077
+
+ 559 4180
+
+Sending I per ward to the output stream
+S: 29848253  E: 2943  I: 1301  R: 26229580  IW: 458  POPULATION: 56082077
+
+ 560 4203
+
+Sending I per ward to the output stream
+S: 29847725  E: 2891  I: 1246  R: 26230215  IW: 474  POPULATION: 56082077
+
+ 561 4244
+
+Sending I per ward to the output stream
+S: 29847254  E: 2857  I: 1270  R: 26230696  IW: 437  POPULATION: 56082077
+
+ 562 4137
+
+Sending I per ward to the output stream
+S: 29846755  E: 2752  I: 1326  R: 26231244  IW: 448  POPULATION: 56082077
+
+ 563 4127
+
+Sending I per ward to the output stream
+S: 29846256  E: 2711  I: 1292  R: 26231818  IW: 470  POPULATION: 56082077
+
+ 564 4078
+
+Sending I per ward to the output stream
+S: 29845760  E: 2689  I: 1235  R: 26232393  IW: 446  POPULATION: 56082077
+
+ 565 4003
+
+Sending I per ward to the output stream
+S: 29845217  E: 2629  I: 1237  R: 26232994  IW: 497  POPULATION: 56082077
+
+ 566 3924
+
+Sending I per ward to the output stream
+S: 29844724  E: 2656  I: 1230  R: 26233467  IW: 461  POPULATION: 56082077
+
+ 567 3866
+
+Sending I per ward to the output stream
+S: 29844226  E: 2586  I: 1243  R: 26234022  IW: 446  POPULATION: 56082077
+
+ 568 3886
+
+Sending I per ward to the output stream
+S: 29843721  E: 2616  I: 1184  R: 26234556  IW: 459  POPULATION: 56082077
+
+ 569 3829
+
+Sending I per ward to the output stream
+S: 29843242  E: 2600  I: 1143  R: 26235092  IW: 441  POPULATION: 56082077
+
+ 570 3800
+
+Sending I per ward to the output stream
+S: 29842786  E: 2515  I: 1245  R: 26235531  IW: 411  POPULATION: 56082077
+
+ 571 3743
+
+Sending I per ward to the output stream
+S: 29842292  E: 2476  I: 1213  R: 26236096  IW: 450  POPULATION: 56082077
+
+ 572 3760
+
+Sending I per ward to the output stream
+S: 29841782  E: 2456  I: 1163  R: 26236676  IW: 475  POPULATION: 56082077
+
+ 573 3689
+
+Sending I per ward to the output stream
+S: 29841312  E: 2500  I: 1126  R: 26237139  IW: 422  POPULATION: 56082077
+
+ 574 3619
+
+Sending I per ward to the output stream
+S: 29840865  E: 2471  I: 1113  R: 26237628  IW: 416  POPULATION: 56082077
+
+ 575 3626
+
+Sending I per ward to the output stream
+S: 29840410  E: 2433  I: 1124  R: 26238110  IW: 403  POPULATION: 56082077
+
+ 576 3584
+
+Sending I per ward to the output stream
+S: 29839953  E: 2436  I: 1103  R: 26238585  IW: 409  POPULATION: 56082077
+
+ 577 3557
+
+Sending I per ward to the output stream
+S: 29839518  E: 2427  I: 1062  R: 26239070  IW: 397  POPULATION: 56082077
+
+ 578 3539
+
+Sending I per ward to the output stream
+S: 29839108  E: 2395  I: 1060  R: 26239514  IW: 382  POPULATION: 56082077
+
+ 579 3489
+
+Sending I per ward to the output stream
+S: 29838677  E: 2336  I: 1075  R: 26239989  IW: 395  POPULATION: 56082077
+
+ 580 3455
+
+Sending I per ward to the output stream
+S: 29838261  E: 2306  I: 1063  R: 26240447  IW: 381  POPULATION: 56082077
+
+ 581 3411
+
+Sending I per ward to the output stream
+S: 29837822  E: 2276  I: 1048  R: 26240931  IW: 407  POPULATION: 56082077
+
+ 582 3369
+
+Sending I per ward to the output stream
+S: 29837417  E: 2280  I: 1017  R: 26241363  IW: 374  POPULATION: 56082077
+
+ 583 3324
+
+Sending I per ward to the output stream
+S: 29837033  E: 2225  I: 1045  R: 26241774  IW: 351  POPULATION: 56082077
+
+ 584 3297
+
+Sending I per ward to the output stream
+S: 29836606  E: 2176  I: 1015  R: 26242280  IW: 398  POPULATION: 56082077
+
+ 585 3270
+
+Sending I per ward to the output stream
+S: 29836207  E: 2171  I: 1003  R: 26242696  IW: 376  POPULATION: 56082077
+
+ 586 3191
+
+Sending I per ward to the output stream
+S: 29835787  E: 2174  I: 964  R: 26243152  IW: 382  POPULATION: 56082077
+
+ 587 3174
+
+Sending I per ward to the output stream
+S: 29835374  E: 2166  I: 973  R: 26243564  IW: 369  POPULATION: 56082077
+
+ 588 3138
+
+Sending I per ward to the output stream
+S: 29835008  E: 2157  I: 970  R: 26243942  IW: 339  POPULATION: 56082077
+
+ 589 3139
+
+Sending I per ward to the output stream
+S: 29834617  E: 2122  I: 969  R: 26244369  IW: 363  POPULATION: 56082077
+
+ 590 3127
+
+Sending I per ward to the output stream
+S: 29834219  E: 2105  I: 932  R: 26244821  IW: 364  POPULATION: 56082077
+
+ 591 3091
+
+Sending I per ward to the output stream
+S: 29833830  E: 2128  I: 900  R: 26245219  IW: 356  POPULATION: 56082077
+
+ 592 3037
+
+Sending I per ward to the output stream
+S: 29833486  E: 2085  I: 913  R: 26245593  IW: 320  POPULATION: 56082077
+
+ 593 3028
+
+Sending I per ward to the output stream
+S: 29833136  E: 1993  I: 977  R: 26245971  IW: 317  POPULATION: 56082077
+
+ 594 2998
+
+Sending I per ward to the output stream
+S: 29832790  E: 1955  I: 966  R: 26246366  IW: 313  POPULATION: 56082077
+
+ 595 2970
+
+Sending I per ward to the output stream
+S: 29832434  E: 1909  I: 902  R: 26246832  IW: 337  POPULATION: 56082077
+
+ 596 2921
+
+Sending I per ward to the output stream
+S: 29832085  E: 1848  I: 936  R: 26247208  IW: 324  POPULATION: 56082077
+
+ 597 2811
+
+Sending I per ward to the output stream
+S: 29831724  E: 1846  I: 890  R: 26247617  IW: 330  POPULATION: 56082077
+
+ 598 2784
+
+Sending I per ward to the output stream
+S: 29831364  E: 1819  I: 870  R: 26248024  IW: 320  POPULATION: 56082077
+
+ 599 2736
+
+Sending I per ward to the output stream
+S: 29831022  E: 1797  I: 873  R: 26248385  IW: 318  POPULATION: 56082077
+
+ 600 2689
+
+Sending I per ward to the output stream
+S: 29830696  E: 1817  I: 812  R: 26248752  IW: 309  POPULATION: 56082077
+
+ 601 2670
+
+Sending I per ward to the output stream
+S: 29830369  E: 1794  I: 792  R: 26249122  IW: 293  POPULATION: 56082077
+
+ 602 2629
+
+Sending I per ward to the output stream
+S: 29830055  E: 1777  I: 785  R: 26249460  IW: 289  POPULATION: 56082077
+
+ 603 2586
+
+Sending I per ward to the output stream
+S: 29829750  E: 1757  I: 760  R: 26249810  IW: 275  POPULATION: 56082077
+
+ 604 2562
+
+Sending I per ward to the output stream
+S: 29829477  E: 1709  I: 793  R: 26250098  IW: 255  POPULATION: 56082077
+
+ 605 2517
+
+Sending I per ward to the output stream
+S: 29829152  E: 1622  I: 812  R: 26250491  IW: 302  POPULATION: 56082077
+
+ 606 2502
+
+Sending I per ward to the output stream
+S: 29828811  E: 1596  I: 825  R: 26250845  IW: 306  POPULATION: 56082077
+
+ 607 2434
+
+Sending I per ward to the output stream
+S: 29828456  E: 1609  I: 784  R: 26251228  IW: 328  POPULATION: 56082077
+
+ 608 2421
+
+Sending I per ward to the output stream
+S: 29828139  E: 1660  I: 739  R: 26251539  IW: 291  POPULATION: 56082077
+
+ 609 2393
+
+Sending I per ward to the output stream
+S: 29827857  E: 1665  I: 715  R: 26251840  IW: 264  POPULATION: 56082077
+
+ 610 2399
+
+Sending I per ward to the output stream
+S: 29827543  E: 1613  I: 729  R: 26252192  IW: 277  POPULATION: 56082077
+
+ 611 2380
+
+Sending I per ward to the output stream
+S: 29827266  E: 1612  I: 767  R: 26252432  IW: 255  POPULATION: 56082077
+
+ 612 2342
+
+Sending I per ward to the output stream
+S: 29826941  E: 1558  I: 761  R: 26252817  IW: 298  POPULATION: 56082077
+
+ 613 2379
+
+Sending I per ward to the output stream
+S: 29826617  E: 1616  I: 697  R: 26253147  IW: 301  POPULATION: 56082077
+
+ 614 2319
+
+Sending I per ward to the output stream
+S: 29826346  E: 1641  I: 671  R: 26253419  IW: 253  POPULATION: 56082077
+
+ 615 2313
+
+Sending I per ward to the output stream
+S: 29826076  E: 1633  I: 655  R: 26253713  IW: 243  POPULATION: 56082077
+
+ 616 2312
+
+Sending I per ward to the output stream
+S: 29825812  E: 1558  I: 696  R: 26254011  IW: 255  POPULATION: 56082077
+
+ 617 2288
+
+Sending I per ward to the output stream
+S: 29825527  E: 1530  I: 720  R: 26254300  IW: 267  POPULATION: 56082077
+
+ 618 2254
+
+Sending I per ward to the output stream
+S: 29825240  E: 1510  I: 687  R: 26254640  IW: 263  POPULATION: 56082077
+
+ 619 2250
+
+Sending I per ward to the output stream
+S: 29824986  E: 1517  I: 680  R: 26254894  IW: 237  POPULATION: 56082077
+
+ 620 2197
+
+Sending I per ward to the output stream
+S: 29824683  E: 1477  I: 675  R: 26255242  IW: 280  POPULATION: 56082077
+
+ 621 2197
+
+Sending I per ward to the output stream
+S: 29824423  E: 1467  I: 685  R: 26255502  IW: 245  POPULATION: 56082077
+
+ 622 2152
+
+Sending I per ward to the output stream
+S: 29824143  E: 1445  I: 673  R: 26255816  IW: 263  POPULATION: 56082077
+
+ 623 2152
+
+Sending I per ward to the output stream
+S: 29823874  E: 1445  I: 657  R: 26256101  IW: 253  POPULATION: 56082077
+
+ 624 2118
+
+Sending I per ward to the output stream
+S: 29823621  E: 1421  I: 666  R: 26256369  IW: 231  POPULATION: 56082077
+
+ 625 2102
+
+Sending I per ward to the output stream
+S: 29823355  E: 1391  I: 667  R: 26256664  IW: 245  POPULATION: 56082077
+
+ 626 2087
+
+Sending I per ward to the output stream
+S: 29823102  E: 1376  I: 656  R: 26256943  IW: 232  POPULATION: 56082077
+
+ 627 2058
+
+Sending I per ward to the output stream
+S: 29822843  E: 1382  I: 619  R: 26257233  IW: 241  POPULATION: 56082077
+
+ 628 2032
+
+Sending I per ward to the output stream
+S: 29822591  E: 1379  I: 592  R: 26257515  IW: 229  POPULATION: 56082077
+
+ 629 2001
+
+Sending I per ward to the output stream
+S: 29822342  E: 1378  I: 585  R: 26257772  IW: 235  POPULATION: 56082077
+
+ 630 1971
+
+Sending I per ward to the output stream
+S: 29822118  E: 1360  I: 607  R: 26257992  IW: 211  POPULATION: 56082077
+
+ 631 1963
+
+Sending I per ward to the output stream
+S: 29821864  E: 1334  I: 605  R: 26258274  IW: 231  POPULATION: 56082077
+
+ 632 1967
+
+Sending I per ward to the output stream
+S: 29821623  E: 1354  I: 556  R: 26258544  IW: 232  POPULATION: 56082077
+
+ 633 1939
+
+Sending I per ward to the output stream
+S: 29821387  E: 1311  I: 587  R: 26258792  IW: 219  POPULATION: 56082077
+
+ 634 1910
+
+Sending I per ward to the output stream
+S: 29821167  E: 1278  I: 621  R: 26259011  IW: 205  POPULATION: 56082077
+
+ 635 1898
+
+Sending I per ward to the output stream
+S: 29820908  E: 1245  I: 603  R: 26259321  IW: 239  POPULATION: 56082077
+
+ 636 1899
+
+Sending I per ward to the output stream
+S: 29820669  E: 1280  I: 549  R: 26259579  IW: 221  POPULATION: 56082077
+
+ 637 1848
+
+Sending I per ward to the output stream
+S: 29820443  E: 1276  I: 535  R: 26259823  IW: 219  POPULATION: 56082077
+
+ 638 1829
+
+Sending I per ward to the output stream
+S: 29820224  E: 1244  I: 566  R: 26260043  IW: 204  POPULATION: 56082077
+
+ 639 1811
+
+Sending I per ward to the output stream
+S: 29820003  E: 1228  I: 566  R: 26260280  IW: 193  POPULATION: 56082077
+
+ 640 1810
+
+Sending I per ward to the output stream
+S: 29819777  E: 1222  I: 549  R: 26260529  IW: 213  POPULATION: 56082077
+
+ 641 1794
+
+Sending I per ward to the output stream
+S: 29819569  E: 1219  I: 528  R: 26260761  IW: 194  POPULATION: 56082077
+
+ 642 1771
+
+Sending I per ward to the output stream
+S: 29819357  E: 1212  I: 516  R: 26260992  IW: 202  POPULATION: 56082077
+
+ 643 1747
+
+Sending I per ward to the output stream
+S: 29819157  E: 1202  I: 514  R: 26261204  IW: 188  POPULATION: 56082077
+
+ 644 1728
+
+Sending I per ward to the output stream
+S: 29818957  E: 1171  I: 531  R: 26261418  IW: 190  POPULATION: 56082077
+
+ 645 1716
+
+Sending I per ward to the output stream
+S: 29818737  E: 1156  I: 523  R: 26261661  IW: 206  POPULATION: 56082077
+
+ 646 1702
+
+Sending I per ward to the output stream
+S: 29818539  E: 1144  I: 524  R: 26261870  IW: 191  POPULATION: 56082077
+
+ 647 1679
+
+Sending I per ward to the output stream
+S: 29818329  E: 1119  I: 512  R: 26262117  IW: 200  POPULATION: 56082077
+
+ 648 1668
+
+Sending I per ward to the output stream
+S: 29818162  E: 1129  I: 493  R: 26262293  IW: 160  POPULATION: 56082077
+
+ 649 1631
+
+Sending I per ward to the output stream
+S: 29817965  E: 1085  I: 474  R: 26262553  IW: 186  POPULATION: 56082077
+
+ 650 1622
+
+Sending I per ward to the output stream
+S: 29817792  E: 1073  I: 485  R: 26262727  IW: 162  POPULATION: 56082077
+
+ 651 1559
+
+Sending I per ward to the output stream
+S: 29817587  E: 1051  I: 472  R: 26262967  IW: 183  POPULATION: 56082077
+
+ 652 1558
+
+Sending I per ward to the output stream
+S: 29817377  E: 1052  I: 461  R: 26263187  IW: 195  POPULATION: 56082077
+
+ 653 1523
+
+Sending I per ward to the output stream
+S: 29817202  E: 1065  I: 466  R: 26263344  IW: 162  POPULATION: 56082077
+
+ 654 1513
+
+Sending I per ward to the output stream
+S: 29817010  E: 1037  I: 456  R: 26263574  IW: 177  POPULATION: 56082077
+
+ 655 1531
+
+Sending I per ward to the output stream
+S: 29816816  E: 1027  I: 463  R: 26263771  IW: 175  POPULATION: 56082077
+
+ 656 1493
+
+Sending I per ward to the output stream
+S: 29816628  E: 1016  I: 474  R: 26263959  IW: 173  POPULATION: 56082077
+
+ 657 1490
+
+Sending I per ward to the output stream
+S: 29816438  E: 1035  I: 430  R: 26264174  IW: 181  POPULATION: 56082077
+
+ 658 1490
+
+Sending I per ward to the output stream
+S: 29816255  E: 1043  I: 408  R: 26264371  IW: 167  POPULATION: 56082077
+
+ 659 1465
+
+Sending I per ward to the output stream
+S: 29816088  E: 1033  I: 417  R: 26264539  IW: 156  POPULATION: 56082077
+
+ 660 1451
+
+Sending I per ward to the output stream
+S: 29815923  E: 1022  I: 427  R: 26264705  IW: 154  POPULATION: 56082077
+
+ 661 1450
+
+Sending I per ward to the output stream
+S: 29815751  E: 982  I: 430  R: 26264914  IW: 161  POPULATION: 56082077
+
+ 662 1449
+
+Sending I per ward to the output stream
+S: 29815607  E: 974  I: 436  R: 26265060  IW: 136  POPULATION: 56082077
+
+ 663 1412
+
+Sending I per ward to the output stream
+S: 29815427  E: 930  I: 421  R: 26265299  IW: 166  POPULATION: 56082077
+
+ 664 1410
+
+Sending I per ward to the output stream
+S: 29815248  E: 923  I: 420  R: 26265486  IW: 160  POPULATION: 56082077
+
+ 665 1351
+
+Sending I per ward to the output stream
+S: 29815070  E: 941  I: 404  R: 26265662  IW: 165  POPULATION: 56082077
+
+ 666 1343
+
+Sending I per ward to the output stream
+S: 29814895  E: 944  I: 393  R: 26265845  IW: 161  POPULATION: 56082077
+
+ 667 1345
+
+Sending I per ward to the output stream
+S: 29814721  E: 934  I: 410  R: 26266012  IW: 165  POPULATION: 56082077
+
+ 668 1337
+
+Sending I per ward to the output stream
+S: 29814572  E: 919  I: 415  R: 26266171  IW: 138  POPULATION: 56082077
+
+ 669 1344
+
+Sending I per ward to the output stream
+S: 29814414  E: 888  I: 412  R: 26266363  IW: 149  POPULATION: 56082077
+
+ 670 1334
+
+Sending I per ward to the output stream
+S: 29814235  E: 882  I: 394  R: 26266566  IW: 164  POPULATION: 56082077
+
+ 671 1300
+
+Sending I per ward to the output stream
+S: 29814069  E: 892  I: 393  R: 26266723  IW: 159  POPULATION: 56082077
+
+ 672 1276
+
+Sending I per ward to the output stream
+S: 29813898  E: 890  I: 393  R: 26266896  IW: 158  POPULATION: 56082077
+
+ 673 1285
+
+Sending I per ward to the output stream
+S: 29813752  E: 883  I: 401  R: 26267041  IW: 139  POPULATION: 56082077
+
+ 674 1283
+
+Sending I per ward to the output stream
+S: 29813580  E: 849  I: 417  R: 26267231  IW: 159  POPULATION: 56082077
+
+ 675 1284
+
+Sending I per ward to the output stream
+S: 29813394  E: 855  I: 394  R: 26267434  IW: 174  POPULATION: 56082077
+
+ 676 1266
+
+Sending I per ward to the output stream
+S: 29813211  E: 868  I: 384  R: 26267614  IW: 165  POPULATION: 56082077
+
+ 677 1249
+
+Sending I per ward to the output stream
+S: 29813061  E: 896  I: 377  R: 26267743  IW: 147  POPULATION: 56082077
+
+ 678 1252
+
+Sending I per ward to the output stream
+S: 29812943  E: 888  I: 368  R: 26267878  IW: 107  POPULATION: 56082077
+
+ 679 1273
+
+Sending I per ward to the output stream
+S: 29812746  E: 818  I: 390  R: 26268123  IW: 177  POPULATION: 56082077
+
+ 680 1256
+
+Sending I per ward to the output stream
+S: 29812592  E: 866  I: 387  R: 26268232  IW: 147  POPULATION: 56082077
+
+ 681 1208
+
+Sending I per ward to the output stream
+S: 29812401  E: 859  I: 363  R: 26268454  IW: 177  POPULATION: 56082077
+
+ 682 1253
+
+Sending I per ward to the output stream
+S: 29812258  E: 886  I: 364  R: 26268569  IW: 135  POPULATION: 56082077
+
+ 683 1222
+
+Sending I per ward to the output stream
+S: 29812082  E: 849  I: 385  R: 26268761  IW: 165  POPULATION: 56082077
+
+ 684 1250
+
+Sending I per ward to the output stream
+S: 29811929  E: 845  I: 409  R: 26268894  IW: 144  POPULATION: 56082077
+
+ 685 1234
+
+Sending I per ward to the output stream
+S: 29811767  E: 817  I: 419  R: 26269074  IW: 154  POPULATION: 56082077
+
+ 686 1254
+
+Sending I per ward to the output stream
+S: 29811571  E: 828  I: 391  R: 26269287  IW: 186  POPULATION: 56082077
+
+ 687 1236
+
+Sending I per ward to the output stream
+S: 29811393  E: 854  I: 386  R: 26269444  IW: 164  POPULATION: 56082077
+
+ 688 1219
+
+Sending I per ward to the output stream
+S: 29811221  E: 878  I: 379  R: 26269599  IW: 163  POPULATION: 56082077
+
+ 689 1240
+
+Sending I per ward to the output stream
+S: 29811077  E: 864  I: 401  R: 26269735  IW: 135  POPULATION: 56082077
+
+ 690 1257
+
+Sending I per ward to the output stream
+S: 29810903  E: 853  I: 386  R: 26269935  IW: 159  POPULATION: 56082077
+
+ 691 1265
+
+Sending I per ward to the output stream
+S: 29810745  E: 869  I: 375  R: 26270088  IW: 146  POPULATION: 56082077
+
+ 692 1239
+
+Sending I per ward to the output stream
+S: 29810580  E: 853  I: 385  R: 26270259  IW: 155  POPULATION: 56082077
+
+ 693 1244
+
+Sending I per ward to the output stream
+S: 29810419  E: 847  I: 392  R: 26270419  IW: 150  POPULATION: 56082077
+
+ 694 1238
+
+Sending I per ward to the output stream
+S: 29810240  E: 833  I: 399  R: 26270605  IW: 161  POPULATION: 56082077
+
+ 695 1239
+
+Sending I per ward to the output stream
+S: 29810044  E: 845  I: 384  R: 26270804  IW: 174  POPULATION: 56082077
+
+ 696 1232
+
+Sending I per ward to the output stream
+S: 29809873  E: 859  I: 398  R: 26270947  IW: 161  POPULATION: 56082077
+
+ 697 1229
+
+Sending I per ward to the output stream
+S: 29809698  E: 854  I: 402  R: 26271123  IW: 158  POPULATION: 56082077
+
+ 698 1257
+
+Sending I per ward to the output stream
+S: 29809536  E: 848  I: 400  R: 26271293  IW: 149  POPULATION: 56082077
+
+ 699 1256
+
+Sending I per ward to the output stream
+S: 29809354  E: 866  I: 369  R: 26271488  IW: 171  POPULATION: 56082077
+
+ 700 1248
+
+Sending I per ward to the output stream
+S: 29809190  E: 862  I: 377  R: 26271648  IW: 149  POPULATION: 56082077
+
+ 701 1235
+
+Sending I per ward to the output stream
+S: 29809037  E: 882  I: 380  R: 26271778  IW: 147  POPULATION: 56082077
+
+ 702 1239
+
+Sending I per ward to the output stream
+S: 29808876  E: 873  I: 353  R: 26271975  IW: 151  POPULATION: 56082077
+
+ 703 1262
+
+Sending I per ward to the output stream
+S: 29808750  E: 901  I: 343  R: 26272083  IW: 116  POPULATION: 56082077
+
+ 704 1226
+
+Sending I per ward to the output stream
+S: 29808608  E: 856  I: 339  R: 26272274  IW: 129  POPULATION: 56082077
+
+ 705 1244
+
+Sending I per ward to the output stream
+S: 29808487  E: 858  I: 353  R: 26272379  IW: 115  POPULATION: 56082077
+
+ 706 1195
+
+Sending I per ward to the output stream
+S: 29808372  E: 834  I: 329  R: 26272542  IW: 109  POPULATION: 56082077
+
+ 707 1211
+
+Sending I per ward to the output stream
+S: 29808217  E: 796  I: 345  R: 26272719  IW: 146  POPULATION: 56082077
+
+ 708 1163
+
+Sending I per ward to the output stream
+S: 29808068  E: 825  I: 322  R: 26272862  IW: 137  POPULATION: 56082077
+
+ 709 1141
+
+Sending I per ward to the output stream
+S: 29807913  E: 798  I: 336  R: 26273030  IW: 141  POPULATION: 56082077
+
+ 710 1147
+
+Sending I per ward to the output stream
+S: 29807789  E: 789  I: 377  R: 26273122  IW: 116  POPULATION: 56082077
+
+ 711 1134
+
+Sending I per ward to the output stream
+S: 29807631  E: 753  I: 369  R: 26273324  IW: 149  POPULATION: 56082077
+
+ 712 1166
+
+Sending I per ward to the output stream
+S: 29807475  E: 763  I: 363  R: 26273476  IW: 145  POPULATION: 56082077
+
+ 713 1122
+
+Sending I per ward to the output stream
+S: 29807323  E: 779  I: 340  R: 26273635  IW: 141  POPULATION: 56082077
+
+ 714 1126
+
+Sending I per ward to the output stream
+S: 29807161  E: 768  I: 350  R: 26273798  IW: 150  POPULATION: 56082077
+
+ 715 1119
+
+Sending I per ward to the output stream
+S: 29807029  E: 788  I: 347  R: 26273913  IW: 127  POPULATION: 56082077
+
+ 716 1118
+
+Sending I per ward to the output stream
+S: 29806886  E: 781  I: 323  R: 26274087  IW: 128  POPULATION: 56082077
+
+ 717 1135
+
+Sending I per ward to the output stream
+S: 29806750  E: 771  I: 333  R: 26274223  IW: 131  POPULATION: 56082077
+
+ 718 1104
+
+Sending I per ward to the output stream
+S: 29806599  E: 776  I: 320  R: 26274382  IW: 140  POPULATION: 56082077
+
+ 719 1104
+
+Sending I per ward to the output stream
+S: 29806453  E: 788  I: 312  R: 26274524  IW: 129  POPULATION: 56082077
+
+ 720 1096
+
+Sending I per ward to the output stream
+S: 29806332  E: 762  I: 354  R: 26274629  IW: 115  POPULATION: 56082077
+
+ 721 1100
+
+Sending I per ward to the output stream
+S: 29806181  E: 725  I: 374  R: 26274797  IW: 148  POPULATION: 56082077
+
+ 722 1116
+
+Sending I per ward to the output stream
+S: 29806026  E: 743  I: 342  R: 26274966  IW: 150  POPULATION: 56082077
+
+ 723 1099
+
+Sending I per ward to the output stream
+S: 29805865  E: 752  I: 327  R: 26275133  IW: 147  POPULATION: 56082077
+
+ 724 1085
+
+Sending I per ward to the output stream
+S: 29805742  E: 755  I: 342  R: 26275238  IW: 112  POPULATION: 56082077
+
+ 725 1079
+
+Sending I per ward to the output stream
+S: 29805596  E: 701  I: 377  R: 26275403  IW: 133  POPULATION: 56082077
+
+ 726 1097
+
+Sending I per ward to the output stream
+S: 29805434  E: 714  I: 360  R: 26275569  IW: 150  POPULATION: 56082077
+
+ 727 1078
+
+Sending I per ward to the output stream
+S: 29805275  E: 738  I: 313  R: 26275751  IW: 144  POPULATION: 56082077
+
+ 728 1074
+
+Sending I per ward to the output stream
+S: 29805164  E: 761  I: 314  R: 26275838  IW: 107  POPULATION: 56082077
+
+ 729 1051
+
+Exiting model run early at nsteps = 730
+Infection died ... Ending on day 730
