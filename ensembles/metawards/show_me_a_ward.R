@@ -6,31 +6,27 @@ library(stringr)
 if(!exists("test_str", mode="function")) source("common.R")
 if(!exists("load_data", mode="function")) source("common.R")
 
-# Load a ward trajectory file from beta[2] = 0.5 and too_ill_to_move[2] = 0.25
-# Load run 2 of 5 ("x002")
-wards <- load_data("output\\0i5v0i25x002\\wards_trajectory_I.csv.bz2")
-ward_data <- load_data("Ward_Lookup.csv")
-
 # Plot a ward with a given index
-plot_ward <- function(index, prefix = "")
+# NOTE: Apparently R can pass data by reference (it's read only) - Check this
+plot_ward <- function(index, prefix = "", data, lookup)
 {
-  # Column 1 is the simulation day
-  slice_col = wards[,index + 1]
+  start_marker = grep("start_symptom", colnames(data))
+  slice_col = data[,index + start_marker]
   
   # Find the ward data in the lookup table and create an identifier
-  entry <- ward_data[ward_data$FID==index,]
+  entry <- lookup[lookup$FID==index,]
   w_name <- str_c(entry$WD11NM, ", ", entry$LAD11NM)
   plot_title <- str_c(prefix, w_name)
   
-  # Plot the disease progression across wards - note, this has 155 plots, it's not very good
+  # Plot
   plot(slice_col, main = plot_title, xlab = "Day index", ylab = "Number of infected people")
 }
 
 # Plot all the wards in a given super/upper/mega/parent it is called council
-plot_group <- function(parent_council)
+plot_group <- function(parent_council, data, lookup)
 {
   # Get data
-  ex_ids <- ward_data[ward_data$LAD11NM==parent_council,]
+  ex_ids <- lookup[lookup$LAD11NM==parent_council,]
   
   # Size the grid
   num_plots <- nrow(ex_ids)
@@ -43,14 +39,19 @@ plot_group <- function(parent_council)
   par(mfrow = c(vertical, horizontal))
   
   # NOTE: the as.integer is needed to stop a bug in R where it literally sends "x[[FID]]" as a string
-  apply(ex_ids, 1, function(x) plot_ward(as.integer(x[["FID"]])))
+  apply(ex_ids, 1, function(x) plot_ward(as.integer(x[["FID"]]), data = data, lookup = lookup))
   par(old_gfx_settings)
 }
 
+# Load a ward trajectory file from beta[2] = 0.5 and too_ill_to_move[2] = 0.25
+# Load run 2 of 5 ("x002")
+ward_data <- load_data("output\\0i5v0i25x002\\wards_trajectory_I.csv.bz2")
+ward_info <- load_data("Ward_Lookup.csv")
+
 # Select out a column at random
 col <- sample(8588, 1)
-plot_ward(col, "Infection count each day in ")    # Plot random ward
-plot_group("Exeter")                              # Exeter
-plot_group("Torbay")                              # Torbay
-plot_group("Barnet")                              # This is where things get seeded (I think)
+plot_ward(col, "Infection count each day in ", ward_data, ward_info)    # Plot random ward
+plot_group("Exeter", ward_data, ward_info)                              # Exeter
+plot_group("Torbay", ward_data, ward_info)                              # Torbay
+plot_group("Barnet", ward_data, ward_info)                              # This is where things get seeded (I think)
 
