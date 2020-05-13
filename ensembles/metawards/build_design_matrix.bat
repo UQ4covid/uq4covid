@@ -1,0 +1,1 @@
+python ..\..\tools\job_manager\make_design.py ensemble_job.json inputs

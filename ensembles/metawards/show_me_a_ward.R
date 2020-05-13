@@ -43,9 +43,8 @@ plot_group <- function(parent_council, data, lookup)
   par(old_gfx_settings)
 }
 
-# Load a ward trajectory file from beta[2] = 0.5 and too_ill_to_move[2] = 0.25
-# Load run 2 of 5 ("x002")
-ward_data <- load_data("output\\0i5v0i25x002\\wards_trajectory_I.csv.bz2")
+# Load a ward trajectory file
+ward_data <- load_data("output\\1i347678v1i347678v0i169614v1i0v0i879566x003\\wards_trajectory_I.csv.bz2")
 ward_info <- load_data("Ward_Lookup.csv")
 
 # Select out a column at random
