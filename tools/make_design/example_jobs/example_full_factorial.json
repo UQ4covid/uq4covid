@@ -1,0 +1,57 @@
+{
+	"parameter_list" :
+	[
+		{
+			"name" : "incubation_time",
+			"min" : 4.0,
+			"max" : 6.0,
+			"samples" : 3,
+			"spacing" : "linear"
+		},
+		{
+			"name" : "infectious_time",
+			"min" : 2.0,
+			"max" : 4.0,
+			"samples" : 3,
+			"spacing" : "linear"
+		},
+		{
+			"name" : "r_zero",
+			"min" : 2.5,
+			"max" : 4.0,
+			"samples" : 3,
+			"spacing" : "linear"
+		}
+	],
+	"method" : 
+	{
+		"algorithm" : "full_factorial",
+		"args" : []
+	},
+	"disease" : "ncov",
+	"transform_vars" : 5,
+	"transform_stream" :
+	[
+		{
+			"disease_parameter" : "beta",
+			"apply" : 3
+		},
+		{
+			"disease_parameter" : "beta",
+			"apply" : 4
+		},
+		{
+			"disease_parameter" : "progress",
+			"apply" : 2
+		},
+		{
+			"disease_parameter" : "progress",
+			"apply" : 3
+		},
+		{
+			"disease_parameter" : "progress",
+			"apply" : 4
+		}
+	],
+	"output_file" : "ncov_design_ff.csv"
+}
