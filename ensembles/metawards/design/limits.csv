@@ -1,0 +1,4 @@
+name,min,max
+incubation_time,4.0,6.0
+infectious_time,2.0,4.0
+r_zero,2.5,4.0

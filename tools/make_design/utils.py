@@ -99,3 +99,13 @@ def export_dictionary_to_json(data: dict, file_name: str):
     except js.JSONDecodeError as error:
         print("JSON Error: " + error.msg)
         raise ValueError("Invalid JSON format")
+
+
+# Check all elements of a matrix fall within column limits [2 * ncols] - Row 1 is min, Row 2 is max
+def validate_matrix_range(matrix: np.ndarray, col_ranges: np.ndarray) -> bool:
+    return all([all([col_ranges[0, k] <= col <= col_ranges[1, k] for k, col in enumerate(row)]) for row in matrix])
+
+
+# Scale a matrix columns to a min/max range
+def scale_matrix_columns(matrix: np.ndarray, min_col, max_col) -> np.ndarray:
+    return np.add(np.multiply(matrix, np.subtract(max_col, min_col)), min_col)
