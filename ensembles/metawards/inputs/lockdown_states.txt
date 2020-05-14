@@ -1,0 +1,11 @@
+# Full lockdown (red)
+.scale_rate[0] = 0.05
+.can_work[0]  = False
+
+# Relaxed lockdown (yellow)
+.scale_rate[1] = 0.1
+.can_work[1]  = False
+
+# More relaxed lockdown (green)
+.scale_rate[2] = 0.1
+.can_work[2]  = True
