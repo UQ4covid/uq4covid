@@ -2,43 +2,46 @@ Description
 -----------
 
 This is an ensemble (set of samples) created from runs from the MetaWards model.
-It was created by enumerating the different combinations of beta across the 5 stages.
-There are 31 individual configurations (technically 32, but beta being all zero is trivial), repeated 5 times to make 155 runs
+It was created from the inputs listed in the inputs folder. There are
+There are 6 configurtaions, repeated 5 times to make 30 test runs
 
 Source		Branch	Version string
 ------------------------------------------
-MetaWards	devel	0.8.5+120.g9b32b5a
+MetaWards	devel	0.10.0-157-g1a2d14f
 MetaWards data	master	0.4.0-5-g8969083
 
-Run command
------------
+Inputs
+------
 
-metawards -d ncov -o .\output --force-overwrite-output --input beta_table.csv -a ExtraSeedsLondon.dat --repeats 5
+ensemble_job.json: A description of the current job which created these samples
+ensemble_job_epidemiology.csv: An intermediate design matrix showing the configurations of the SEIR parameters
+lockdown_states: parameters for a three-stage lockdown model
+ncov_design_lh.csv: Design matrix for MetaWards created from the epidemiological parameters
+
+Run commands
+------------
+
+Building the design matrix: python ..\..\tools\make_design\make_design.py inputs\ensemble_job.json inputs -e -f
+
+Running the model: metawards -d ncov -o output --force-overwrite-output --input inputs\ncov_design_lh.csv -a ExtraSeedsLondon.dat --repeats 5 --extractor ..\..\tools\output_extractors\only_i_per_ward -u inputs\lockdown_states.txt --iterator ..\..\tools\lockdown\iterate
+metawards-plot -i output\results.csv.bz2 -o plots
 
 Notes
 -----
 
-In the original ncov there were explicit "1.0/1.15" values. These do not convert correctly in the main model code (the disease file goes through a JSON parser) so have been truncated with a decimal equivalent (0.87)
-There is an outstanding issue on the MetaWards codebase for windows users that requires a modification to the code to run. This modification does not affect the results.
-
-See: https://github.com/metawards/MetaWards/issues/56#
+If you are re-running things to test, then the overwrite flags (-f on my tools and --force-overwrite-output on MetaWards) are useful to prevent halting when running long scripts.
 
 Output description
 ------------------
 
-In the output folder there are a series of subfolders which correspond to each of the 155 runs.
-The folder name corresponds to the beta array contents separated by "V" characters followed by @ then the run repeat ID.
+In the output folder there are a series of subfolders which correspond to each of the 30 runs.
+Each folder name corresponds to a row in the design matrix, with "i" being a decimal point, "v" being a variable separator and "x" being a repeat number.
 
 Plots were automatically generated from metawards-plot
 
-There is a demo R file that loads data for further analysis. It can also call metawards but is setup for the tutorial, not the run above.
-
-Custom output extractors
-------------------------
-
-The python files `get_i_per_ward` and `only_i_per_ward` record the infected people per council ward both including and excluding standard outputs respectively.
+There is a demo R file that loads data for further analysis: show_me_a_ward.R. This has been modified to remove the need to copy the ward lookup and disease data and will now use the local MetaWardsData repo instead. 
 
 Job files
 ---------
 
-These can be simplified - it is highly likely that they will need to made a lot more intelligently than manually fudging some JSON.
+These can be simplified - it is highly likely that they will need to made a lot more intelligently than manually fudging some JSON. File extensions are not important, the converter will work with other types by interpreting them as JSON data regardless.
