@@ -26,22 +26,25 @@ def main(argv):
 
             epidemiology_file, epidemiology_header_names = load_csv(epidemiology_file)
 
-            # Split out the columns instead of directly enumerating in case the variables are out of order
-            # TODO: Integrate the limits file to avoid magic constants for column key indices
-            incubation = epidemiology_file["incubation_time"]
-            infectious = epidemiology_file["infectious_time"]
-            r_zeros = epidemiology_file["r_zero"]
-
+            # Only pass the first three fields to the disease builder
+            # TODO: Do this by name rather than assuming order?
             disease_matrix = np.zeros((epidemiology_file.shape[0], 5))
             for i, _ in enumerate(disease_matrix):
-                disease_matrix[i] = transform_epidemiological_to_disease(incubation[i], infectious[i], r_zeros[i])
+                row = epidemiology_file[i]
+                disease_matrix[i] = transform_epidemiological_to_disease(row[0], row[1], row[2])
 
             head_names: List[str] = ["beta[2]", "beta[3]", "progress[1]", "progress[2]", "progress[3]"]
             header = ','.join(head_names)
             np.savetxt(fname=disease_file, X=disease_matrix, fmt="%f", delimiter=",", header=header, comments='')
 
+            # TODO: Extra design variables need to go somewhere
+
+
     except FileExistsError:
         print("Output already exists, use -f to force overwriting")
+        sys.exit(1)
+    except FileNotFoundError as error:
+        print(str(error.filename) + " not found.")
         sys.exit(1)
     except IOError as error:
         print("File system error: " + str(error.msg) + " when operating on " + str(error.filename))
