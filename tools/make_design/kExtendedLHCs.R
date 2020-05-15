@@ -3,7 +3,7 @@
 require(lhs)
 #require(DoE.wrapper)
 #require(DiceDesign)
-#require(parallel)
+require(parallel)
 toInts <- function(LH){
   n <- length(LH[,1])
   ceiling(n*LH)
