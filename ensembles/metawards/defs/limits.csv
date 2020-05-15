@@ -1,4 +1,3 @@
-name,min,max
-incubation_time,4.0,6.0
-infectious_time,2.0,4.0
-r_zero,2.5,4.0
+incubation_time,infectious_time,r_zero,lock_1_restrict,lock_2_release
+4.0,2.0,2.5,0.0,1.0
+6.0,4.0,4.0,0.0,1.0

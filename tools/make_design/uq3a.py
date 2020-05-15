@@ -30,27 +30,24 @@ def main(argv):
              open(out_location, mode_str) as epidemiology_file:
 
             # Open the source files
-            design = np.genfromtxt(design_file, delimiter=',')
-            scales = np.genfromtxt(var_file, delimiter=',', names=True, dtype=None)
+            design, header = utils.load_csv(design_file)
+            scales, var_names = utils.load_csv(var_file)
 
-            # getfromtxt makes a big mess of a structure if there is not one single datatype
-            idents = scales["name"]
-            v_minimums = scales["min"]
-            v_maximums = scales["max"]
-            n_vars = len(idents)
-
+            # We need at least 2 columns for a valid design
+            if design.shape[1] < 2:
+                print("Design has no input parameters!")
+                sys.exit(1)
             # Check the size of the inputs
-            if n_vars < design.shape[1]:
+            if scales.shape[1] < design.shape[1]:
                 print("Variable limits file does not have enough entries")
                 sys.exit(1)
-            if design.shape[1] < n_vars:
+            if design.shape[1] < scales.shape[1]:
                 print("Design potentially incomplete")
                 sys.exit(1)
 
-            e_matrix = scale_lh_to_design(design, np.vstack((v_minimums, v_maximums)))
-            head_names: List[str] = [s.decode("UTF8") for s in idents]
-            header = ','.join(head_names)
-            np.savetxt(fname=epidemiology_file, X=e_matrix, fmt="%f", delimiter=",", header=header, comments='')
+            e_matrix = scale_lh_to_design(design, scales)
+            v_names = ','.join(var_names)
+            np.savetxt(fname=epidemiology_file, X=e_matrix, fmt="%f", delimiter=",", header=v_names, comments='')
 
     except IOError as error:
         print("File system error: " + str(error.msg) + " when operating on " + str(error.filename))
