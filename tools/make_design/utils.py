@@ -101,6 +101,20 @@ def export_dictionary_to_json(data: dict, file_name: str):
         raise ValueError("Invalid JSON format")
 
 
+# Wrap the standard numpy genfromtxt in a way that will automatically sort strings
+def load_csv(handle):
+    data = np.genfromtxt(handle, delimiter=',', names=True, dtype=None)
+    header = data.dtype.names
+    str_header = []
+    for h in header:
+        try:
+            string = h.decode("UTF8")
+            str_header.append(string)
+        except AttributeError:
+            str_header.append(h)
+    return data, str_header
+
+
 # Check all elements of a matrix fall within column limits [2 * ncols] - Row 1 is min, Row 2 is max
 def validate_matrix_range(matrix: np.ndarray, col_ranges: np.ndarray) -> bool:
     return all([all([col_ranges[0, k] <= col <= col_ranges[1, k] for k, col in enumerate(row)]) for row in matrix])
