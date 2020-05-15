@@ -1,37 +1,31 @@
 # Moved imports to local space
 
-def get_lockdown_state(population):
-    if not hasattr(population, "lockdown_state"):
-        population.lockdown_state = -1
-        population.is_locked_down = False
 
-    if population.total > 5000:
-        if population.lockdown_state == -1:
-            print(f"Lockdown started on {population.date}")
-            population.lockdown_state = 0
-            population.is_locked_down = True
+def get_lockdown_state(network, population):
+    from datetime import datetime
 
-        elif population.lockdown_state > 0:
-            print(f"Restarting lockdown on {population.date}")
-            population.lockdown_state = 0
-            population.is_locked_down = True
+    date = population.date
+    params = network.params.user_params
 
-    elif population.total > 3000:
-        if population.lockdown_state == 2:
-            print(f"Re-entering relaxed (yellow) on {population.date}")
-            population.lockdown_state = 1
+    y1 = int(params["lockdown_date_1_year"])
+    m1 = int(params["lockdown_date_1_month"])
+    d1 = int(params["lockdown_date_1_day"])
 
-    elif population.total < 2000:
-        if population.lockdown_state == 0:
-            print(f"Entering relaxed (yellow) on {population.date}")
-            population.lockdown_state = 1
+    y2 = int(params["lockdown_date_2_year"])
+    m2 = int(params["lockdown_date_2_month"])
+    d2 = int(params["lockdown_date_2_day"])
 
-    elif population.total < 1000:
-        if population.lockdown_state == 1:
-            print(f"Entering relaxed (green) on {population.date}")
-            population.lockdown_state = 2
+    # Lock down dates
+    lock_1 = datetime(y1, m1, d1).date()
+    lock_2 = datetime(y2, m2, d2).date()
+    
+    state = 0
+    if date >= lock_1:
+        state += 1
+    if date >= lock_2:
+        state += 1
 
-    return population.lockdown_state
+    return state
 
 def advance_lockdown(network, population, **kwargs):
     from metawards.iterators import advance_infprob
@@ -39,7 +33,7 @@ def advance_lockdown(network, population, **kwargs):
     from metawards.iterators import advance_fixed
 
     params = network.params
-    state = get_lockdown_state(population)
+    state = get_lockdown_state(network, population)
     scale_rate = params.user_params["scale_rate"][state]
     can_work = params.user_params["can_work"][state]
     print(f"Lockdown {state}: scale_rate = {scale_rate}, can_work = {can_work}")
@@ -58,10 +52,12 @@ def iterate_custom(network, population, **kwargs):
     from metawards.iterators import iterate_working_week
 
     params = network.params
-    state = get_lockdown_state(population)
+	
+    state = get_lockdown_state(network, population)
+    print("Simulation date " + str(population.date) + " lockdown state " + str(state))
 
-    if population.is_locked_down:
-        print("Locked down")
+    if state > 0:
+        print("Locked down: stage " + str(state))
         return [advance_lockdown]
     else:
         print("Normal working week day")
