@@ -102,8 +102,8 @@ def export_dictionary_to_json(data: dict, file_name: str):
 
 
 # Wrap the standard numpy genfromtxt in a way that will automatically sort strings
-def load_csv(handle):
-    data = np.genfromtxt(handle, delimiter=',', names=True, dtype=None)
+def load_csv(handle, default_type=float):
+    data = np.genfromtxt(handle, delimiter=',', names=True)
     header = data.dtype.names
     str_header = []
     for h in header:
@@ -112,7 +112,7 @@ def load_csv(handle):
             str_header.append(string)
         except AttributeError:
             str_header.append(h)
-    return data, str_header
+    return data.view(default_type).reshape(data.shape + (-1,)), str_header
 
 
 # Check all elements of a matrix fall within column limits [2 * ncols] - Row 1 is min, Row 2 is max
