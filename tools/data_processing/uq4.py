@@ -7,7 +7,7 @@ import sys
 import os
 import metawards
 import numpy as np
-from utils import load_csv
+from ..make_design.utils import load_csv
 
 
 def main(argv):

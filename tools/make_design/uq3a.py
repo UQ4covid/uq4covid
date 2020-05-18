@@ -1,7 +1,6 @@
 import sys
 import argparse
 import numpy as np
-from typing import List
 import utils
 
 
