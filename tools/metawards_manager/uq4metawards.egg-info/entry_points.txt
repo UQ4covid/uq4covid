@@ -1,0 +1,5 @@
+[console_scripts]
+uq4metawards-uq3a = uq4metawards.workflow.uq3a:main
+uq4metawards-uq3b = uq4metawards.workflow.uq3b:main
+uq4metawards-uq4 = uq4metawards.workflow.uq4:main
+

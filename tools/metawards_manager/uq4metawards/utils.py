@@ -4,7 +4,7 @@ import os
 import numpy as np
 import json as js
 from typing import List, Any
-from metawards._disease import Disease
+from metawards import Disease
 from dataclasses import asdict
 
 

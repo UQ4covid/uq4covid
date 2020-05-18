@@ -1,7 +1,7 @@
 import json as js
 from typing import List
-from utils import contains_required_keys, check_common_keys_in_dictionaries
-from design_methods import __design_methods
+from .utils import contains_required_keys, check_common_keys_in_dictionaries
+from .design_methods import __design_methods
 
 
 # Job files are high-level descriptions that can remote run analyses

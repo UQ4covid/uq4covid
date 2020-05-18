@@ -1,19 +1,21 @@
 import sys
 import argparse
 import numpy as np
-from typing import List
-import utils
+import uq4metawards.utils
 
 
 # Rescale a design matrix from [-1, 1] to a set of ranges defined for each column
 def scale_lh_to_design(matrix: np.ndarray, scales: np.ndarray) -> np.ndarray:
     lh_limit = np.broadcast_to(np.asarray([[-1.0], [1.0]]), (2, matrix.shape[1]))
-    if not utils.validate_matrix_range(matrix, lh_limit):
+    if not uq4metawards.utils.validate_matrix_range(matrix, lh_limit):
         raise ValueError("Matrix is not clamped between [-1, 1]")
-    return utils.scale_matrix_columns(np.add(np.divide(matrix, 2.0), 0.5), scales[0, :], scales[1, :])
+    return uq4metawards.utils.scale_matrix_columns(np.add(np.divide(matrix, 2.0), 0.5), scales[0, :], scales[1, :])
 
 
-def main(argv):
+def main():
+
+    argv = main_parser()
+
     # Query the parser - is getattr() safer?
     in_location = argv.input
     var_location = argv.scales
@@ -30,8 +32,8 @@ def main(argv):
              open(out_location, mode_str) as epidemiology_file:
 
             # Open the source files
-            design, header = utils.load_csv(design_file)
-            scales, var_names = utils.load_csv(var_file)
+            design, header = uq4metawards.utils.load_csv(design_file)
+            scales, var_names = uq4metawards.utils.load_csv(var_file)
 
             # We need at least 2 columns for a valid design
             if design.shape[1] < 2:
@@ -75,5 +77,4 @@ def main_parser(main_args=None):
 
 
 if __name__ == '__main__':
-    args = main_parser()
-    main(args)
+    main()

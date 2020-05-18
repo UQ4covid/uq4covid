@@ -9,8 +9,8 @@ import argparse
 import numpy as np
 from typing import List
 import pyDOE2
-import utils
-from jobfile import JobFile
+import uq4metawards.utils
+from .jobfile import JobFile
 
 
 # Linearly space points in a range
@@ -112,10 +112,10 @@ def main(argv):
     # Load the job file
     analysis = JobFile().load_from_disk(in_location)
     # Get the disease file using the environment variable METAWARDSDATA if possible
-    disease_data = utils.load_disease_model(analysis.get_disease_name(), "METAWARDSDATA")
+    disease_data = uq4metawards.utils.load_disease_model(analysis.get_disease_name(), "METAWARDSDATA")
 
     # Check that the design output is adjusting things that can be adjusted
-    adjustable = utils.list_adjustable_parameters(disease_data)
+    adjustable = uq4metawards.utils.list_adjustable_parameters(disease_data)
     transform = analysis.list_transform_parameters()
     if not all([variable in adjustable for variable in transform]):
         print("The disease cannot be modified with the current design")
@@ -141,7 +141,7 @@ def main(argv):
     num_outs = analysis.get_num_stream_outputs()
     disease_matrix = np.zeros((design.shape[0], num_outs))
     for i, row in enumerate(design):
-        disease_matrix[i] = utils.transform_epidemiological_to_disease(row[0], row[1], row[2])
+        disease_matrix[i] = uq4metawards.utils.transform_epidemiological_to_disease(row[0], row[1], row[2])
 
     # Use the stream outputs to get the right variable idents
     var_names: List[str] = analysis.get_transform_variables()
