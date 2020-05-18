@@ -20,12 +20,15 @@ def get_lockdown_state(network, population):
     lock_2 = datetime(y2, m2, d2).date()
     
     state = 0
+    rate = 1.0
     if date >= lock_1:
         state += 1
+        rate = params["scale_rate"][1]
     if date >= lock_2:
         state += 1
+        rate = (1.0 - ((1.0 - params["scale_rate"][1]) * params["scale_rate"][2]))
 
-    return state
+    return state, rate
 
 def advance_lockdown(network, population, **kwargs):
     from metawards.iterators import advance_infprob
@@ -33,33 +36,31 @@ def advance_lockdown(network, population, **kwargs):
     from metawards.iterators import advance_fixed
 
     params = network.params
-    state = get_lockdown_state(network, population)
-    scale_rate = params.user_params["scale_rate"][state]
+    state, rate = get_lockdown_state(network, population)
     can_work = params.user_params["can_work"][state]
-    print(f"Lockdown {state}: scale_rate = {scale_rate}, can_work = {can_work}")
+    print(f"state {state}: scale_rate = {rate}, can_work = {can_work}")
 
-    advance_infprob(scale_rate=scale_rate,
+    advance_infprob(scale_rate=rate,
                     network=network, population=population,
                     **kwargs)
-    advance_play(network=network, population=population,
-                **kwargs)
+    advance_play(network=network, population=population, **kwargs)
 
     if can_work:
-        advance_fixed(network=network, population=population,
-                    **kwargs)
+        advance_fixed(network=network, population=population, **kwargs)
 
 def iterate_custom(network, population, **kwargs):
     from metawards.iterators import iterate_working_week
 
     params = network.params
-	
-    state = get_lockdown_state(network, population)
-    print("Simulation date " + str(population.date) + " lockdown state " + str(state))
-
+    
+    state, rate = get_lockdown_state(network, population)
+    can_work = params.user_params["can_work"][state]
+    
+    print("Simulation date " + str(population.date))
     if state > 0:
-        print("Locked down: stage " + str(state))
         return [advance_lockdown]
     else:
+        print(f"state {state}: scale_rate = {rate}, can_work = {can_work}")
         print("Normal working week day")
         return iterate_working_week(network=network,
                                     population=population,

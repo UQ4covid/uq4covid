@@ -33,11 +33,6 @@ Workflow steps
 4) [WIP] Run show_me_a_ward.R to see how to extract ward data
 5) [WIP] UQ magic
 
-See also
---------
-
-Plotting command: metawards-plot -i output\results.csv.bz2 -o plots
-
 Notes
 -----
 
