@@ -7,10 +7,13 @@ import sys
 import os
 import metawards
 import numpy as np
-from ..make_design.utils import load_csv
+from uq4metawards.utils import load_csv
 
 
-def main(argv):
+def main():
+
+    argv = main_parser()
+
     # Step 1 is to make an index file for the runs
     in_location = argv.disease
     data_location = argv.data
@@ -73,5 +76,4 @@ def main_parser(main_args=None):
 
 
 if __name__ == '__main__':
-    args = main_parser()
-    main(args)
+    main()

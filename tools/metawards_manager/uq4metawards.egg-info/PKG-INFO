@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: uq4metawards
+Version: 0.0.1
+Summary: A set of UQ tools to link to MetaWards
+Home-page: https://github.com/UQ4covid/uq4covid
+Author: Christopher Fenton
+Author-email: cjf_uk@hotmail.com
+License: UNKNOWN
+Description: Readme:
+        
+        UQ4MetaWards is a collection of tools to automate the running and analyses of output data from MetaWards
+        
+        To install use the following command
+        
+        `pip install .`
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown

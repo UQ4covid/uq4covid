@@ -6,11 +6,13 @@ import sys
 import argparse
 import numpy as np
 from typing import List
-from utils import transform_epidemiological_to_disease
-from utils import load_csv
+from uq4metawards.utils import transform_epidemiological_to_disease
+from uq4metawards.utils import load_csv
 
 
-def main(argv):
+def main():
+    argv = main_parser()
+
     # Query the parser - is getattr() safer?
     in_location = argv.input
     out_location = argv.output
@@ -72,5 +74,4 @@ def main_parser(main_args=None):
 
 
 if __name__ == '__main__':
-    args = main_parser()
-    main(args)
+    main()
