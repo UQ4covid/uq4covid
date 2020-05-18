@@ -44,7 +44,7 @@ plot_group <- function(parent_council, data, lookup)
 }
 
 # Load a ward trajectory file
-ward_data <- load_data("output\\1i336687v1i336687v0i22298v1i0v0i864222x003\\wards_trajectory_I.csv.bz2")
+ward_data <- load_data("output5\\0i747963v0i747963v0i222911v1i0v0i395117v0i128829v0i690946x003\\wards_trajectory_I.csv.bz2")
 ward_info <- load_data(str_c(Sys.getenv("METAWARDSDATA"), "\\model_data\\2011Data\\", "Ward_Lookup.csv"))
 
 # Select out a column at random

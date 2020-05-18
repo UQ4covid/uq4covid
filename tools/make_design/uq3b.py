@@ -28,12 +28,18 @@ def main(argv):
 
             # Only pass the first three fields to the disease builder
             # TODO: Do this by name rather than assuming order?
-            disease_matrix = np.zeros((epidemiology_file.shape[0], 5))
+            disease_matrix = np.zeros((epidemiology_file.shape[0], 7))
             for i, _ in enumerate(disease_matrix):
                 row = epidemiology_file[i]
-                disease_matrix[i] = transform_epidemiological_to_disease(row[0], row[1], row[2])
+                new_row = np.zeros(7)
+                new_row[0:5] = np.asarray(transform_epidemiological_to_disease(row[0], row[1], row[2]))
 
-            head_names: List[str] = ["beta[2]", "beta[3]", "progress[1]", "progress[2]", "progress[3]"]
+                # Pass scale rates through from epidemiology file
+                new_row[5] = row[3]
+                new_row[6] = row[4]
+                disease_matrix[i] = new_row
+
+            head_names: List[str] = ["beta[2]", "beta[3]", "progress[1]", "progress[2]", "progress[3],.scale_rate[1],.scale_rate[2]"]
             header = ','.join(head_names)
             np.savetxt(fname=disease_file, X=disease_matrix, fmt="%f", delimiter=",", header=header, comments='')
 
