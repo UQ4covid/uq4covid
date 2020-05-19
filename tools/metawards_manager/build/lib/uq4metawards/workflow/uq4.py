@@ -23,6 +23,10 @@ def main():
         mode_str = "w"
         print("force option passed, disease matrix will be over-written if it exists")
 
+    if argv.day < 0:
+        print("Can't extract a negative day")
+        sys.exit(1)
+
     # Touch the file system
     try:
         with open(in_location) as disease_file, \
@@ -41,11 +45,16 @@ def main():
                 # Find how many folders match this partial name
                 # TODO: Dir checks for data location
                 matches = [s for s in sub_dir_list if string in s]
+                run_id = 0
                 for m in matches:
-                    index.append((str("run_index_" + str(num_experiments)), m))
-                    num_experiments += 1
+                    index.append((str("run_index_" + str(num_experiments)), m, str(i), str(run_id)))
 
-            index_header = ','.join(["run_id", "folder_id"])
+                    disease_str = ','.join(str(x) for x in design_vars)
+
+                    num_experiments += 1
+                    run_id += 1
+
+            index_header = ','.join(["key", "folder_id", "design_id", "run_id"])
             index_matrix = np.asarray(index)
             np.savetxt(fname=index_file, X=index_matrix, fmt="%s", delimiter=",", header=index_header, comments='')
 
@@ -71,6 +80,7 @@ def main_parser(main_args=None):
     parser.add_argument('disease', metavar='<input file>', type=str, help="Input disease matrix")
     parser.add_argument('data', metavar='<data folder>', type=str, help="MetaWards output folder")
     parser.add_argument('output', metavar='<output file>', type=str, help="Output index file")
+    parser.add_argument('day', metavar='<sim date>', type=int, help="Day to extract")
     parser.add_argument('-f', '--force', action='store_true', help="Force over-write")
     return parser.parse_args(main_args)
 
