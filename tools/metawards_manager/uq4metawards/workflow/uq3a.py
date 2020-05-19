@@ -1,3 +1,10 @@
+#
+# Performs step 3A of the workflow
+#
+# Converts the input design to ranges specified by the limits file
+#
+
+
 import sys
 import argparse
 import numpy as np
@@ -56,6 +63,9 @@ def main():
             final = np.c_[e_matrix, repeats]
             np.savetxt(fname=epidemiology_file, X=final, fmt="%f", delimiter=",", header=v_names, comments='')
 
+    except FileExistsError:
+        print("Output already exists, use -f to force overwriting")
+        sys.exit(1)
     except IOError as error:
         print("File system error: " + str(error.msg) + " when operating on " + str(error.filename))
         sys.exit(1)

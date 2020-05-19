@@ -2,12 +2,8 @@
 # Lock-down iterator that simulates various control measures for Covid-19
 #
 
-
-from metawards.iterators import advance_infprob
-from metawards.iterators import advance_play
-from metawards.iterators import advance_fixed
-from metawards.iterators import iterate_working_week
 from datetime import datetime
+from metawards.utils import Console
 
 
 # Determine the lock-down status based on the population and current network
@@ -47,8 +43,11 @@ def get_lock_down_vars(network, population):
 #
 def advance_lock_down(network, population, **kwargs):
 
+    from metawards.iterators import advance_infprob
+    from metawards.iterators import advance_play
+    from metawards.iterators import advance_fixed
+
     state, rate, can_work = get_lock_down_vars(network, population)
-    print(f"state {state}: scale_rate = {rate}, can_work = {can_work}")
 
     advance_infprob(scale_rate=rate, network=network, population=population, **kwargs)
     advance_play(network=network, population=population, **kwargs)
@@ -60,10 +59,13 @@ def advance_lock_down(network, population, **kwargs):
 # Iterate as normal, unless it is past a lock-down date
 #
 def iterate_custom(network, population, **kwargs):
+    
+    from metawards.iterators import iterate_working_week
 
     state, rate, can_work = get_lock_down_vars(network, population)
+    Console.print(f"state {state}: scale_rate = {rate}, can_work = {can_work}")    
+    
     if state > 0:
         return [advance_lock_down]
-    else:
-        print(f"state {state}: scale_rate = {rate}, can_work = {can_work}")
+    else:    
         return iterate_working_week(network=network, population=population, **kwargs)
