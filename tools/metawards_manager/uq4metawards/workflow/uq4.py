@@ -6,9 +6,9 @@ import argparse
 import sys
 import os
 from typing import List
-import metawards
 from uq4metawards.utils import load_csv
 from uq4metawards.utils import print_progress_bar
+from uq4metawards.utils import create_fingerprint
 import pandas as pd
 import bz2 as compression
 
@@ -102,7 +102,7 @@ def main():
 
                 # Try to find each output folder using metawards variable fingerprint
                 for r in range(repeats):
-                    string = metawards.VariableSet.create_fingerprint(metawards_vars, r + 1, True)
+                    string = create_fingerprint(metawards_vars, r + 1, True)
                     if string not in sub_dir_list:
                         raise ValueError("Missing run data for: " + string)
 
