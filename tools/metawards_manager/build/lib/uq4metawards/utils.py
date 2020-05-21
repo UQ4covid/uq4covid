@@ -123,3 +123,16 @@ def validate_matrix_range(matrix: np.ndarray, col_ranges: np.ndarray) -> bool:
 # Scale a matrix columns to a min/max range
 def scale_matrix_columns(matrix: np.ndarray, min_col, max_col) -> np.ndarray:
     return np.add(np.multiply(matrix, np.subtract(max_col, min_col)), min_col)
+
+
+# Print iterations progress - designed to be called in a loop with no interleaved printing
+# A nice fill character is █ (ascii: 219)
+def print_progress_bar(iteration: int, total: int, prefix='', suffix='', decimals=1, length=80, fill='█'):
+    # TODO: 'f' string this
+    percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+    filled_length = int(length * iteration // total)
+    bar = fill * filled_length + '-' * (length - filled_length)
+    print(f'\r{prefix} |{bar}| {percent}%% {suffix}', end="", flush=True)
+    # Print New Line on Complete
+    if iteration == total:
+        print()

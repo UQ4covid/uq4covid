@@ -125,24 +125,14 @@ def scale_matrix_columns(matrix: np.ndarray, min_col, max_col) -> np.ndarray:
     return np.add(np.multiply(matrix, np.subtract(max_col, min_col)), min_col)
 
 
-# Print iterations progress
-def print_progress_bar(iteration: int, total: int, prefix='', suffix='', decimals=1, length=100, fill='█', end_char=""):
-    """
-    Call in a loop to create terminal progress bar
-    @params:
-        iteration   - Required  : current iteration (Int)
-        total       - Required  : total iterations (Int)
-        prefix      - Optional  : prefix string (Str)
-        suffix      - Optional  : suffix string (Str)
-        decimals    - Optional  : positive number of decimals in percent complete (Int)
-        length      - Optional  : character length of bar (Int)
-        fill        - Optional  : bar fill character (Str)
-        printEnd    - Optional  : end character (e.g. "\r", "\r\n") (Str)
-    """
+# Print iterations progress - designed to be called in a loop with no interleaved printing
+# A nice fill character is █ (ascii: 219)
+def print_progress_bar(iteration: int, total: int, prefix='', suffix='', decimals=1, length=80, fill='█'):
+    # TODO: 'f' string this
     percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
     filled_length = int(length * iteration // total)
     bar = fill * filled_length + '-' * (length - filled_length)
-    print('\r%s |%s| %s%% %s' % (prefix, bar, percent, suffix), end=end_char, flush=True)
+    print(f'\r{prefix} |{bar}| {percent}%% {suffix}', end="", flush=True)
     # Print New Line on Complete
     if iteration == total:
         print()
