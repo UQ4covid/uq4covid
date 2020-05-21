@@ -136,3 +136,37 @@ def print_progress_bar(iteration: int, total: int, prefix='', suffix='', decimal
     # Print New Line on Complete
     if iteration == total:
         print()
+
+
+def create_fingerprint(vals: List[float], index: int = None,
+                       include_index: bool = False):
+    """Create the fingerprint for the passed values"""
+    f = None
+
+    if vals is None or len(vals) == 0:
+        f = "REPEAT"
+    else:
+        for val in vals:
+            if isinstance(val, bool):
+                if val:
+                    v = "T"
+                else:
+                    v = "F"
+            else:
+                v = float(val)
+
+                if v.is_integer():
+                    v = int(val)
+                    v = f"{v}.0"
+
+                v = str(v).replace(".", "i")
+
+            if f is None:
+                f = v
+            else:
+                f += "v" + v
+
+    if include_index:
+        return "%sx%03d" % (f, index)
+    else:
+        return f
