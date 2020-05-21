@@ -144,9 +144,6 @@ def main():
                             # NOTE: PyCharm doesn't like the type of the indexer here, but it is int?
                             all_wards_i_per_day[experiment_index] = [0] * large_frame_width
 
-                            # NOTE: ranges are upper-exclusive here
-                            # TODO: 0:max is the whole frame, this should just convert
-                            #wards_cumulative = mw_out.iloc[0:max_day_available].values.squeeze().tolist()
                             wards_cumulative = mw_out.values.squeeze().tolist()
                             remaining = argv.day - max_day_available
                             wards_remaining = [[0] * large_frame_width] * remaining
@@ -162,7 +159,7 @@ def main():
                             cumulative_wards_row = mw_out.iloc[0:argv.day + 1].values.squeeze().tolist()
 
                         # TODO: Pointless sum of inputs
-                        all_lads_i_cumulative[experiment_index] = [sum(i) for i in zip(*cumulative_wards_row)][7:]
+                        all_wards_i_cumulative[experiment_index] = [sum(i) for i in zip(*cumulative_wards_row)][7:]
 
                     experiment_index += 1
                     print_progress_bar(experiment_index, n_experiments, str_prefix, str_suffix)
