@@ -4,7 +4,7 @@ import os
 import numpy as np
 import json as js
 from typing import List, Any
-from metawards import Disease
+#from metawards import Disease
 from dataclasses import asdict
 
 
@@ -25,37 +25,37 @@ def contains_required_keys(data: dict, required_keys: List[Any]) -> bool:
     return all(req in data for req in required_keys)
 
 
-# Grab the list of adjustable parameters from a disease file
-def list_adjustable_parameters(data: Disease) -> List[str]:
-    d_data: dict = asdict(data)
-    adjustable_vars: List[str] = []
-    for key in list(d_data.keys()):
-        if key.startswith('_'):
-            continue
-        try:
-            iter(d_data[key])
-            adjustable_vars.append(key)
-        except TypeError:
-            continue
-    return adjustable_vars
+## Grab the list of adjustable parameters from a disease file
+#def list_adjustable_parameters(data: Disease) -> List[str]:
+#    d_data: dict = asdict(data)
+#    adjustable_vars: List[str] = []
+#    for key in list(d_data.keys()):
+#        if key.startswith('_'):
+#            continue
+#        try:
+#            iter(d_data[key])
+#            adjustable_vars.append(key)
+#       except TypeError:
+#           continue
+#    return adjustable_vars
 
 
-# Re-use the metawards code to load the disease from the MetaWardsData if possible
-def load_disease_model(file_name: str, data_env: str) -> Disease:
-    # Try to get it from an installed MetaWardsData clone, otherwise search for a local copy
-    # NOTE: If there *is* a local copy, it will take precedence over the data repo clone!
-    d_name, d_ext = os.path.splitext(file_name)
-    if not d_name:
-        raise ValueError("Invalid file name provided")
-    if not d_ext:
-        d_ext = ".json"
-    mw_data = os.getenv(data_env, "")
-    if not mw_data:
-        # if we get here, metawards is potentially using a rouge dataset!
-        disease_data: Disease = Disease.load("", None, "", d_name + d_ext)
-    else:
-        disease_data: Disease = Disease.load(d_name, mw_data, "diseases", None)
-    return disease_data
+## Re-use the metawards code to load the disease from the MetaWardsData if possible
+#def load_disease_model(file_name: str, data_env: str) -> Disease:
+#    # Try to get it from an installed MetaWardsData clone, otherwise search for a local copy
+#    # NOTE: If there *is* a local copy, it will take precedence over the data repo clone!
+#    d_name, d_ext = os.path.splitext(file_name)
+#    if not d_name:
+#        raise ValueError("Invalid file name provided")
+#    if not d_ext:
+#        d_ext = ".json"
+#    mw_data = os.getenv(data_env, "")
+#    if not mw_data:
+#        # if we get here, metawards is potentially using a rouge dataset!
+#        disease_data: Disease = Disease.load("", None, "", d_name + d_ext)
+#   else:
+#        disease_data: Disease = Disease.load(d_name, mw_data, "diseases", None)
+#    return disease_data
 
 
 # Convert epidemiological parameters to disease variables
