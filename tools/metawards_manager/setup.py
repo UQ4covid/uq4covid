@@ -6,7 +6,7 @@ with open("readme.md", "r") as fh:
 setuptools.setup \
         (
             name="uq4metawards",  # Replace with your own username
-            version="0.0.1",
+            version="0.0.2",
             author="Christopher Fenton",
             author_email="cjf_uk@hotmail.com",
             description="A set of UQ tools to link to MetaWards",

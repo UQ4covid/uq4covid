@@ -10,7 +10,7 @@ from uq4metawards.utils import load_csv
 from uq4metawards.utils import print_progress_bar
 from uq4metawards.utils import create_fingerprint
 import pandas as pd
-import bz2 as compression
+import numpy as np
 
 
 # NOTE: If you use argv as a parameter to main, you will have problems with the package setup entry points
@@ -29,7 +29,9 @@ def main():
         print("force option passed, disease matrix will be over-written if it exists")
 
     #
-    # NOTE: Lockdown 1 = day 80, Lockdown 2 = day 133
+    # NOTE: Lockdown 1 = day 80, Lockdown 2 = day 133, 1st june = 152
+    #
+    # We want cumulative for each, rates for each (differences)
     #
 
     if argv.day < 0:
@@ -65,6 +67,9 @@ def main():
 
             # Collect the local authorities into groups (of indices)
             lads: dict = ward_data.groupby("LAD11NM").groups
+            col_names_lads: List[str] = design_header_names[0:len(design_header_names) - 1]
+            lads_cols: List[str] = [str(x) for x in lads]
+            col_names_lads += lads_cols
 
             # ids = ward_data["FID"].values
             # lads = ward_data["LAD11NM"].values
@@ -72,7 +77,7 @@ def main():
             # Calculate number of size of the output frames
             n_experiments = int(sum(design_array[:, design_array.shape[1] - 1]))
             large_frame_width = len(col_names)
-            small_frame_width = len(lads)
+            small_frame_width = len(col_names_lads)
 
             # Day, Date, Design vars (no repeats), Wards
             # n_cols = 2 + (disease_file.shape[1] - 1) + n_wards
@@ -94,7 +99,7 @@ def main():
                 # Calculate how many runs match this design
                 design_vars = design_row[1][0:len(design_row[1]) - 1].tolist()
                 metawards_vars = disease_row[1][0:len(disease_row[1]) - 1].tolist()
-                repeats = int(design_row[1][len(design_row[1]) - 1])
+                repeats: int = int(design_row[1][len(design_row[1]) - 1])
 
                 # Check that repeats is valid
                 if repeats < 1:
@@ -102,7 +107,7 @@ def main():
 
                 # Try to find each output folder using metawards variable fingerprint
                 for r in range(repeats):
-                    string = create_fingerprint(metawards_vars, r + 1, True)
+                    string: str = create_fingerprint(metawards_vars, r + 1, True)
                     if string not in sub_dir_list:
                         raise ValueError("Missing run data for: " + string)
 
@@ -111,65 +116,89 @@ def main():
 
                     # Load the ward data (drop ward[0] as it is a placeholder)
                     # We need to use pandas as there is more than one datatype in the output
+                    # Drop the day and date (not needed), then also ward[0] as it isn't a ward
+                    mw_out = pd.read_csv(wards_file).drop(["ward[0]", "date", "day"], 1)
 
-                    # NOTE: The code below checks if the run has applied lockdown or not (metawards bug)
-                    # TODO: ALL Of this is horrible, massive time pressure - FIXME all over
-                    # Check the console trace - really bad way of doing it, but whatever, time.
-                    con_file = os.path.join(wards_folder, "output.txt.bz2")
-                    with compression.open(con_file) as c_f:
-                        if b"scale_rate" not in c_f.read():
-                            print() # Clear print mess
-                            print(f"Run {wards_file} is not valid")
-                            all_wards_i_per_day[experiment_index] = [0] * large_frame_width
-                            all_wards_i_cumulative[experiment_index] = [0] * large_frame_width
-                            flag = True
-                        else:
-                            flag = False
+                    # NOTE: ANSI escape characters don't work in Windows Python implementations at the moment
+                    print(f"\rLoaded: {wards_file}")
 
-                    # TODO: Invert the flag logic, this is a non-intuitive way of doing it
-                    if not flag:
+                    # Create an aggregated LAD table
+                    # NOTE: This is a silly slow way of doing it, but will do for now
+                    num_authorities = len(lads)
+                    print_progress_bar(0, num_authorities - 1, "Aggregating local authorities", str_suffix)
+                    lad_entry = np.zeros((mw_out.shape[0], num_authorities), dtype=int)
+                    for i, indices in enumerate(lads.values()):
+                        fids = ward_data.loc[indices, ["FID"]].values.squeeze()
+                        col_strings = [f"ward[{x}]" for x in fids]
+                        entry = mw_out[col_strings].values
+                        lad_entry[:, i] = np.sum(entry, 1).reshape(1, -1)
+                        print_progress_bar(i, num_authorities - 1, "Aggregating local authorities", str_suffix,
+                                           newline_end=False)
 
-                        # Drop the day and date (not needed), then also ward[0] as it isn't a ward
-                        mw_out = pd.read_csv(wards_file).drop(["ward[0]", "date", "day"], 1)
+                    # Find the limit of the disease time-span
+                    max_day_available: int = mw_out.shape[0] - 1
+                    if argv.day > max_day_available:
 
-                        # NOTE: ANSI escape characters don't work in Windows Python implementations at the moment
-                        print(f"\rLoaded: {wards_file}")
+                        # If a day is missing, return zeros
+                        print(f"Run: {wards_file} has no day {argv.day} - it will be substituted with zeros")
+                        # NOTE: PyCharm doesn't like the type of the indexer here, but it is int?
+                        all_wards_i_per_day[experiment_index] = [0] * large_frame_width
+                        all_lads_i_per_day[experiment_index] = [0] * small_frame_width
 
-                        # Find the limit of the disease time-span
-                        max_day_available = mw_out.shape[0] - 1
-                        if argv.day > max_day_available:
+                        wards_cumulative = mw_out.values.squeeze().tolist()
+                        lads_cumulative = lad_entry
+                        remaining = argv.day - max_day_available
 
-                            # If a day is missing, return zeros
-                            print(f"Run: {wards_file} has no day {argv.day} - it will be substituted with zeros")
-                            # NOTE: PyCharm doesn't like the type of the indexer here, but it is int?
-                            all_wards_i_per_day[experiment_index] = [0] * large_frame_width
+                        null_row = design_vars + list([0] * (large_frame_width - len(design_vars)))
+                        wards_remaining: List[List[int]] = [null_row] * remaining
 
-                            wards_cumulative = mw_out.values.squeeze().tolist()
-                            remaining = argv.day - max_day_available
-                            wards_remaining = [[0] * large_frame_width] * remaining
-                            cumulative_wards_row = wards_cumulative + wards_remaining
-                        else:
+                        null_row = design_vars + list([0] * (small_frame_width - len(design_vars)))
+                        lads_remaining = np.broadcast_to(np.asarray(null_row), (remaining, small_frame_width))
+                        cumulative_wards_row = wards_cumulative + wards_remaining
+                        cumulative_lads_row = np.vstack((lads_cumulative, lads_remaining))
+                    else:
 
-                            # Instant
-                            wards_row = mw_out.iloc[[argv.day]].values.squeeze().tolist()[7:]
-                            data_row = design_vars + wards_row
-                            all_wards_i_per_day[experiment_index] = data_row
+                        # Instant
+                        wards_row = mw_out.iloc[[argv.day]].values.squeeze().tolist()[7:]
+                        data_row = design_vars + wards_row
+                        all_wards_i_per_day[experiment_index] = data_row
 
-                            # Cumulative
-                            cumulative_wards_row = mw_out.iloc[0:argv.day + 1].values.squeeze().tolist()
+                        # Instant LAD
+                        lad_row = lad_entry[argv.day, :].tolist()
+                        data_row = design_vars + lad_row
+                        all_lads_i_per_day[experiment_index] = data_row
 
-                        # TODO: Pointless sum of inputs
-                        all_wards_i_cumulative[experiment_index] = [sum(i) for i in zip(*cumulative_wards_row)][7:]
+                        # Cumulative
+                        cumulative_wards_row = mw_out.iloc[0:argv.day + 1].values.squeeze().tolist()
+                        cumulative_lads_row = lad_entry[0:argv.day + 1, :]
+                        extra_bits = np.broadcast_to(np.asarray(design_vars).reshape(1, -1),
+                                                     (cumulative_lads_row.shape[0], len(design_vars)))
+                        cumulative_lads_row = np.hstack((extra_bits, cumulative_lads_row))
+
+                    # TODO: Pointless sum of inputs
+                    all_wards_i_cumulative[experiment_index] = [sum(i) for i in zip(*cumulative_wards_row)]
+                    all_wards_i_cumulative[experiment_index][0:7] = design_vars
+
+                    temp = np.sum(cumulative_lads_row, 0)
+                    temp[0:len(design_vars)] = design_vars
+                    all_lads_i_cumulative[experiment_index] = temp
 
                     experiment_index += 1
                     print_progress_bar(experiment_index, n_experiments, str_prefix, str_suffix)
 
             print("Building output frames...")
             w_out_by_day_full = pd.DataFrame(data=all_wards_i_per_day, columns=col_names)
-            w_out_by_day_full.to_csv(os.path.join(data_location, f"wards_by_day_{argv.day}.csv"))
+            w_out_by_day_full.to_csv(os.path.join(data_location, f"wards_by_day_{argv.day}.csv"), index=False)
 
             w_out_by_day_cumulative = pd.DataFrame(data=all_wards_i_cumulative, columns=col_names)
-            w_out_by_day_cumulative.to_csv(os.path.join(data_location, f"wards_by_day_cumulative_{argv.day}.csv"))
+            w_out_by_day_cumulative.to_csv(os.path.join(data_location, f"wards_by_day_cumulative_{argv.day}.csv"),
+                                           index=False)
+
+            lad_out_by_day_full = pd.DataFrame(data=all_lads_i_per_day, columns=col_names_lads)
+            lad_out_by_day_full.to_csv(os.path.join(data_location, f"lads_by_day_{argv.day}.csv"), index=False)
+
+            lad_out_by_day_cumulative = pd.DataFrame(data=all_lads_i_cumulative, columns=col_names_lads)
+            lad_out_by_day_cumulative.to_csv(os.path.join(data_location, f"lads_by_day_cumulative_{argv.day}.csv"), index=False)
 
             # index_header = ','.join(["key", "folder_id", "design_id", "run_id"])
             # index_matrix = np.asarray(index)

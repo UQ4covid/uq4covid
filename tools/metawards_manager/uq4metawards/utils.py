@@ -127,22 +127,24 @@ def scale_matrix_columns(matrix: np.ndarray, min_col, max_col) -> np.ndarray:
 
 # Print iterations progress - designed to be called in a loop with no interleaved printing
 # A nice fill character is █ (ascii: 219)
-def print_progress_bar(iteration: int, total: int, prefix='', suffix='', decimals=1, length=80, fill='█'):
+def print_progress_bar(iteration: int, total: int, prefix: str = '', suffix: str = '', decimals: int = 1,
+                       length: int = 80, fill: str = '█', newline_end: bool = True):
     # TODO: 'f' string this
     percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
     filled_length = int(length * iteration // total)
     bar = fill * filled_length + '-' * (length - filled_length)
     print(f'\r{prefix} |{bar}| {percent}%% {suffix}', end="", flush=True)
     # Print New Line on Complete
-    if iteration == total:
+    if iteration == total and newline_end:
         print()
 
 
-def create_fingerprint(vals: List[float], index: int = None,
-                       include_index: bool = False):
-    """Create the fingerprint for the passed values"""
-    f = None
+#
+# Harvested from metawards 0.12.0+25.g8dc3f0f9
+#
+def create_fingerprint(vals: List[float], index: int = None, include_index: bool = False):
 
+    f = None
     if vals is None or len(vals) == 0:
         f = "REPEAT"
     else:
@@ -154,18 +156,14 @@ def create_fingerprint(vals: List[float], index: int = None,
                     v = "F"
             else:
                 v = float(val)
-
                 if v.is_integer():
                     v = int(val)
                     v = f"{v}.0"
-
                 v = str(v).replace(".", "i")
-
             if f is None:
                 f = v
             else:
                 f += "v" + v
-
     if include_index:
         return "%sx%03d" % (f, index)
     else:
