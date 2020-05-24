@@ -112,10 +112,13 @@ def main(argv):
     # Load the job file
     analysis = JobFile().load_from_disk(in_location)
     # Get the disease file using the environment variable METAWARDSDATA if possible
-    disease_data = uq4metawards.utils.load_disease_model(analysis.get_disease_name(), "METAWARDSDATA")
+    # TODO: Put this back in
+    #disease_data = uq4metawards.utils.load_disease_model(analysis.get_disease_name(), "METAWARDSDATA")
 
     # Check that the design output is adjusting things that can be adjusted
-    adjustable = uq4metawards.utils.list_adjustable_parameters(disease_data)
+    # TODO: Put this back in
+    #adjustable = uq4metawards.utils.list_adjustable_parameters(disease_data)
+    adjustable = []
     transform = analysis.list_transform_parameters()
     if not all([variable in adjustable for variable in transform]):
         print("The disease cannot be modified with the current design")
