@@ -1,0 +1,233 @@
+---
+title: "Adventures in Gaussian Process Emulators for Metawards"
+author: "Danny Williamson"
+output: html_document
+references:
+- id: baker20
+  title: Sochastic Simulators an overview with opportunities.
+  author:
+  - family: Baker
+    given: Evan
+  - family: Barbillon
+    given: Pierre
+  - family: Fadikar
+    given: Arindam
+  - family: Grammacy
+    given: Robert
+  - family: Herbei
+    given: Radu
+  - family: Higdon
+    given: David
+  - family: Huang
+    given: Jiangeng
+  - family: Johnson
+    given: Leah
+  - family: Ma
+    given: Pulong
+  - family: Mondal
+    given: Anirban
+  - family: Pires
+    given: Bianca
+  - family: Sacks
+    given: Jerome
+  - family: Sokolov
+    given: Vadim
+  container-title: arXiv
+  URL: 'https://arxiv.org/pdf/2002.01321'
+  type: article-journal
+  issued:
+    year: 2020
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+Using the UQ4covid initial design described [here](https://uq4covid.github.io/vignettes/metawards_kextendedLHC) I will build some GPs and do some data analysis to illustrate challenges for emulating Metawards.
+
+## Preliminaries
+
+I will explore using mogp_emulator and the ExeterUQ_MOGP implementation (info is available [here](https://bayesexeter.github.io/ExeterUQ_MOGP/). To do that I need to create a pointer to the directory of my `mogp_emulator` installation and then to source the `BuildEmulator.R` code from the ExeterUQ_MOGP repository [https://github.com/BayesExeter/ExeterUQ_MOGP](https://github.com/BayesExeter/ExeterUQ_MOGP). For this code block, your directory strings will necessarily be different from mine.
+
+```{r}
+mogp_dir <- "~/Dropbox/BayesExeter/mogp_emulator"
+setwd("~/Dropbox/BayesExeter/ExeterUQ_MOGP")
+source("~/Dropbox/BayesExeter/ExeterUQ_MOGP/BuildEmulator/BuildEmulator.R")
+```
+
+Now we get some data from the `uq4covid` repository. I will look at the pre-lockdown infections at local authority level.
+```{r}
+library(readr)
+lads_by_day_cumulative_79 <- read_csv("../../data/metawards/initial_ensemble/data/pre_lockdown_1/lads_by_day_cumulative_79.csv")
+names(lads_by_day_cumulative_79)
+```
+
+Let's start by creating a data set for Exeter for use with MOGP.
+```{r}
+N <- dim(lads_by_day_cumulative_79)[1]
+Noise <- rnorm(N, mean=0, sd=0.45)
+tData <- cbind(lads_by_day_cumulative_79[,1:3], Noise, 
+               lads_by_day_cumulative_79[,which(names(lads_by_day_cumulative_79)=="Exeter")])
+head(tData)
+```
+The `Noise` variable is used to prevent over fitting of mean functions.
+
+## A first Emulator
+We know that the first 125 row of this design contain 5 repeats of 25 unique design points. Suppose we naively fit a GP to all of the data with our default GP priors and look at the leave one outs:
+```{r}
+MetaEmulators1 <- BuildNewEmulators(tData, HowManyEmulators = 1, meanFun = "fitted", kernel="Matern52")
+tLOOs <- LOO.plot(Emulators = MetaEmulators1, which.emulator = 1,
+                  ParamNames = names(tData)[1:3])
+```
+
+A few things to notice here. First, and most obvious is that we are missing predictions for large numbers of infections and we are too confident for low `r_zero`. This is a symptom of the major issue that the pure noise variance grows with `r_zero` (I will show this later) and our GP fits a constant nugget variance. The next is that the least squares estimates for the fitted regression are way beyond are subjective prior ranges (and I don't believe them).
+
+```{r}
+theta <- MetaEmulators1$mogp$emulators[[1]]$theta
+ncls <- 3
+np <- length(theta)-ncls-2
+print("MAP Regression coefficients: ")
+signif(theta[1:np], digits=3)
+print("LM coefficients:")
+summary(MetaEmulators1$fitting.elements$lm.object[[1]]$linModel)$coefficients[,1]
+```
+Showing that the MAP estimate is nowhere near the least squares fit so that the emulator is really driven by the correlation lengths: 
+
+```{r}
+print(paste("Half length correlations:", paste(signif(exp(-1/(exp(-theta[(np+1):(np+ncls)])^2)),digits=3),collapse = "")))
+print(paste("Half length correlations:", paste(signif(exp(-0.25/(exp(-theta[(np+1):(np+ncls)])^2)),digits=3),collapse = "")))
+print(paste("Sigma^2 = ", signif(exp(theta[length(theta)-1]),digits=3)))
+print(paste("Nugget = ", signif(exp(theta[length(theta)]),digits=3)))
+```
+
+These last 2 are perhaps better as standard deviations:
+```{r}
+print(paste("Sigma = ", signif(sqrt(exp(theta[length(theta)-1])),digits=3)))
+print(paste("Nugget SD= ", signif(sqrt(exp(theta[length(theta)])),digits=3)))
+```
+
+### The Nugget problem
+
+So what are the standard deviations of the repeat runs (which we would want to use to estimate the nugget)? 
+```{r}
+vecs <- 1:125
+matvec <- matrix(vecs,nrow=5)
+tsds <- sapply(1:25, function(k) sd(tData[matvec[,k],5]))
+tsds
+```
+
+We can plot these with the data
+```{r}
+par(mfrow=c(1,3))
+for(i in 1:3)
+  plot(tData[matvec[1,],i],tsds,pch=16,xlab=names(tData)[i],ylab="SD infections")
+```
+
+Clearly a static nugget is not a good model and somehow an "average nugget" has been applied across parameter space, too large in places and not large enough in others. 
+
+There are things we should do to improve this initial emulation before exploring alternative Gaussian process models. First, we can relax the prior on the regression and on the variance terms. This type of data does not fit with our default prior specification (we should expect a larger nugget for one), and so it is worth seeing if the fit is an artifact of our subjective prior.
+
+```{r}
+choicesOld <- choices.default
+choices.default$NonInformativeRegression <- TRUE
+choices.default$NonInformativeSigma <- TRUE
+choices.default$NonInformativeNugget <- TRUE
+MetaEmulators1 <- BuildNewEmulators(tData, HowManyEmulators = 1, meanFun = "fitted", kernel="Matern52")
+tLOOs <- LOO.plot(Emulators = MetaEmulators1, which.emulator = 1,
+                  ParamNames = names(tData)[1:3])
+theta <- MetaEmulators1$mogp$emulators[[1]]$theta
+ncls <- 3
+np <- length(theta)-ncls-2
+print("MAP Regression coefficients: ")
+signif(theta[1:np], digits=3)
+print("LM coefficients:")
+summary(MetaEmulators1$fitting.elements$lm.object[[1]]$linModel)$coefficients[,1]
+print(paste("Half length correlations:", paste(signif(exp(-1/(exp(-theta[(np+1):(np+ncls)])^2)),digits=3),collapse = "")))
+print(paste("Half length correlations:", paste(signif(exp(-0.25/(exp(-theta[(np+1):(np+ncls)])^2)),digits=3),collapse = "")))
+print(paste("Sigma = ", signif(sqrt(exp(theta[length(theta)-1])),digits=3)))
+print(paste("Nugget SD= ", signif(sqrt(exp(theta[length(theta)])),digits=3)))
+```
+
+This has marginally inflated the nugget (though it's still an average across parameter space) and confirms that whilst we see a regression looking a little like a taylor expansion of an exponential in `r_zero` (like we might expect), this is better modelled using the correlation function of the GP. 
+
+## A stochastic emulator
+
+The problem above is well known and there are a number of alternative emulators around to try. A nice review is given by [@baker20]. I'll explore using the `hetGP` package to build emulators here.
+
+```{r}
+require(hetGP)
+tX <- as.matrix(lads_by_day_cumulative_79[,1:3])
+tY <- lads_by_day_cumulative_79$Exeter
+mod.het <- mleHetGP(X = as.matrix(tX), Z = tY, lower = 0.0001, upper = 10)
+```
+
+This fits quite rapidly, which is reassuring as we will need to build a lot of emulators for Metawards. The inbuilt leave one out function is unconvincing: 
+
+```{r}
+plot(mod.het)
+```
+
+It seems this plot is likely drawn incorrectly in the code. To give a better idea of the fit, let's plot some predictions and error bars and overlay the data.
+
+```{r}
+xnews <- 2*randomLHS(200,3) - 1
+p.het <- predict(mod.het, xnews) #make predictions
+pvar.het <- p.het$sd2 + p.het$nugs
+par(mfrow=c(1,3))
+errorbar(x=xnews[,1],y=p.het$mean, yerr = 2*sqrt(pvar.het), pch=16, bar.col = "black",lwd=0.5,xlab = "incubation_time", ylab = "Infections",   
+         main ="Stochastic GP Exeter")
+points(tX[,1] , tY,col=4)
+errorbar(x=xnews[,2],y=p.het$mean, yerr = 2*sqrt(pvar.het), pch=16, bar.col = "black",lwd=0.5,xlab = "infectious_time", ylab = "Infections",   
+         main ="Stochastic GP Exeter")
+points(tX[,2] , tY,col=4)
+errorbar(x=xnews[,3],y=p.het$mean, yerr = 2*sqrt(pvar.het), pch=16, bar.col = "black",lwd=0.5,xlab = "r_zero", ylab = "Infections",   
+         main ="Stochastic GP Exeter")
+points(tX[,3] , tY,col=4)
+```
+
+Here the predictions and error bars show the emulator structure. The model runs are overlaid but the predictions are not at the model run locations (this is the idea of the leave one outs, but there seems to be some error there). 
+
+What we see is that this type of emulator is getting the variance structure right, but it is not as capable of reaching high values as our MOGP emulator was. 
+
+### Scaling up?
+How would `hetGP` do at multi-output emulation? If we can understand how to improve it's predictions in some way, will it scale to all of the wards? As a quick test, I will emulate the South West.
+
+```{r}
+tNames <- c("Bath and North East Somerset", "Bristol, City of", "Cornwall", "East Devon", "East Dorset", "Exeter", "Isles of Scilly", "Mid Devon", "North Devon", "Plymouth", "South Hams", "South Somerset", "Torbay", "West Devon", "West Dorset", "West Somerset")
+SouthWest <- lads_by_day_cumulative_79[,which(names(lads_by_day_cumulative_79)%in%tNames)]
+nEms <- length(tNames)
+```
+
+Timing fitting the emulators
+```{r}
+system.time(EM.list <- lapply(1:nEms, function(i) mleHetGP(X = as.matrix(tX), Z = unlist(SouthWest[,i]), lower = 0.0001, upper = 10)))
+```
+The speed looks promising. Each emulator is shown below
+
+```{r}
+for(k in 1:nEms){
+  par(mfrow=c(1,3))
+  p.het <- predict(EM.list[[k]], xnews) #make predictions
+pvar.het <- p.het$sd2 + p.het$nugs
+par(mfrow=c(1,3))
+errorbar(x=xnews[,1],y=p.het$mean, yerr = 2*sqrt(pvar.het), pch=16, bar.col = "black",lwd=0.5,xlab = "incubation_time", ylab = "Infections",   
+         main =tNames[k])
+points(tX[,1] , unlist(SouthWest[,k]),col=4)
+errorbar(x=xnews[,2],y=p.het$mean, yerr = 2*sqrt(pvar.het), pch=16, bar.col = "black",lwd=0.5,xlab = "infectious_time", ylab = "Infections",   
+         main =tNames[k])
+points(tX[,2] , unlist(SouthWest[,k]),col=4)
+errorbar(x=xnews[,3],y=p.het$mean, yerr = 2*sqrt(pvar.het), pch=16, bar.col = "black",lwd=0.5,xlab = "r_zero", ylab = "Infections",   
+         main =tNames[k])
+points(tX[,3] , unlist(SouthWest[,k]),col=4)
+}
+```
+
+# Innovation required
+
+The `hetGP` fits are not great, though they capture the variance structure. There will be an issue with the low number of runs we have adding to this, but we may need to explore the choices in the covariance function.
+
+There is a substantial issue with negative counts predicted. We might consider a negative binomial model with the GP being latent to capture this. We might also truncate, but investigation will be needed to see what the impact of that modelling is.
+
+# References
