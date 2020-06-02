@@ -29,10 +29,10 @@ def get_lock_down_vars(network, population):
     rate = 1.0
     if date >= lock_1:
         state += 1
-        rate = params["scale_rate"][1]
+        rate = params["lock_1_restrict"]
     if date >= lock_2:
         state += 1
-        rate = (1.0 - ((1.0 - params["scale_rate"][1]) * params["scale_rate"][2]))
+        rate = (1.0 - ((1.0 - params["lock_1_restrict"]) * params["lock_2_release"]))
 
     can_work = params["can_work"][state]
     return state, rate, can_work
