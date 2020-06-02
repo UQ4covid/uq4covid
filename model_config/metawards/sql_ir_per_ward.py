@@ -217,8 +217,8 @@ def output_wards_ir_serial(network: metawards.Network, population: metawards.Pop
     database = sql.connect(_sql_file_name)
     c: sql.Cursor = database.cursor()
 
-    # Write the current day
-    c.execute(f"insert into day_table(day,date) values (?,?)", (int(population.day), str(population.date)))
+    # Write the current day, some may be longer / shorter, so ignore duplicate entries
+    c.execute(f"insert or ignore into day_table(day,date) values (?,?)", (int(population.day), str(population.date)))
     time_index = c.lastrowid
     database.commit()
 
