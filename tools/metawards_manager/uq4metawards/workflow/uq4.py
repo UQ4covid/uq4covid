@@ -22,7 +22,6 @@ def main():
     disease_location = argv.disease
     data_location = argv.data
     lookup_location = argv.lookup
-    out_location = argv.output
     mode_str = "x"
     if argv.force:
         mode_str = "w"
@@ -45,8 +44,7 @@ def main():
     try:
         with open(design_location) as design_file, \
                 open(disease_location) as disease_file, \
-                open(lookup_location) as ward_lookup_file, \
-                open(out_location, mode_str) as index_file:
+                open(lookup_location) as ward_lookup_file:
 
             # Load the required data
             # NOTE: You can use the file handles to iterate directly, but loading here does some checks
@@ -214,7 +212,7 @@ def main():
         print("File system error: " + str(error.msg) + " when operating on " + str(error.filename))
         sys.exit(1)
 
-    print("Done! See output at " + str(out_location))
+    print("Done! See output at " + str(data_location))
     sys.exit(0)
 
 
@@ -227,7 +225,6 @@ def main_parser(main_args=None):
     parser.add_argument('disease', metavar='<input disease file>', type=str, help="Input disease matrix")
     parser.add_argument('data', metavar='<data folder>', type=str, help="MetaWards output folder")
     parser.add_argument('lookup', metavar='<ward lookup file>', type=str, help="Ward data lookup file")
-    parser.add_argument('output', metavar='<output file>', type=str, help="Output index file")
     parser.add_argument('day', metavar='<sim date>', type=int, help="Day to extract")
     parser.add_argument('-f', '--force', action='store_true', help="Force over-write")
     return parser.parse_args(main_args)

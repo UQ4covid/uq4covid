@@ -10,6 +10,8 @@ uq4metawards.egg-info/dependency_links.txt
 uq4metawards.egg-info/entry_points.txt
 uq4metawards.egg-info/top_level.txt
 uq4metawards/workflow/__init__.py
+uq4metawards/workflow/pre.py
 uq4metawards/workflow/uq3a.py
 uq4metawards/workflow/uq3b.py
 uq4metawards/workflow/uq4.py
+uq4metawards/workflow/w2sql.py

@@ -6,7 +6,7 @@ with open("readme.md", "r") as fh:
 setuptools.setup \
         (
             name="uq4metawards",  # Replace with your own username
-            version="0.0.2",
+            version="0.1.0",
             author="Christopher Fenton",
             author_email="cjf_uk@hotmail.com",
             description="A set of UQ tools to link to MetaWards",
@@ -24,6 +24,7 @@ setuptools.setup \
             {
                 "console_scripts":
                 [
+                    "uq4metawards-pre = uq4metawards.workflow.pre:main",
                     "uq4metawards-uq3a = uq4metawards.workflow.uq3a:main",
                     "uq4metawards-uq3b = uq4metawards.workflow.uq3b:main",
                     "uq4metawards-uq4 = uq4metawards.workflow.uq4:main"
