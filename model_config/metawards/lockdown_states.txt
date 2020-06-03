@@ -16,4 +16,4 @@
 .lockdown_date_2_day = 13
 
 # Database control
-.deltas = False
+.deltas = True
