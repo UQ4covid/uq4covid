@@ -1,6 +1,8 @@
 #
 # pre.py: Performs the pre-processing needed to run metawards from a design
 #
+# This is essentially a roll-up of uq3a and uq3b with minimal dependencies
+#
 
 import sys
 import os
@@ -20,7 +22,7 @@ def main():
     # Grab data from disk
     try:
         with open(design_location) as design_file, \
-             open(scales_location) as scales_file:
+                open(scales_location) as scales_file:
 
             design_data: List[List[str]] = list(csv.reader(design_file))
             scales_data: List[List[str]] = list(csv.reader(scales_file))
@@ -73,14 +75,14 @@ def main():
     # Disease parameters
     user_var_names: List[str] = [f".{x}" for x in design_names[:-1]]
     disease_headers: List[str] = key_names + user_var_names + \
-                            [
-                                "beta[2]",
-                                "beta[3]",
-                                "progress[1]",
-                                "progress[2]",
-                                "progress[3]",
-                                "repeats"
-                            ]
+                                 [
+                                     "beta[2]",
+                                     "beta[3]",
+                                     "progress[1]",
+                                     "progress[2]",
+                                     "progress[3]",
+                                     "repeats"
+                                 ]
 
     n_epidemiology_columns = len(epidemiology_headers)
     n_disease_columns = len(disease_headers)
