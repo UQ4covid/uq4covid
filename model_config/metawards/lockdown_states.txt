@@ -14,3 +14,6 @@
 .lockdown_date_2_year = 2020
 .lockdown_date_2_month = 5
 .lockdown_date_2_day = 13
+
+# Database control
+.deltas = True
