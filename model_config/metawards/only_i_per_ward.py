@@ -29,7 +29,6 @@ def output_wards_i_serial(network: metawards.Network, population: metawards.Popu
     d_vars = network.params.disease_params
     u_vars = network.params.user_params
     infect_file = output_dir.open(f"wards_trajectory{name}_I.csv")
-    rclass_file = output_dir.open(f"wards_trajectory{name}_R.csv")
 
     # Just print the design parameters: 
     head_str = "beta[2],beta[3],progress[1],progress[2],progress[3],.scale_rate[1],.scale_rate[2]"
@@ -45,8 +44,6 @@ def output_wards_i_serial(network: metawards.Network, population: metawards.Popu
         header = ','.join(ident)
         infect_file.write(header)
         infect_file.write("\n")
-        rclass_file.write(header)
-        rclass_file.write("\n")
 
     day = str(population.day) + ","
     date = str(population.date) + ","
@@ -59,15 +56,6 @@ def output_wards_i_serial(network: metawards.Network, population: metawards.Popu
     infect_file.write(",")
     infect_file.write(",".join([str(x) for x in workspace.I_in_wards]))
     infect_file.write("\n")
-
-    # NOTE: The standard extractors write .dat tables, but R doesn't load these properly (and pandas sometimes)
-    # Write a CSV instead
-    rclass_file.write(day)
-    rclass_file.write(date)
-    rclass_file.write(",".join(str(x) for x in design_out))
-    rclass_file.write(",")
-    rclass_file.write(",".join([str(x) for x in workspace.R_in_wards]))
-    rclass_file.write("\n")
 
 
 #

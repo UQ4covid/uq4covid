@@ -1,5 +1,19 @@
 # This is a new extractor prototype that uses sqlite to reduce the output size
-
+# ----------------------------------------------------------------------------
+#
+# Example queries to get test data follow below
+#
+# Getting a time series output for the "infected" class in a specific ward code x
+# -------------------------------------------------------------------------------
+#
+# select
+#   sim_time, sim_out
+# from
+#   results_table
+# inner join output_table on results_table.output_channel = output_table.id
+# where
+#   output_table.name = "infected" and ward_id = "x"
+#
 
 from metawards.utils import call_function_on_network
 from metawards.utils import Console
@@ -11,11 +25,17 @@ import sys
 import os
 import csv
 
-_created_file_flag = False                                      # This process created the database
-_output_channels = {"infected": -1, "removed": -1}              # Output channels for the database
+_created_file_flag = False  # This process created the database
+_output_channels = {"infected": -1, "removed": -1}  # Output channels for the database
 _sql_file_name = ""
 _run_ident = ""
-_run_index: int = -1                                             # Which run this currently is
+_run_index: int = -1  # Which run this currently is
+
+# Previous outputss (for delta writes)
+_prev_i = None
+_prev_r = None
+
+_output_channels_list = ["susceptible", "exposed", "infected", "removed"]
 
 
 # Horrible hacks to get access to things not available in the extractor
@@ -25,19 +45,24 @@ def get_input_file_name() -> str:
     return next((sys.argv[i + 1] for i, x in enumerate(sys.argv) if x == "-i" or x == "--input"), None)
 
 
-# Find the variable headers from the input file (without repeats) - this is probably a member function somewhere
+# Get the design data from the input file - this is probably a member function somewhere
 # This is needed because the user variables lose their dots and it is impossible to find the hypercube parameters
-def get_input_header_names() -> List[str]:
+def get_design_data() -> (List[str], List[List[str]]):
     with open(get_input_file_name()) as in_file:
-        header: List[List[str]] = list(csv.reader(in_file))
-        return header[0]
+        data: List[List[str]] = list(csv.reader(in_file))
+        header = data[0]
+        data.pop(0)
+        return header, data
 
 
 # Makes the sql database
-# This is here because there is no clean way to pass the required info to the extractor without more hassle
+# We can pass strings to metawards, so this can be removed at some point
 # TODO: Look into removing this (make template schema and copy) - environment variables might work?
-def make_sql_template(design_names: List[str], out_connection: sql.Connection):
+def make_sql_template(out_connection: sql.Connection):
 
+    header, data = get_design_data()
+    design_names = [var[1:] for var in header[:-1] if var[0] == '.']
+    column_indices = [i for i, s in enumerate(header[:-1]) for name in design_names if name in s]
     database: Union[sql.Connection, None] = None
 
     # If the operations fail, we cannot continue, but we must close the connection (try without except)
@@ -59,15 +84,12 @@ def make_sql_template(design_names: List[str], out_connection: sql.Connection):
             var_schema.append(f"{variable} real not null")
             check_schema.append(f"check({variable} >= -1.0 and {variable} <= 1.0)")
         design_table_schema: str = f'create table {design_table_name} (' + ','.join(var_schema + check_schema) + ');'
-
         output_channel_schema: str = f"create table {output_table_name} (id integer not null primary key, name text);"
         day_table_schema: str = f"create table {day_table_name}(day integer not null primary key,date text not null);"
-
         run_table_schema: str = f"create table {run_table_name}(run_index integer not null primary key," \
                                 f"design_index integer not null,end_day integer not null," \
                                 f"mw_folder text not null," \
                                 f"foreign key (design_index) references {design_table_name}({key_column}));"
-
         results_table_schema: str = f"create table {results_table_name}(result_id integer not null primary key," \
                                     "ward_id integer not null,output_channel integer not null,sim_out real not null," \
                                     "sim_time integer not null,run_id integer not null," \
@@ -91,11 +113,14 @@ def make_sql_template(design_names: List[str], out_connection: sql.Connection):
         cursor.execute(results_table_schema)
 
         # Global writes
-        # Write the output channels (don't use executemany as we need the ids)
-        for output in _output_channels:
-            cursor.execute("insert into output_table(name) values (?)", (output,))
-            _output_channels[output] = cursor.lastrowid
 
+        # Write the output channels and design lists
+        for i, output in enumerate(_output_channels_list):
+            cursor.execute("insert into output_table(id, name) values (?, ?)", (i, output))
+        for row in data:
+            vals = tuple([row[c] for c in column_indices])
+            cursor.execute(f"insert into design_table ({','.join(design_names)}) "
+                           f"values ({','.join(['?'] * len(design_names))})", vals)
         database.commit()
 
         # Now save to disk
@@ -137,6 +162,7 @@ def extractor_setup(network: metawards.Network, **kwargs):
     # One at a time here
     mutex = multiprocessing.Lock()
     with mutex:
+        Console.print("In Lock")
         try:
             test_connection = sql.connect(db_uri, uri=True)
             # TODO: What do we do if there is an old database in there?
@@ -145,57 +171,43 @@ def extractor_setup(network: metawards.Network, **kwargs):
             # This process is the first one in to create the database
             try:
                 # Append "c" to make the connection create a blank database
+                Console.print("Creating the database")
                 create_connection = sql.connect(db_uri + "c", uri=True)
                 _created_file_flag = True
             except sql.OperationalError as err:
                 # An actual problem happened if we get here
                 Console.print("SQL Error: " + str(err))
                 raise
-            # Drop repeats
-            u_vars = get_input_header_names()[:-1]
-            design_vars = [var[1:] for var in u_vars if var[0] == '.']
-            make_sql_template(design_vars, create_connection)
+            make_sql_template(create_connection)
         finally:
             if test_connection:
                 test_connection.close()
             if create_connection:
                 create_connection.close()
 
-    # Do first commits for setting up the run
-    write_setup_entries(network, design_index, run_ident, **kwargs)
+        # Do first commits for setting up the run
+        # TODO: Preserve connection across scope
+        process_connection = sql.connect(_sql_file_name)
+        try:
+            Console.print("Writing setup entries")
+            write_setup_entries(process_connection, design_index, run_ident)
+        finally:
+            if process_connection:
+                process_connection.close()
 
 
 # Setup entries which are written once per run
-def write_setup_entries(network: metawards.Network, design_index: int, run_ident: str, **kwargs):
-    global _sql_file_name
+def write_setup_entries(database: sql.Connection, design_index: int, run_ident: str):
     global _run_index
+    c: sql.Cursor = database.cursor()
 
-    database: Union[sql.Connection, None] = None
-    try:
-        database = sql.connect(_sql_file_name)
-
-        # Prepare database entries
-        c: sql.Cursor = database.cursor()
-
-        # Write the hypercube point, ignoring repeats
-        # Repeat runs can create duplicate keys, ideally this would be done before entering here
-        # So we use 'insert or ignore' instead of 'insert'
-        hypercube_keys = [var[1:] for var in get_input_header_names()[:-1] if var[0] == '.']
-        hypercube_values = tuple([network.params.user_params[x] for x in hypercube_keys])
-        i_str = f"insert or ignore into design_table({','.join(hypercube_keys)}) values ({','.join(['?'] * len(hypercube_keys))})"
-        c.execute(i_str, hypercube_values)
-        database.commit()
-
-        # Write this run
-        i_str = f"insert into run_table(design_index,end_day,mw_folder) values (?,?,?)"
-        vals = (design_index, -1, run_ident)
-        c.execute(i_str, vals)
-        _run_index = c.lastrowid
-        Console.print("This is run: " + str(_run_index))
-        database.commit()
-
-    finally:
-        database.close()
+    # Write this run
+    i_str = f"insert into run_table(design_index,end_day,mw_folder) values (?,?,?)"
+    vals = (design_index, -1, run_ident)
+    c.execute(i_str, vals)
+    _run_index = c.lastrowid
+    Console.print("This is run: " + str(_run_index))
+    database.commit()
 
 
 #
@@ -203,9 +215,10 @@ def write_setup_entries(network: metawards.Network, design_index: int, run_ident
 #
 def output_wards_ir_serial(network: metawards.Network, population: metawards.Population,
                            workspace: metawards.Workspace, **kwargs):
-
     global _sql_file_name
     global _run_index
+    global _prev_i
+    global _prev_r
 
     # Potential problem: what if we accidentally hit a real attribute?
     if not hasattr(network.params, "_uq4covid_setup"):
@@ -219,21 +232,46 @@ def output_wards_ir_serial(network: metawards.Network, population: metawards.Pop
 
     # Write the current day, some may be longer / shorter, so ignore duplicate entries
     c.execute(f"insert or ignore into day_table(day,date) values (?,?)", (int(population.day), str(population.date)))
-    time_index = c.lastrowid
     database.commit()
 
     # Write results for infections and removed
-    v = []
-    for i, x in enumerate(workspace.I_in_wards):
-        if i == 0:
-            continue
-        v.append((i, _output_channels["infected"], x, time_index, _run_index))
-    for i, x in enumerate(workspace.R_in_wards):
-        if i == 0:
-            continue
-        v.append((i, _output_channels["removed"], x, time_index, _run_index))
+    # NOTE: Don't re-use time_index as if there is a duplicate then the rowid will be zero
+    # TODO: List comprehension is fine, but consider numpy (or equivalent) for more speed
 
-    c.executemany(f"insert into results_table(ward_id,output_channel,sim_out,sim_time,run_id) values (?,?,?,?,?)", v)
+    deltas = network.params.user_params["deltas"]
+    if deltas:
+        # Write deltas into C2 - This saves about ~6% total space and increases the compression factor by 150%
+        if _prev_i is None:
+            _prev_i = workspace.I_in_wards
+            _prev_r = workspace.R_in_wards
+            deltas_i = workspace.I_in_wards
+            deltas_r = workspace.R_in_wards
+        else:
+            deltas_i = [a - b for a, b in zip(workspace.I_in_wards, _prev_i)]
+            deltas_r = [a - b for a, b in zip(workspace.R_in_wards, _prev_r)]
+            _prev_i = workspace.I_in_wards
+            _prev_r = workspace.R_in_wards
+
+        v_infected = [(i, _output_channels["infected"], x, int(population.day), _run_index)
+                      for i, x in enumerate(deltas_i) if i != 0]
+        v_removed = [(i, _output_channels["removed"], x, int(population.day), _run_index)
+                     for i, x in enumerate(deltas_r) if i != 0]
+
+        c.executemany(f"insert into results_table(ward_id,output_channel,sim_out,sim_time,run_id) values (?,?,?,?,?)",
+                       v_infected + v_removed)
+
+    else:
+        v_infected = [(i, _output_channels["infected"], x, int(population.day), _run_index)
+                      for i, x in enumerate(workspace.I_in_wards) if i != 0]
+        v_removed = [(i, _output_channels["removed"], x, int(population.day), _run_index)
+                     for i, x in enumerate(workspace.R_in_wards) if i != 0]
+
+        c.executemany(f"insert into results_table(ward_id,output_channel,sim_out,sim_time,run_id) values (?,?,?,?,?)",
+                      v_infected + v_removed)
+
+    # Write last day into run table
+    c.execute("update run_table set end_day = ? where run_index = ?", (int(population.day), _run_index))
+
     database.commit()
     database.close()
 
