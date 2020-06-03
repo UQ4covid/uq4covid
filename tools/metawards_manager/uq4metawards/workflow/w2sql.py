@@ -1,7 +1,9 @@
 #
 # Small converter that takes the 2011 census ward data and puts it into a database for queries
+# NOTE: This is on hold and currently not working, do not use
 #
-#
+
+raise NotImplementedError("DO NOT USE")
 
 import sys
 import argparse
