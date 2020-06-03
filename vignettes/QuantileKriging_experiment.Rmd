@@ -1,0 +1,256 @@
+---
+title: "Quantile Modelling"
+author: "Evan Baker"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Here we are going to emulate the metawards model using a "Quantile Kriging" Emulator. Danny has already played with using a hetGP emulator. Both are pretty good models for stochastic simulators, but the main thing here is that a Quantile Kriging emulator doesn't assume any distribution for the response (whereas hetGP assumes normality, albeit with a non-constant variance). I'm not sure relaxing such an assumption is completely necesarry, but bimodality and possibly skewness are likely to be features in a disease model.
+
+
+First I'm going to make some functions, ignore these for now. I will describe the steps as we get to using them
+
+```{r functions}
+set.seed(12345)
+library(reticulate)
+mogp_emulator <- import("mogp_emulator")
+
+#This first function will fit a QK_emul.
+#This would be easier if mogp multioutput actually worked for me, but instead I need to fit each
+#output emulator seperately
+
+QK_emul_fit <- function(X, y){
+  library(dplyr)
+  library(tidyr)
+  
+  full_output <- as.matrix(y)
+  output_dim <- ncol(full_output)
+  
+  #we create quantile_dfs, one per output dimension, and fit seperate emuls to each
+  quantile_dfs <- list()
+  QK_emuls <- list()
+  for (i in 1:output_dim){
+    y <- full_output[,i]
+    quantile_df <- data.frame(X = X, y = y)
+    quantile_df <-  quantile_df %>% group_by_at(vars(names(quantile_df)[1:(length(X[1,]))])) %>% summarise("0.025" = quantile(y, 0.025), "0.25" = quantile(y, 0.25), "0.5" = quantile(y, 0.5), "0.75" = quantile(y, 0.75), "0.975" = quantile(y, 0.975))
+    #expand data to incldue q as input
+    quantile_df <-  quantile_df %>% gather(Quantile, y, "0.025":"0.975")
+    
+    #re-extract data from dataframe
+    inputs = data.matrix(quantile_df[,1:(ncol(quantile_df)-1)])
+    outputs = as.numeric(data.matrix(quantile_df[,ncol(quantile_df)]))
+    
+    #fit emul
+    gp <- mogp_emulator$GaussianProcess(inputs, outputs, nugget = "fit")
+    gp <- mogp_emulator$fit_GP_MAP(gp)
+    
+    #save results
+    QK_emuls <- c(QK_emuls, gp)
+    quantile_dfs <- c(quantile_dfs, list(quantile_df))
+    
+    print(paste("fit emulator ", i, " of ", output_dim))
+  }
+  return(list(QK_emuls = QK_emuls, quantile_dfs = quantile_dfs))
+  
+}
+
+
+#this next function makes predictions via sampling. By sampling quantiles uniformly, we can get an 
+#empircal predictive distribution
+
+#we could instead simply predict for a given x and a given q, we dont need to "integrate out" the q, we can leave it 
+#as an input. But the q input isnt a quantile on the output scale, on only the reduced PCA space, so it has less meaning
+
+QK_emul_predict_samples <- function(X_pred, QK_emuls, M){
+  
+  #we predict for each emul
+  predicts <- list()
+  
+  for (i in 1:(length(QK_emuls[[1]]))){
+    samples <- matrix(NA, M, nrow(X_pred))
+    for (j in 1:M){
+      predict <- QK_emuls[[1]][[i]]$predict(cbind(X_pred, runif(1,0,1))) #sample input quantile 
+      sample <- rnorm(length(predict$mean), predict$mean, sqrt(predict$unc+QK_emuls[[1]][[i]]$nugget)) #get single prediction sample for said quantile
+      samples[j,] <- sample #save and repeat
+    }
+    
+    predicts <- c(predicts, list(samples)) #save results
+    
+    print(paste("predicted for emulator ", i, " of ", length(QK_emuls[[1]])))
+    
+  }
+  return(predicts)
+}
+
+```
+
+
+
+So the first step is to load the simulated data, I'm just using the following data as thats what I could find. I believe there is a set with 20 replicates somewhere which is probably better (espescially for a QK...), but this only has 5 replicates?
+
+I also square root the output as when I model this, I want to ensure that negative counts arent possible.
+
+```{r data}
+data = read.csv("~/My_Files/Covid/wards_by_day_100.csv", header = TRUE)
+
+#tidy up the data
+data_frame <- as.matrix(data)
+X <- data_frame[,2:6]
+y <- data_frame[,7:ncol(data_frame)]
+y <- sqrt(y)
+
+#split into training and testing data
+X_valid <- X[126:200,]
+y_valid <- y[126:200,]
+X <- X[1:125,]
+y <- y[1:125,]
+```
+
+
+
+So there's a lot of output variables here, which is a pain, as thats a high dimensional output.
+We shrink this down using PCA. With these results I'd say the first two matter, but I'll also include the next 3 as well, just to be safe.
+
+```{r PCA}
+
+#high dimensional output is a pain, so we reduce it via PCA
+y_pr <- prcomp(y, rank = 20)
+summary(y_pr) #only first 2 matter
+
+n_out <- 5 #how many PCs matter?
+n_dropped = 15 #how many lost?
+
+#get our "outputs"
+y_out <- y_pr$x[,1:n_out]
+
+```
+
+
+And now for each of these 5 new output dimensions, we fit an independent QK emulator.
+I'm using mogp, but I actually have some issues with it. First is that it takes forever (at least hours) to fit a multiple output GP. Second is that it doesnt seem all that fast even for a single output GP. I assume this is some issue with my installation, but I've tried reinstalling and it still causes me issues. Maybe its a windows problem? (I am using the devel branch)
+Because of this issue, my code fits each GP independently manually.
+
+Quantile kriging emulators are actually farily simple. Basically, you obtain empirical quantile estimates from your data at each X point (and so replicates are essential), and you then include the quantile as an additional input to your GP.
+So then your emulator can predict what the output is for any X, and any quantile. Your epistemic uncertainty is normal (and you assume the error on the empriical quantiles is normal..), but the actual simulator output itself can have any distribution. 
+
+For details see: https://www.tandfonline.com/doi/abs/10.1080/00401706.2013.860919 for the introduction of quantile kriging
+
+And https://epubs.siam.org/doi/abs/10.1137/17M1161233?journalCode=sjuqa3 for an ABM calibration application.
+
+```{r QK fit}
+QK_emuls <- QK_emul_fit(X,y_out)
+```
+
+
+
+With these now fit, we can then make predictions.
+We have an issue here because of the PCA however. We can make predictions in the reduced space, but things become more complicated when we convert back. FOr example, if we plug in q (the quantile) 0.25 into our reduced space emulators, each of those would spit out the 25% quantile prediction for the pricnipal components. But when we recombine those to get the real-space predictions, that wouldnt be the 25% quantile anymore...
+
+We could just calibrate on the reduced space (if / when we get there), but we might actually want predictions in the real-space.
+
+My fix for this, is to sample. If we uniformly sample quantiles and plug those into our emulators, we end up with an empircal predictive distribution for each principal component (at each x), which then gives us an empircal predictive distribution when we convert back to real-space.
+
+
+As an example, lets get some predictive points where only x_4 changes, the other inputs are all 0.5
+
+```{r x_pred}
+
+library(lhs)
+X_pred <- randomLHS(100,5) * 2 -1 #get latin hypercube
+X_pred[,5] <-  0.5 #make everything but x_4 0.5
+X_pred[,1:3] <- 0.5
+
+#then predict using QK, sampling 1000 different values for the quantiles 
+QKpred <- QK_emul_predict_samples(X_pred, QK_emuls, 1000)
+
+
+#and convert to real space
+preds <- array(NA, c(nrow(QKpred[[1]]), nrow(X_pred), ncol(y)))
+for (i in 1:nrow(QKpred[[1]])){
+  trans_pred = cbind(QKpred[[1]][i,], QKpred[[2]][i,], QKpred[[3]][i,], QKpred[[4]][i,], QKpred[[5]][i,], matrix(0, ncol = n_dropped, nrow = nrow(X_pred)) )
+  pred <- t(t(trans_pred %*% t(y_pr$rotation)))
+  preds[i,,] <- pred
+}
+
+#and de-sqrt
+preds <- preds^2
+
+```
+
+
+And we can then plot various quantiles from this empircal distribution. This is for the 40th output (not sure which ward that is, not particularly important). The outer lines are the 2.5% and 97.5% quantiles, next are 25% and 75%, then 40% and 60%, and then the median.
+
+
+```{r x_pred plot}
+
+library(ggplot2)
+ggplot()+
+  geom_line(aes(x=X_pred[,4], y = apply(preds[,,40],2, quantile, 0.5)))+
+  geom_line(aes(x=X_pred[,4], y = apply(preds[,,40],2, quantile, 0.6)))+
+  geom_line(aes(x=X_pred[,4], y = apply(preds[,,40],2, quantile, 0.4)))+
+  geom_line(aes(x=X_pred[,4], y = apply(preds[,,40],2, quantile, 0.25)))+
+  geom_line(aes(x=X_pred[,4], y = apply(preds[,,40],2, quantile, 0.75)))+
+  geom_line(aes(x=X_pred[,4], y = apply(preds[,,40],2, quantile, 0.025)))+
+  geom_line(aes(x=X_pred[,4], y = apply(preds[,,40],2, quantile, 0.975)))+
+  ylab("y")+
+  xlab("x_4")
+```
+
+
+
+
+This is pretty jittery (from only having 1000 predictive samples, but you get the idea)
+
+
+
+
+Then for the valdiation data (the last 75 held out points), we can check various intervals to see if they lie within what the emulator beleives is credible,
+
+```{r testing}
+#and then validation
+QKpred <- QK_emul_predict_samples(X_valid, QK_emuls, 1000)
+
+
+#convert to regular space
+preds <- array(NA, c(nrow(QKpred[[1]]), nrow(X_valid), ncol(y)))
+for (i in 1:nrow(QKpred[[1]])){
+  trans_pred = cbind(QKpred[[1]][i,], QKpred[[2]][i,], QKpred[[3]][i,], QKpred[[4]][i,], QKpred[[5]][i,], matrix(0, ncol = n_dropped, nrow = nrow(X_valid)) )
+  pred <- t(t(trans_pred %*% t(y_pr$rotation)) + y_pr$center)
+  preds[i,,] <- pred
+}
+
+#de-sqrt 
+preds <- preds^2
+
+#and de-sqrt valdiaiton data...
+y_valid <- y_valid^2
+
+#within?
+within = (y_valid[,40] > apply(preds[,,40],2, quantile, 0.025)) & (y_valid[,40] < apply(preds[,,40],2, quantile, 0.975))
+ggplot()+
+  geom_point(aes(x=X_valid[,1], y = apply(preds[,,40],2, quantile, 0.5)))+
+  geom_errorbar(aes(x=X_valid[,1], ymin = apply(preds[,,40],2, quantile, 0.025), ymax =apply(preds[,,40],2, quantile, 0.975)  ))+
+  geom_point(aes(x=X_valid[within,1], y = y_valid[within,40]), colour = "blue")+
+  geom_point(aes(x=X_valid[!within,1], y = y_valid[!within,40]), colour = "red")+
+  ylab("y")+
+  xlab("x_1")
+
+  
+```
+
+
+
+These results aren't too bad. 5/75 outside the 95% intervals is pretty much what youd expect.
+
+The example plot prediction plot from before suggests there isnt any bimodality, and its fairly normal. But with only 5 replicates, I doubt this method would have picked anything interesting up anyway. I really doubt any of the nuance is captured with just 5 replicates at the moment. With 20 replicates that would be perfect (does anybody know where that dataset is?)
+
+This code is also horribly written (I dont think I could have made it less effificent if I tried).
+It's slow, and memory inefficient, storing a huge N*M*Z array (where N is the number of prediction points, M is the number of prediction samples and Z is the number of output values/ locations). MoGP is not fast for me anyway (again, not sure if thats a me issue, a windows issue, or what), but even with faster code, the need to predict 1000 times per prediction point makes this a fairly slow method. Perhaps calibrating on the reduced space (where we dont need to sample) is a better idea.
+
+
+The sqrt does indeed prevent negative values (of course), but the example plot is a bit weird above, as we get to zero infections for small x_4, but then tiny x_4 it gets bigger again. Clearly the emulator on the sqrt scale has a little sin curve style wiggle; but this looks weird once we un-transform the predicitons again.
+
+I expect this method to do much better / be more interesting with the increased number of replicates, so thats probably the next step. Plus some code speeding up, and a decision on how to do calibration
