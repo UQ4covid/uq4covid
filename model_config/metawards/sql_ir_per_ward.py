@@ -25,22 +25,30 @@ import sys
 import os
 import csv
 
-_created_file_flag = False  # This process created the database
 _output_channels = {"infected": -1, "removed": -1}  # Output channels for the database
-_sql_file_name = ""
+_sql_file_name: str = ""
 _run_ident = ""
 _run_index: int = -1  # Which run this currently is
 
-# Previous outputss (for delta writes)
-_prev_i = None
-_prev_r = None
+# Previous outputs (for delta writes)
+_prev_s: Union[List[int], None] = None
+_prev_e: Union[List[int], None] = None
+_prev_i: Union[List[int], None] = None
+_prev_r: Union[List[int], None] = None
 
-_output_channels_list = ["susceptible", "exposed", "infected", "removed"]
+# This is a bit dodgy, but skirts import/unresolved object errors for now
+# TODO: Write mini data_src functional objects that wrap the workspace to resolve this
+_output_channels_list = \
+    {
+        "susceptible": ["workspace.S_in_wards", _prev_s],
+        "exposed": ["workspace.E_in_wards", _prev_e],
+        "infected": ["workspace.I_in_wards", _prev_i],
+        "removed": ["workspace.R_in_wards", _prev_r]
+    }
 
 
-# Horrible hacks to get access to things not available in the extractor
+# Horrible hack to get access to input file argument not available in the extractor
 # NOTE: Using metawards.app.run.parse_args() will raise an exception - no free lunch!
-
 def get_input_file_name() -> str:
     return next((sys.argv[i + 1] for i, x in enumerate(sys.argv) if x == "-i" or x == "--input"), None)
 
@@ -59,7 +67,6 @@ def get_design_data() -> (List[str], List[List[str]]):
 # We can pass strings to metawards, so this can be removed at some point
 # TODO: Look into removing this (make template schema and copy) - environment variables might work?
 def make_sql_template(out_connection: sql.Connection):
-
     header, data = get_design_data()
     design_names = [var[1:] for var in header[:-1] if var[0] == '.']
     column_indices = [i for i, s in enumerate(header[:-1]) for name in design_names if name in s]
@@ -115,7 +122,7 @@ def make_sql_template(out_connection: sql.Connection):
         # Global writes
 
         # Write the output channels and design lists
-        for i, output in enumerate(_output_channels_list):
+        for i, output in enumerate(_output_channels_list.keys()):
             cursor.execute("insert into output_table(id, name) values (?, ?)", (i, output))
         for row in data:
             vals = tuple([row[c] for c in column_indices])
@@ -136,7 +143,6 @@ def make_sql_template(out_connection: sql.Connection):
 # This sets up the database on the first run
 def extractor_setup(network: metawards.Network, **kwargs):
     # Globals
-    global _created_file_flag
     global _sql_file_name
     global _run_ident
 
@@ -162,7 +168,6 @@ def extractor_setup(network: metawards.Network, **kwargs):
     # One at a time here
     mutex = multiprocessing.Lock()
     with mutex:
-        Console.print("In Lock")
         try:
             test_connection = sql.connect(db_uri, uri=True)
             # TODO: What do we do if there is an old database in there?
@@ -171,9 +176,7 @@ def extractor_setup(network: metawards.Network, **kwargs):
             # This process is the first one in to create the database
             try:
                 # Append "c" to make the connection create a blank database
-                Console.print("Creating the database")
                 create_connection = sql.connect(db_uri + "c", uri=True)
-                _created_file_flag = True
             except sql.OperationalError as err:
                 # An actual problem happened if we get here
                 Console.print("SQL Error: " + str(err))
@@ -189,7 +192,6 @@ def extractor_setup(network: metawards.Network, **kwargs):
         # TODO: Preserve connection across scope
         process_connection = sql.connect(_sql_file_name)
         try:
-            Console.print("Writing setup entries")
             write_setup_entries(process_connection, design_index, run_ident)
         finally:
             if process_connection:
@@ -223,7 +225,6 @@ def output_wards_ir_serial(network: metawards.Network, population: metawards.Pop
     # Potential problem: what if we accidentally hit a real attribute?
     if not hasattr(network.params, "_uq4covid_setup"):
         network.params._uq4covid_setup = True
-        Console.print("First output")
         extractor_setup(network, **kwargs)
 
     # Prepare database entries
@@ -240,7 +241,7 @@ def output_wards_ir_serial(network: metawards.Network, population: metawards.Pop
 
     deltas = network.params.user_params["deltas"]
     if deltas:
-        # Write deltas into C2 - This saves about ~6% total space and increases the compression factor by 150%
+        # Write deltas - This saves about ~6% total space and increases the compression factor by 150%
         if _prev_i is None:
             _prev_i = workspace.I_in_wards
             _prev_r = workspace.R_in_wards
@@ -256,18 +257,17 @@ def output_wards_ir_serial(network: metawards.Network, population: metawards.Pop
                       for i, x in enumerate(deltas_i) if i != 0]
         v_removed = [(i, _output_channels["removed"], x, int(population.day), _run_index)
                      for i, x in enumerate(deltas_r) if i != 0]
-
-        c.executemany(f"insert into results_table(ward_id,output_channel,sim_out,sim_time,run_id) values (?,?,?,?,?)",
-                       v_infected + v_removed)
-
-    else:
-        v_infected = [(i, _output_channels["infected"], x, int(population.day), _run_index)
-                      for i, x in enumerate(workspace.I_in_wards) if i != 0]
-        v_removed = [(i, _output_channels["removed"], x, int(population.day), _run_index)
-                     for i, x in enumerate(workspace.R_in_wards) if i != 0]
-
         c.executemany(f"insert into results_table(ward_id,output_channel,sim_out,sim_time,run_id) values (?,?,?,?,?)",
                       v_infected + v_removed)
+    else:
+        # The index has already been sent to the database, so reuse it here safely
+        for channel_index, channel_name in enumerate(_output_channels_list.keys()):
+            Console.print(f"Writing channel {channel_name} to database")
+            data_source = eval(_output_channels_list[channel_name][0])
+            values = [(i, channel_index, x, int(population.day), _run_index)
+                      for i, x in enumerate(data_source) if i != 0]
+            c.executemany(f"insert into results_table(ward_id,output_channel,sim_out,sim_time,run_id) "
+                          f"values (?,?,?,?,?)", values)
 
     # Write last day into run table
     c.execute("update run_table set end_day = ? where run_index = ?", (int(population.day), _run_index))
