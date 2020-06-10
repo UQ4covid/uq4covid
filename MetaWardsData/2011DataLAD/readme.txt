@@ -8,3 +8,6 @@ MetaWardsData/model_data/2011UK folder doesn't have the correct
 lookup table.
 
 You may have amend the "description.json" manually.
+
+TODO: Need to amend "ExtraSeeds.dat" to be on LAD level
+TODO: Check that it works with MetaWards
