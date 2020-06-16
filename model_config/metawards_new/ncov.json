@@ -1,0 +1,11 @@
+{ 
+  "name"             : "SARS-Cov-2",
+  "version"          : "June 11th 2020",
+  "author(s)"        : "UQ4COVID Team",
+  "contact(s)"       : "e-mail...",
+  "reference(s)"     : "references...",  
+  "beta"             : [0.0, 0.0, 1.0, 1.0, 0.0, 0.0],
+  "progress"         : [1.0, 1.0, 1.0, 1.0, 0.0, 0.0],
+  "too_ill_to_move"  : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+  "contrib_foi"      : [1.0, 1.0, 1.0, 1.0, 0.0, 0.0]
+}

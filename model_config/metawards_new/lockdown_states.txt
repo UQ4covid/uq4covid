@@ -1,0 +1,19 @@
+# Normal status
+.can_work[0]  = True
+
+# Lockdown 1
+.can_work[1]  = False
+
+# Lockdown 2
+.can_work[2]  = True
+
+# Lockdown dates
+.lockdown_date_1_year = 2020
+.lockdown_date_1_month = 3
+.lockdown_date_1_day = 21
+.lockdown_date_2_year = 2020
+.lockdown_date_2_month = 5
+.lockdown_date_2_day = 13
+
+# Database control
+.deltas = True
