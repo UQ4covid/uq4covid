@@ -21,7 +21,7 @@
 # Moving parameters
 .pEA = 0.1
 .pIH = 0.4
-.pID = 0.1
+.pIR = 0.1
 .pHC = 0.5
 .pHR = 0.4
 .pCR = 0.8

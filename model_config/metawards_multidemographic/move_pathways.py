@@ -15,6 +15,7 @@ def move_pathways(network, **kwargs):
     pHC = params.user_params["pHC"]
     pHR = params.user_params["pHR"]
     pCR = params.user_params["pCR"]
+    pIR = params.user_params["pIR"]
 
     # Derived parameters
 
