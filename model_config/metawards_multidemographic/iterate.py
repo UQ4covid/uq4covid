@@ -2,6 +2,8 @@
 # Lock-down iterator that simulates various control measures for Covid-19
 #
 
+# TODO: This should change the distance cut-off at some point
+
 from datetime import datetime
 from metawards.utils import Console
 
