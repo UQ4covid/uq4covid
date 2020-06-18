@@ -16,7 +16,7 @@
 .lockdown_date_2_day = 13
 
 # Database control
-.deltas = True
+.deltas = False
 
 # Moving parameters
 .pEA = 0.1

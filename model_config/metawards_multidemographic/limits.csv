@@ -1,0 +1,3 @@
+incubation_time,infectious_time,r_zero,lock_1_restrict,lock_2_release,max_dist
+4.0,2.0,2.5,0.0,0.0,0.0
+6.0,4.0,4.0,1.0,1.0,10.0
