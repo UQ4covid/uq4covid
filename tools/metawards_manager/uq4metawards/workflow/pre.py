@@ -9,7 +9,84 @@ import os
 import argparse
 import csv
 from typing import List
-from uq4metawards.utils import transform_epidemiological_to_disease
+from uq4metawards.utils import transform_epidemiological_to_disease, select_dictionary_keys
+from uq4metawards.sql import make_design_table_schema
+from configparser import ConfigParser
+from sqlite3 import connect, Cursor, Connection
+import psycopg2 as psg
+from psycopg2 import sql
+
+
+def make_memory_database(design_names, design_data, out_connection: Connection):
+    # Table idents: 5 is enough to stitch the entire ward output together with the hypercube designs
+    # These should ensure third normal form, although I haven't checked this in detail
+    design_table_name: str = "design_table"
+    output_table_name: str = "output_table"
+    day_table_name: str = "day_table"
+    run_table_name: str = "run_table"
+
+    key_column = design_names[0]
+
+    design_table_schema = make_design_table_schema(key_column, design_names[1:], design_table_name)
+    output_channel_schema: str = f"create table {output_table_name} (id integer not null primary key, name text);"
+    day_table_schema: str = f"create table {day_table_name}(day integer not null primary key,date text not null);"
+    run_table_schema: str = f"create table {run_table_name}(run_index integer not null primary key," \
+                            f"design_index integer not null,end_day integer not null," \
+                            f"mw_folder text not null," \
+                            f"foreign key (design_index) references {design_table_name}({key_column}));"
+
+    try:
+
+        # Create in memory first (small database, + we want to ensure it is well-formed)
+        database = connect(":memory:")
+        cursor: Cursor = database.cursor()
+
+        # Flags / pragmas
+        cursor.execute(f'PRAGMA encoding = "UTF-8";')
+        cursor.execute(f"PRAGMA foreign_keys = ON;")
+
+        # Create table structure
+        cursor.execute(design_table_schema)
+        cursor.execute(output_channel_schema)
+        cursor.execute(day_table_schema)
+        cursor.execute(run_table_schema)
+
+        # Global writes
+
+        # Write the design table
+        for i, row in enumerate(design_data):
+            vals = tuple([i] + row[:-1])
+            cursor.execute(f"insert into design_table ({','.join(design_names)}) "
+                           f"values ({','.join(['?'] * len(design_names))})", vals)
+        database.commit()
+
+        # Now save to disk
+        database.backup(out_connection)
+
+    finally:
+        if database:
+            database.close()
+        if out_connection:
+            out_connection.close()
+
+
+# The design table lists all the variables in the design header apart from the first and last
+# It is a dynamic schema constructed from all the "." variables in the input table
+# NOTE: SQLite and PostgreSQL have *different* SQL formats, such a pain in the arse!
+def make_design_table_schema(primary_key: str, design_vars: List[str], design_table_name: str) -> str:
+
+    # Create the primary key
+    # An automatically incrementing scheme is fine here as nothing is sensitive
+    key_column: str = f"{primary_key}"
+    var_schema: List[str] = [f"{key_column} INTEGER NOT NULL PRIMARY KEY"]
+
+    # Add hypercube variables with input range checks
+    var_schema += [f"{var} REAL NOT NULL" for var in design_vars]
+    check_schema: List[str] = [f"CHECK({var} >= -1.0 and {var} <= 1.0)" for var in design_vars]
+
+    # Construct the table format schema string
+    table_entries = f','.join(var_schema + check_schema)
+    return f'create table {design_table_name} ( {table_entries} );'
 
 
 def main():
@@ -120,7 +197,7 @@ def main():
     epidemiology_table.insert(0, epidemiology_headers)
     disease_table.insert(0, disease_headers)
 
-    # Write output
+    # Write output disease table
     str_mode = 'x'
     if args.force:
         str_mode = "w"
@@ -136,6 +213,8 @@ def main():
         print("File system error: " + str(error.msg) + " when operating on " + str(error.filename))
         sys.exit(1)
 
+
+    # Write epidemiology table
     if args.epidemiology:
         in_name, in_ext = os.path.splitext(disease_location)
         e_name = in_name + "_epidemiology.csv"
@@ -149,6 +228,94 @@ def main():
         except IOError as error:
             print("File system error: " + str(error.msg) + " when operating on " + str(error.filename))
             sys.exit(1)
+
+    # Write database
+    if args.remote:
+
+        p = ConfigParser()
+        p.read(args.remote)
+
+        params: dict = {}
+        if p.has_section("postgresql"):
+            items = p.items("postgresql")
+            params = {v[0]: v[1] for v in items}
+
+        # Add a timestamp
+        from datetime import datetime
+        extra: str =  datetime.now().strftime('%Y%m%d%H%M%S')
+        params["database"] = params["ident"] + f"_{extra}"
+
+        # Connect to the "master" database, then create one for this run
+        # NOTE: No finally block -> leave the connection alone
+        connection_params: dict = select_dictionary_keys(params, ["host", "user", "password"])
+        connection_params["database"] = "postgres"
+        try:
+            maintenance_connection = psg.connect(**connection_params)
+
+            # A strange quirk of psycopg2 is that 'create database' will fail every time unless autocommit is on
+            maintenance_connection.autocommit = True
+            cur = maintenance_connection.cursor()
+            cur.execute(f"CREATE DATABASE {params['database']}")
+            maintenance_connection.autocommit = False
+        except psg.Error as err:
+            if maintenance_connection is not None:
+                maintenance_connection.close()
+            print("Problem with creating the remote database, consider a local solution instead?")
+            sys.exit(1)
+
+        # Connect to the new database and attempt to create the design table
+        # Any exceptions before the commit() will cause a rollback
+        # NOTE: Don't get lazy and use "with" / context managers here, we NEED to see the right exceptions
+        connection_params: dict = select_dictionary_keys(params, ["host", "user", "password", "database"])
+        new_database = None
+        try:
+
+            # Get a connection
+            new_database = psg.connect(**connection_params)
+            cur = new_database.cursor()
+
+            # Make design table
+            qstring = make_design_table_schema("design_index", design_names[:-1], "design")
+            cur.execute(qstring)
+
+            # Send design data
+            for i, row in enumerate(design_data):
+                data = [float(x) for x in row[:-1]]
+                qstring = f"INSERT INTO design ({','.join(['design_index'] + design_names[:-1])}) " \
+                          f"VALUES ({','.join(['%s']*(len(design_names[:-1])+1))})"
+                cur.execute(qstring, tuple([i] + data))
+
+            # Make index table of design index and repeat count
+
+            # Finally commit
+            new_database.commit()
+        except psg.Error as err:
+            # if we get here we need to drop the new database
+            if new_database is not None:
+                new_database.close()
+
+            # If this fails the there is nothing we can do
+            maintenance_connection.autocommit = True
+            cur = maintenance_connection.cursor()
+            cur.execute(sql.SQL("DROP DATABASE IF EXISTS {};").format(sql.Identifier(params["database"])))
+            maintenance_connection.autocommit = False
+            sys.exit(1)
+        finally:
+            if new_database is not None:
+                new_database.close()
+            if maintenance_connection is not None:
+                maintenance_connection.close()
+
+
+        # Make database
+        make_memory_database([key_names[0][1:]] + design_names, design_data, None)
+
+        # Create a valid URI to use the SQLite access rights
+        data_base_file_name: str = os.path.join(os.path.dirname(disease_location), "sql_wards.dat")
+        _sql_file_name = data_base_file_name
+        fixed_path = os.path.abspath(data_base_file_name).replace("\\", "/")
+        db_uri = f"file:{fixed_path}?mode=rw"
+
 
     print("Done! See output in " + str(disease_location))
     sys.exit(0)
@@ -164,6 +331,7 @@ def main_parser(main_args=None):
     parser.add_argument('disease', metavar='<disease file>', type=str, help="Output disease file for metawards")
     parser.add_argument('-f', '--force', action='store_true', help="Force over-write")
     parser.add_argument('-e', '--epidemiology', action='store_true', help="Output epidemiology matrix")
+    parser.add_argument('-r', '--remote', nargs=1, type=str, help="Remote database configuration file")
     return parser.parse_args(main_args)
 
 

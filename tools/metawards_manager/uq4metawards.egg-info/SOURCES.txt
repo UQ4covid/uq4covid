@@ -3,6 +3,7 @@ uq4metawards/__init__.py
 uq4metawards/design_methods.py
 uq4metawards/jobfile.py
 uq4metawards/make_design.py
+uq4metawards/sql.py
 uq4metawards/utils.py
 uq4metawards.egg-info/PKG-INFO
 uq4metawards.egg-info/SOURCES.txt
