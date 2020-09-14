@@ -1,8 +1,8 @@
 # This is an extractor for multi-demographic models
 # NOTE: delta writes have been removed from this edition
-
 # This extractor gets all of the disease stages that are at least in the I class
 # TODO: Is this broken with the new mapping key in the disease files??
+
 
 import metawards
 from metawards.utils import call_function_on_network
@@ -52,6 +52,24 @@ def get_design_data() -> (List[str], List[List[str]]):
         return header, data
 
 
+# The design table lists all the variables in the design header apart from the first and last
+# It is a dynamic schema constructed from all the "." variables in the input table
+def make_design_table_schema(primary_key: str, design_vars: List[str], design_table_name: str) -> str:
+
+    # Create the primary key
+    key_column: str = f"{primary_key}"
+    var_schema: List[str] = [f"{key_column} integer not null primary key"]
+
+    # Add hypercube variables with input range checks
+    var_schema += [f"{var} real not null" for var in design_vars]
+    check_schema: List[str] = [f"check({var} >= -1.0 and {var} <= 1.0)" for var in design_vars]
+
+    # Construct the table format schema string
+    table_entries = f','.join(var_schema + check_schema)
+    return f'create table {design_table_name} ( {table_entries} );'
+
+
+
 # Makes the sql database
 # We can pass strings to metawards, so this can be removed at some point
 # TODO: Look into removing this (make template schema and copy) - environment variables might work?
@@ -72,17 +90,10 @@ def make_sql_template(out_connection: Connection):
         run_table_name: str = "run_table"
         results_table_name: str = "results_table"
 
-        # The design table is a dynamic schema constructed from all the "." variables in the input table
         # We assume the first column is the key (TODO: Use a complex primary key over the row instead?)
         # First design column is an integer key, rest are hypercube points on [-1, 1]
-        var_schema: List[str] = []
-        check_schema: List[str] = []
-        key_column: str = f"{design_names[0]}"
-        var_schema.append(f"{key_column} integer not null primary key")
-        for variable in design_names[1:]:
-            var_schema.append(f"{variable} real not null")
-            check_schema.append(f"check({variable} >= -1.0 and {variable} <= 1.0)")
-        design_table_schema: str = f'create table {design_table_name} (' + ','.join(var_schema + check_schema) + ');'
+        design_table_schema = make_design_table_schema(design_names[0], design_names[1:], design_table_name)
+
         output_channel_schema: str = f"create table {output_table_name} (id integer not null primary key, name text);"
         day_table_schema: str = f"create table {day_table_name}(day integer not null primary key,date text not null);"
         run_table_schema: str = f"create table {run_table_name}(run_index integer not null primary key," \
@@ -207,9 +218,11 @@ def write_setup_entries(database: Connection, design_index: int, run_ident: str)
 # Grab the infected data from each ward in the network
 #
 def output_wards_serial(network: metawards.Network, population: metawards.Population,
-                        workspace: metawards.Workspace, **kwargs):
+                        workspace: metawards.Workspace, out_dir: metawards.OutputFiles, **kwargs):
     global _sql_file_name
     global _run_index
+
+    connection = out_dir.open_db("rundata.dat", auto_bzip=False, initialise=None)
 
     # Potential problem: what if we accidentally hit a real attribute?
     if not hasattr(network.params, "_uq4covid_setup"):
@@ -252,7 +265,3 @@ def output_wards_serial(network: metawards.Network, population: metawards.Popula
 # TODO: Find a better solution
 def extract(**kwargs) -> List[metawards.utils.MetaFunction]:
     return [output_wards_serial]
-
-
-def output_wards_i(nthreads: int = 1, **kwargs):
-    call_function_on_network(nthreads=nthreads, func=output_wards_ir_serial, call_on_overall=True, **kwargs)

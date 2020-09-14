@@ -10,6 +10,12 @@ import argparse
 import csv
 from typing import List
 from uq4metawards.utils import transform_epidemiological_to_disease
+from ..sql import make_design_table_schema
+
+
+def make_memory_database(design_names, design_data):
+
+    design_schema = make_design_table_schema(design_names[0], design_names[1:], "design_table")
 
 
 def main():
@@ -120,7 +126,10 @@ def main():
     epidemiology_table.insert(0, epidemiology_headers)
     disease_table.insert(0, disease_headers)
 
-    # Write output
+    # Make database
+    make_memory_database(design_names, design_data)
+
+    # Write output disease table
     str_mode = 'x'
     if args.force:
         str_mode = "w"
@@ -136,6 +145,11 @@ def main():
         print("File system error: " + str(error.msg) + " when operating on " + str(error.filename))
         sys.exit(1)
 
+    # Write database
+
+
+
+    # Write epidemiology table
     if args.epidemiology:
         in_name, in_ext = os.path.splitext(disease_location)
         e_name = in_name + "_epidemiology.csv"
